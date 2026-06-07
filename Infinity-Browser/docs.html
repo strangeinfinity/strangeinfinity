@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Infinity Browser - Open-source cross-platform desktop browser with YouTube downloader, privacy controls, and local data storage for Windows and Linux." />
+  <title>Infinity Browser Documentation</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #121826;
+      --soft-ink: #556070;
+      --muted: #7a8494;
+      --page: #f7f4ed;
+      --paper: #fffdf7;
+      --line: rgba(18, 24, 38, 0.14);
+      --green: #15b887;
+      --blue: #3578e5;
+      --red: #ef4444;
+      --amber: #f5a524;
+      --violet: #7c5cff;
+      --black: #121826;
+      --radius: 8px;
+      --shadow: 0 20px 58px rgba(35, 42, 56, 0.12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(21, 184, 135, 0.16), transparent 24%),
+        linear-gradient(245deg, rgba(53, 120, 229, 0.12), transparent 28%),
+        var(--page);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      background:
+        linear-gradient(rgba(18, 24, 38, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 24, 38, 0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 70%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    code {
+      border: 1px solid rgba(18, 24, 38, 0.1);
+      border-radius: 6px;
+      padding: 2px 6px;
+      background: #f2f5f7;
+      color: #263244;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius);
+      margin: 16px 0 0;
+      padding: 18px;
+      color: #dffdef;
+      background: #121826;
+      line-height: 1.65;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    pre code {
+      border: 0;
+      padding: 0;
+      color: inherit;
+      background: transparent;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(18, 24, 38, 0.1);
+      background: rgba(255, 253, 247, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      gap: 11px;
+      font-weight: 950;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 26px rgba(21, 184, 135, 0.22);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 15px;
+      gap: 9px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.62);
+      font-weight: 900;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(35, 42, 56, 0.12);
+    }
+
+    .button.primary {
+      border-color: transparent;
+      color: #fff;
+      background: var(--black);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
+      align-items: end;
+      gap: 36px;
+      padding: 76px 0 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid rgba(21, 184, 135, 0.28);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #0d7e62;
+      background: rgba(255, 255, 255, 0.66);
+      font-size: 0.84rem;
+      font-weight: 950;
+    }
+
+    h1 {
+      max-width: 880px;
+      margin: 22px 0 0;
+      font-size: clamp(3rem, 6.2vw, 6.2rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 740px;
+      margin: 22px 0 0;
+      color: var(--soft-ink);
+      font-size: clamp(1.04rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .version-card {
+      border: 1px solid rgba(18, 24, 38, 0.12);
+      border-radius: var(--radius);
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+    }
+
+    .version-card strong {
+      display: block;
+      font-size: 2.2rem;
+    }
+
+    .version-card span {
+      display: block;
+      color: var(--soft-ink);
+      line-height: 1.5;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      align-items: start;
+      gap: 28px;
+      padding-bottom: 80px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 96px;
+      border: 1px solid rgba(18, 24, 38, 0.12);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 14px 42px rgba(35, 42, 56, 0.08);
+    }
+
+    .toc strong {
+      display: block;
+      margin: 5px 6px 12px;
+    }
+
+    .toc a {
+      display: block;
+      border-radius: 6px;
+      padding: 9px 10px;
+      color: var(--soft-ink);
+      font-weight: 800;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .toc a:hover {
+      color: var(--ink);
+      background: rgba(21, 184, 135, 0.12);
+    }
+
+    .content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .doc-section {
+      border: 1px solid rgba(18, 24, 38, 0.12);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 38px);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .doc-section h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.4vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .doc-section h3 {
+      margin: 28px 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .doc-section p {
+      color: var(--soft-ink);
+      line-height: 1.75;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .tile {
+      border: 1px solid rgba(18, 24, 38, 0.1);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fffdf7;
+    }
+
+    .tile b {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .tile span,
+    .tile p {
+      margin: 0;
+      color: var(--soft-ink);
+      line-height: 1.6;
+    }
+
+    .callout {
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: rgba(21, 184, 135, 0.1);
+      color: var(--soft-ink);
+      line-height: 1.65;
+    }
+
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .shortcut {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(18, 24, 38, 0.1);
+      border-radius: var(--radius);
+      padding: 12px;
+      background: #fffdf7;
+      gap: 14px;
+    }
+
+    .shortcut kbd {
+      border: 1px solid rgba(18, 24, 38, 0.16);
+      border-bottom-width: 3px;
+      border-radius: 6px;
+      padding: 5px 8px;
+      background: #f4f0e8;
+      font-family: inherit;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .shortcut span {
+      color: var(--soft-ink);
+      font-weight: 800;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .wrap {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .nav {
+        height: auto;
+        min-height: 66px;
+        padding: 10px 0;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .brand span {
+        max-width: 150px;
+      }
+
+      .nav-actions {
+        gap: 6px;
+      }
+
+      .button {
+        min-height: 40px;
+        padding: 0 10px;
+        font-size: 0.86rem;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 14vw, 4.4rem);
+      }
+
+      .grid,
+      .shortcut-grid,
+      .toc nav {
+        grid-template-columns: 1fr;
+      }
+
+      .shortcut {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Documentation navigation">
+      <a class="brand" href="index.html" aria-label="Back to Infinity Browser landing page">
+        <img src="icons/infinity-browser.png" alt="" />
+        <span>Infinity Browser<small>Documentation by StrangeInfinity</small></span>
+      </a>
+      <div class="nav-actions">
+        <a class="button" href="index.html">Home</a>
+        <a class="button primary" href="index.html#download">Download</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow">Official project documentation</div>
+        <h1>Infinity Browser docs</h1>
+        <p>
+          Learn about Infinity Browser, an open-source desktop browser featuring YouTube downloading,
+          privacy-first controls, cross-platform support for Windows and Linux, and a complete suite of
+          local productivity tools built on Chromium rendering.
+        </p>
+      </div>
+      <aside class="version-card">
+        <strong>1.0.0</strong>
+        <span>Current release. Built with Python, PyQt6, QtWebEngine, and yt-dlp integration for YouTube media downloads.</span>
+      </aside>
+    </section>
+
+    <div class="layout wrap">
+      <aside class="toc" aria-label="Table of contents">
+        <strong>Contents</strong>
+        <nav>
+          <a href="#overview">Overview</a>
+          <a href="#opensource">Open Source</a>
+          <a href="#features">Features</a>
+          <a href="#safety">Safety & Privacy</a>
+          <a href="#platforms">Cross-Platform</a>
+          <a href="#youtube">YouTube Downloader</a>
+          <a href="#browser">Browser Tools</a>
+          <a href="#shortcuts">Shortcuts</a>
+          <a href="#architecture">Architecture</a>
+        </nav>
+      </aside>
+
+      <div class="content">
+        <section class="doc-section" id="overview">
+          <h2>Overview</h2>
+          <p>
+            Infinity Browser is a desktop web browser built as a Python application. It uses QtWebEngine,
+            which embeds Chromium/Blink for modern website rendering, JavaScript, WebAssembly, native PDF viewing,
+            and site video fullscreen.
+          </p>
+          <div class="grid">
+            <div class="tile"><b>Developer</b><span>StrangeInfinity</span></div>
+            <div class="tile"><b>Core stack</b><span>Python 3.10+, PyQt6, PyQt6-WebEngine, QtWebEngine</span></div>
+            <div class="tile"><b>Primary platforms</b><span>Linux source install and Windows packaged installer workflow</span></div>
+            <div class="tile"><b>Data model</b><span>Bookmarks, history, notes, downloads, settings, and vault files live locally.</span></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="opensource">
+          <h2>Open Source</h2>
+          <p>
+            Infinity Browser is a fully open-source project built with Python and released under a permissive license.
+            The entire source code is available on GitHub for community review, contribution, and customization.
+            Whether you want to build from source, extend functionality, or audit the codebase for privacy and security,
+            you have complete access and control.
+          </p>
+          <div class="grid">
+            <div class="tile"><b>License</b><span>Open-source and community-driven</span></div>
+            <div class="tile"><b>Repository</b><span>Available on <a href="https://github.com/dev-hints/infinity-browser/" target="_blank">GitHub</a> for fork, clone, and contribution</span></div>
+            <div class="tile"><b>Source code</b><span>Python 3.10+, PyQt6, QtWebEngine, and yt-dlp</span></div>
+            <div class="tile"><b>Community</b><span>Issues, pull requests, and feedback welcome</span></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="features">
+          <h2>Key Features</h2>
+          <p>
+            Infinity Browser combines essential browsing tools with powerful productivity features, all running locally on your machine.
+          </p>
+          <div class="grid">
+            <div class="tile"><b>YouTube Downloader</b><p>Built-in video and audio extraction with quality selection, subtitle support, and metadata handling.</p></div>
+            <div class="tile"><b>Smart Bookmarks</b><p>One-click bookmark toggle, searchable bookmark manager, and persistent local storage.</p></div>
+            <div class="tile"><b>Complete History</b><p>Local history with search, latest-first browsing, and full user control.</p></div>
+            <div class="tile"><b>Download Manager</b><p>Ask or auto-save modes, live progress tracking, and organized download history.</p></div>
+            <div class="tile"><b>Notes Panel</b><p>Persistent local notes with search, rename, and autosave—no cloud sync required.</p></div>
+            <div class="tile"><b>QR Generator</b><p>Generate QR codes for the current page, websites, or custom text.</p></div>
+            <div class="tile"><b>Multiple Search Engines</b><p>Google, DuckDuckGo, Bing, Ecosia, and Brave Search.</p></div>
+            <div class="tile"><b>Tab Management</b><p>Full tabbed browsing with reload, new tab, fullscreen, and app-level shortcuts.</p></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="youtube">
+          <h2>YouTube Downloader</h2>
+          <p>
+            Infinity includes a full YouTube downloader dialog powered by <code>yt-dlp</code>. It can be opened from the app menu.
+            If the current page is a supported YouTube URL, the dialog starts with that URL and can immediately fetch video info.
+          </p>
+          <div class="grid">
+            <div class="tile"><b>Supported URLs</b><p><code>youtube.com/watch</code>, <code>youtube.com/shorts</code>, and <code>youtu.be</code>.</p></div>
+            <div class="tile"><b>Modes</b><p>Video plus audio, or audio-only extraction.</p></div>
+            <div class="tile"><b>Quality</b><p>Best available or caps at 2160p, 1440p, 1080p, 720p, 480p, or 360p.</p></div>
+            <div class="tile"><b>Extras</b><p>Optional subtitles, auto subtitles, thumbnails, and exact format selection from metadata.</p></div>
+          </div>
+          <h3>Downloader workflow</h3>
+          <pre><code>Open menu -> YouTube Downloader
+Paste or auto-fill a YouTube URL
+Fetch Info
+Choose type, quality, audio format, subtitles, thumbnail
+Download</code></pre>
+          <p>
+            Completed media files are registered into Infinity's download history with the source marked as
+            <code>YouTube Downloader</code>, so downloaded videos and audio can be reopened from the Downloads panel.
+          </p>
+        </section>
+
+        <section class="doc-section" id="browser">
+          <h2>Browser tools</h2>
+          <div class="grid">
+            <div class="tile"><b>Navigation</b><p>Smart address bar handles URLs, search queries, and local file paths. Search engines include Google, DuckDuckGo, Bing, Ecosia, and Brave Search.</p></div>
+            <div class="tile"><b>Tabs</b><p>Tabbed browsing, reload, close, new tab, fullscreen, and app-level shortcuts that still work when the web view has focus.</p></div>
+            <div class="tile"><b>Bookmarks</b><p>One-click bookmark toggle plus a searchable bookmark manager.</p></div>
+            <div class="tile"><b>History</b><p>Local history file with latest-first entries and search in the History panel.</p></div>
+            <div class="tile"><b>Downloads</b><p>Ask or auto save modes, live speed, progress, cancel, open file, open folder, redownload, and history clearing.</p></div>
+            <div class="tile"><b>Notes</b><p>Local notes panel with persistent notes, search, rename, copy, delete, and autosave behavior.</p></div>
+            <div class="tile"><b>QR generator</b><p>Generate QR codes for the current page, a website, or custom text.</p></div>
+            <div class="tile"><b>Local files and PDF</b><p>Open HTML, PDF, media, image, and text files. Print the current page to PDF with <code>Ctrl+P</code>.</p></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="safety">
+          <h2>Safety & Privacy First</h2>
+          <p>
+            Infinity Browser prioritizes your privacy and security by storing all data locally on your machine.
+            There is no telemetry collection, no cloud syncing, and no account system. You have complete control
+            over your browsing history, bookmarks, downloads, and personal notes. The app includes built-in security
+            controls for ad blocking, Do Not Track, pop-up blocking, JavaScript management, HTTPS-Only mode, Safe Browsing,
+            and the ability to clear all browsing data at any time.
+          </p>
+          <div class="grid">
+            <div class="tile"><b>History</b><span><code>history.json</code></span></div>
+            <div class="tile"><b>Bookmarks</b><span><code>bookmarks.json</code></span></div>
+            <div class="tile"><b>Notes</b><span><code>notes.json</code></span></div>
+            <div class="tile"><b>Downloads</b><span><code>downloads.json</code></span></div>
+            <div class="tile"><b>Settings</b><span><code>settings.json</code></span></div>
+            <div class="tile"><b>Vault</b><span><code>passwords.json</code> and <code>.vault.key</code></span></div>
+          </div>
+          <div class="callout">
+            Password entries are protected locally with generated key material, per-entry nonces, and HMAC integrity checks.
+            The project keeps the vault key local and applies owner-only permissions where the operating system supports them.
+          </div>
+        </section>
+
+        <section class="doc-section" id="shortcuts">
+          <h2>Keyboard shortcuts</h2>
+          <div class="shortcut-grid">
+            <div class="shortcut"><kbd>Ctrl+T</kbd><span>Open a new tab</span></div>
+            <div class="shortcut"><kbd>Ctrl+W</kbd><span>Close current tab</span></div>
+            <div class="shortcut"><kbd>Ctrl+R</kbd><span>Reload page</span></div>
+            <div class="shortcut"><kbd>Ctrl+L</kbd><span>Focus address bar</span></div>
+            <div class="shortcut"><kbd>Ctrl+B</kbd><span>Open bookmarks</span></div>
+            <div class="shortcut"><kbd>Ctrl+H</kbd><span>Open history</span></div>
+            <div class="shortcut"><kbd>Ctrl+J</kbd><span>Open downloads</span></div>
+            <div class="shortcut"><kbd>Ctrl+O</kbd><span>Open local file</span></div>
+            <div class="shortcut"><kbd>Ctrl+P</kbd><span>Print to PDF</span></div>
+            <div class="shortcut"><kbd>Ctrl+Shift+N</kbd><span>Open notes</span></div>
+            <div class="shortcut"><kbd>F11</kbd><span>Toggle browser fullscreen</span></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="architecture">
+          <h2>Architecture</h2>
+          <p>
+            The app starts in <code>main.py</code>, registers the <code>infinity://</code> scheme, initializes Qt,
+            loads global styling, and opens <code>BrowserWindow</code>. The main window wires together the tab manager,
+            navigation bar, download manager, ad blocker, settings, history, bookmarks, password vault, notes,
+            QR generator, and YouTube downloader.
+          </p>
+          <div class="grid">
+            <div class="tile"><b><code>browser_window.py</code></b><p>Main window, menu, shortcuts, panels, fullscreen, and app orchestration.</p></div>
+            <div class="tile"><b><code>tab_manager.py</code></b><p>QtWebEngine profile, tabs, custom scheme handler, page loading, and media fallback.</p></div>
+            <div class="tile"><b><code>youtube_downloader.py</code></b><p>yt-dlp process integration, metadata parsing, progress updates, and history registration.</p></div>
+            <div class="tile"><b><code>download_manager.py</code></b><p>Browser download requests, save modes, active progress UI, and persisted download history.</p></div>
+            <div class="tile"><b><code>settings_dialog.py</code></b><p>General, Appearance, Privacy, Security, and Downloads settings UI.</p></div>
+            <div class="tile"><b><code>scheme_handler.py</code></b><p>Serves internal <code>infinity://newtab</code> content from <code>new_tab.html</code>.</p></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="platforms">
+          <h2>Cross-Platform Support</h2>
+          <p>
+            Infinity Browser is designed to work seamlessly on both Windows and Linux, giving you a consistent
+            browsing experience across platforms. Whether you're on Windows 10/11 or modern Linux distributions,
+            you can download and run Infinity Browser with the same features and performance.
+          </p>
+          <div class="grid">
+            <div class="tile">
+              <b>Windows</b>
+              <p>Download the pre-built installer <code>InfinityBrowserSetup-1.0.0-x64.exe</code>. The installer
+              handles all dependencies, creates desktop shortcuts, and preserves your data during updates.</p>
+            </div>
+            <div class="tile">
+              <b>Linux</b>
+              <p>Download pre-built packages for your distribution: <code>.deb</code> for Debian/Ubuntu and <code>.rpm</code> for Fedora/RHEL systems. Full support for GNOME and other desktop environments.</p>
+            </div>
+            <div class="tile">
+              <b>Local Data Storage</b>
+              <p>All your bookmarks, history, notes, downloads, settings, and passwords are stored locally
+              in your user directory. Your data stays on your machine.</p>
+            </div>
+            <div class="tile">
+              <b>Updates & Upgrades</b>
+              <p>Update to new versions while keeping your existing data intact. Reinstalls preserve all
+              your browsing history, bookmarks, and settings.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer wrap">
+    <span>&copy; 2026 Infinity Browser by StrangeInfinity. All rights reserved.</span>
+  </footer>
+</body>
+</html>
