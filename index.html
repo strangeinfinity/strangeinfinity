@@ -1,3 +1,438 @@
-<html>
-  <h1>Comming Soon!</h1>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StrangeInfinity — Open-source software, cosmic tools, and boundary-breaking technology. Portfolio of projects, products, and experiments." />
+  <meta name="keywords" content="StrangeInfinity, open source, software, Infinity Browser, portfolio, GitHub, developer" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta property="og:title" content="StrangeInfinity — Building the Future" />
+  <meta property="og:description" content="Open-source software, cosmic tools, and boundary-breaking technology." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#7c3aed" />
+  <title>StrangeInfinity — Building the Future, One Commit at a Time</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+</head>
+<body>
+
+<!-- ═══════════════ LOADING SCREEN ═══════════════ -->
+<div id="loading-screen" role="status" aria-label="Loading StrangeInfinity">
+  <img src="assets/images/logo.png" alt="StrangeInfinity Logo" class="loader-logo" width="80" height="80" />
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  <p class="loader-text">INITIALIZING STRANGEINFINITY.SYS</p>
+</div>
+
+<!-- ═══════════════ CUSTOM CURSOR ═══════════════ -->
+<div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="#hero" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="assets/images/logo.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#hero"         class="nav-link active">Home</a></li>
+        <li><a href="#projects"     class="nav-link">Projects</a></li>
+        <li><a href="#products"     class="nav-link">Products</a></li>
+        <li><a href="#technologies" class="nav-link">Tech</a></li>
+        <li><a href="#about"        class="nav-link">About</a></li>
+        <li><a href="#contact"      class="nav-link">Contact</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <div id="nav-social" class="nav-social" aria-label="Social links"></div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">🌙</button>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#hero"         class="nav-link">🏠 Home</a>
+    <a href="#projects"     class="nav-link">🚀 Projects</a>
+    <a href="#products"     class="nav-link">📦 Products</a>
+    <a href="#technologies" class="nav-link">⚙️ Technologies</a>
+    <a href="#about"        class="nav-link">💫 About</a>
+    <a href="#contact"      class="nav-link">✉️ Contact</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Open Source · Cosmic Tech · v2025
+      </div>
+      <h1 class="hero-title">
+        We Build<br />
+        <span class="brand-name">StrangeInfinity</span>
+      </h1>
+      <p class="hero-description">
+        Crafting <strong style="color:var(--color-primary-glow)"><span id="hero-typewriter">software</span><span style="animation:cursorBlink 1s step-end infinite;color:var(--color-secondary)">|</span></strong> that pushes beyond the ordinary. Open-source tools, futuristic products, and boundary-breaking experiments — from the edge of the digital cosmos.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary" id="cta-projects">🚀 Explore Projects</a>
+        <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><span>🐙 GitHub</span></a>
+      </div>
+      <div class="hero-stats" aria-label="Key statistics">
+        <div class="hero-stat"><span class="hero-stat-value">10+</span><span class="hero-stat-label">Projects</span></div>
+        <div class="hero-stat"><span class="hero-stat-value">500+</span><span class="hero-stat-label">GitHub Stars</span></div>
+        <div class="hero-stat"><span class="hero-stat-value">3+</span><span class="hero-stat-label">Years</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-orb">
+        <img src="assets/images/logo.png" alt="" class="hero-orb-logo" width="200" height="200" loading="lazy" />
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:1;">
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-hint-arrow">↓</span>
+      <span>Scroll to explore</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" aria-label="About StrangeInfinity">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <div class="section-header">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Built on <span class="gradient-text">Curiosity</span> &amp; Code</h2>
+          <p class="section-subtitle">StrangeInfinity is an independent open-source initiative dedicated to building tools, software, and experiments that explore the frontier of technology.</p>
+        </div>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-4)">
+          From privacy-first browsers to real-time monitoring dashboards, every project reflects a commitment to craftsmanship, open collaboration, and pushing the boundaries of what's possible with code.
+        </p>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-8)">
+          Our mission is simple: build technology that <em style="color:var(--color-primary-glow)">matters</em>, share it openly, and inspire the next generation of builders.
+        </p>
+        <div class="stats-grid" aria-label="Statistics">
+          <div class="stat-card">
+            <span class="stat-number" data-count="10" data-suffix="+">0+</span>
+            <span class="stat-label">Open Source Projects</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-count="500" data-suffix="+">0+</span>
+            <span class="stat-label">GitHub Stars</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-count="50" data-suffix="K+">0K+</span>
+            <span class="stat-label">Lines of Code</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-count="3" data-suffix="+ Yrs">0+ Yrs</span>
+            <span class="stat-label">Building in Public</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal">Core Values</p>
+        <div id="values-grid" class="values-grid" role="list" aria-label="Core values"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section id="projects" aria-label="Projects">
+  <div class="bg-orb bg-orb-1" style="top:10%;left:-100px;" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Open Source</p>
+      <h2 class="section-title">All <span class="gradient-text">Projects</span></h2>
+      <p class="section-subtitle">Explore the full collection of StrangeInfinity open-source software, tools, and experiments.</p>
+    </div>
+    <!-- Filter Tabs -->
+    <div class="filter-tabs reveal" role="tablist" aria-label="Filter projects by technology">
+      <button class="filter-tab active" data-filter="all"        role="tab" aria-selected="true">✦ All</button>
+      <button class="filter-tab"        data-filter="python"     role="tab" aria-selected="false">🐍 Python</button>
+      <button class="filter-tab"        data-filter="javascript" role="tab" aria-selected="false">⚡ JavaScript</button>
+      <button class="filter-tab"        data-filter="bash"       role="tab" aria-selected="false">💻 Shell</button>
+    </div>
+    <div id="projects-grid" class="projects-grid" role="list" aria-label="Project cards"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURED PRODUCTS ═══════════════ -->
+<section id="products" aria-label="Featured Products">
+  <div class="bg-orb bg-orb-2" style="top:20%;right:-80px;" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Featured</p>
+      <h2 class="section-title">Flagship <span class="gradient-text">Products</span></h2>
+      <p class="section-subtitle">Major StrangeInfinity products crafted with precision, performance, and passion.</p>
+    </div>
+    <div id="products-grid" class="products-grid" role="list" aria-label="Featured product cards"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ TECHNOLOGY STACK ═══════════════ -->
+<section id="technologies" aria-label="Technology Stack">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">The Arsenal</p>
+      <h2 class="section-title">Technology <span class="gradient-text">Stack</span></h2>
+      <p class="section-subtitle">The tools and languages powering StrangeInfinity projects.</p>
+    </div>
+    <div id="tech-grid" class="tech-grid" role="list" aria-label="Technology stack"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ GITHUB DASHBOARD ═══════════════ -->
+<section id="github" aria-label="GitHub Dashboard">
+  <div class="bg-orb bg-orb-3" style="bottom:10%;left:10%;" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Open Source Activity</p>
+      <h2 class="section-title">GitHub <span class="gradient-text">Dashboard</span></h2>
+    </div>
+    <div class="github-grid">
+      <div>
+        <div class="contrib-graph reveal" role="figure" aria-label="GitHub contribution activity graph">
+          <p class="contrib-title">Contribution Activity — StrangeInfinity</p>
+          <div id="contrib-grid" class="contrib-grid" aria-hidden="true"></div>
+          <div style="display:flex;gap:var(--space-2);align-items:center;margin-top:var(--space-4);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted);">
+            <span>Less</span>
+            <div style="width:12px;height:12px;border-radius:2px;background:rgba(124,58,237,0.05)"></div>
+            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l1"></div>
+            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l2"></div>
+            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l3"></div>
+            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l4"></div>
+            <span>More</span>
+          </div>
+        </div>
+        <!-- GitHub Stats Cards -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-6)">
+          <div class="stat-card reveal delay-1" aria-label="Total repositories">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Repositories</span>
+          </div>
+          <div class="stat-card reveal delay-2" aria-label="Total stars">
+            <span class="stat-number">168</span>
+            <span class="stat-label">Total Stars</span>
+          </div>
+          <div class="stat-card reveal delay-3" aria-label="Total forks">
+            <span class="stat-number">30</span>
+            <span class="stat-label">Total Forks</span>
+          </div>
+        </div>
+      </div>
+      <!-- Repos List -->
+      <div id="repos-list" class="repos-list" role="list" aria-label="Featured repositories"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+<section id="timeline" aria-label="Project Timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">The Journey</p>
+      <h2 class="section-title">Project <span class="gradient-text">Roadmap</span></h2>
+      <p class="section-subtitle">The milestones and story behind StrangeInfinity.</p>
+    </div>
+    <div class="timeline" id="timeline-list" role="list" aria-label="Timeline of events"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ COSMIC WIDGETS ═══════════════ -->
+<section id="widgets" aria-label="Cosmic Widgets">
+  <div class="bg-orb bg-orb-1" style="top:30%;right:-50px;" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Command Center</p>
+      <h2 class="section-title">Cosmic <span class="gradient-text">Widgets</span></h2>
+    </div>
+    <div class="widgets-grid">
+      <!-- Clock -->
+      <div class="widget-card reveal delay-1" aria-label="Live clock">
+        <span class="widget-label">🕐 Live Clock</span>
+        <div id="clock-display" class="clock-display" aria-live="polite">00:00:00</div>
+        <div id="clock-date" class="clock-date">Loading date...</div>
+      </div>
+      <!-- Theme Status -->
+      <div class="widget-card reveal delay-2" aria-label="Theme status">
+        <span class="widget-label">🎨 Theme Status</span>
+        <div id="theme-status-icon" class="theme-status-icon" aria-hidden="true">🌑</div>
+        <div id="theme-status-text" class="theme-status-text">Dark Mode Active</div>
+        <button class="btn btn-ghost btn-sm" style="margin-top:var(--space-2)" onclick="ThemeManager.toggle()">Toggle Theme</button>
+      </div>
+      <!-- Visitor Counter -->
+      <div class="widget-card reveal delay-3" aria-label="Visitor counter">
+        <span class="widget-label">👁️ Your Visit #</span>
+        <div class="clock-display" style="font-size:var(--text-3xl)" aria-live="polite"><span id="visitor-count">...</span></div>
+        <div class="clock-date">Session visit counter</div>
+      </div>
+      <!-- Quote -->
+      <div class="widget-card reveal delay-4" aria-label="Tech quote of the moment" style="grid-column:span 1">
+        <span class="widget-label">💬 Tech Wisdom</span>
+        <p id="quote-text" class="quote-text" style="transition:opacity 0.3s ease" aria-live="polite">"Loading wisdom..."</p>
+        <div id="quote-author" class="quote-author"></div>
+        <button id="quote-refresh" class="btn btn-ghost btn-sm" style="margin-top:auto" aria-label="Next quote">↻ Next Quote</button>
+      </div>
+      <!-- Radar -->
+      <div class="widget-card reveal delay-5" aria-label="Skill radar visualization">
+        <span class="widget-label">📡 Skill Radar</span>
+        <canvas id="radar-canvas" aria-label="Interactive skill radar chart" role="img"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" aria-label="Contact and Social Links">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="contact-hero-text">Let's Build <span class="gradient-text">Together</span></h2>
+        <p class="contact-hero-desc">Have an idea, collaboration, or just want to say hi? Reach out through any of these channels. All projects and discussions are welcome.</p>
+        <a href="mailto:contact@strangeinfinity.dev" class="contact-email-link" aria-label="Send email to StrangeInfinity">
+          ✉️ contact@strangeinfinity.dev
+        </a>
+        <div style="margin-top:var(--space-8);">
+          <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🐙 View GitHub Profile</a>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal" style="margin-bottom:var(--space-6)">Social Links</p>
+        <div id="social-links-grid" class="social-links-grid" role="list" aria-label="Social media links"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="#hero" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="assets/images/logo.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">Building the future, one commit at a time. Open-source software from the edge of the cosmos.</p>
+        <div id="footer-social" class="footer-social" aria-label="Social media links"></div>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigation</p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#hero">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#products">Products</a>
+          <a href="#technologies">Tech Stack</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Projects</p>
+        <nav class="footer-links" aria-label="Key projects">
+          <a href="https://github.com/StrangeInfinity/Infinity-Browser" target="_blank" rel="noopener noreferrer">Infinity Browser</a>
+          <a href="https://github.com/StrangeInfinity/velocix" target="_blank" rel="noopener noreferrer">Velocix Speed Test</a>
+          <a href="https://github.com/StrangeInfinity/cosmotrack" target="_blank" rel="noopener noreferrer">CosmoTrack CLI</a>
+          <a href="https://github.com/StrangeInfinity/2048-nexus" target="_blank" rel="noopener noreferrer">2048 Nexus</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Open Source</p>
+        <nav class="footer-links" aria-label="Open source links">
+          <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          <a href="https://github.com/StrangeInfinity?tab=repositories" target="_blank" rel="noopener noreferrer">All Repositories</a>
+          <a href="https://github.com/StrangeInfinity?tab=stars" target="_blank" rel="noopener noreferrer">Starred Repos</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <a href="https://github.com/StrangeInfinity">StrangeInfinity</a>. Open-source &amp; built with ❤️ and ∞ curiosity.</p>
+      <div class="footer-legal">
+        <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#" aria-label="MIT License">MIT License</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ FLOATING UI ═══════════════ -->
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- Keyboard Shortcuts Panel -->
+<aside id="shortcuts-panel" role="complementary" aria-label="Keyboard shortcuts" aria-hidden="true">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4)">
+    <span style="font-weight:700;color:var(--text-primary)">⌨️ Keyboard Shortcuts</span>
+    <button id="shortcuts-close" style="color:var(--text-muted);font-size:var(--text-lg)" aria-label="Close shortcuts panel">×</button>
+  </div>
+  <div class="glow-divider"></div>
+  <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4)">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:var(--text-sm);color:var(--text-secondary)">Show shortcuts</span>
+      <kbd>?</kbd>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:var(--text-sm);color:var(--text-secondary)">Toggle theme</span>
+      <kbd>T</kbd>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:var(--text-sm);color:var(--text-secondary)">Go home</span>
+      <kbd>H</kbd>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:var(--text-sm);color:var(--text-secondary)">Go to projects</span>
+      <kbd>P</kbd>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:var(--text-sm);color:var(--text-secondary)">Close panels</span>
+      <kbd>Esc</kbd>
+    </div>
+    <div class="glow-divider"></div>
+    <p style="font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-mono)">Try the Konami Code for a surprise 🎮</p>
+  </div>
+</aside>
+
+<!-- Easter Egg Modal -->
+<div id="easter-egg-modal" role="dialog" aria-modal="true" aria-label="Easter egg discovered!" aria-hidden="true">
+  <div class="easter-egg-content">
+    <div style="font-size:4rem;margin-bottom:var(--space-4)">🎉🌌🚀</div>
+    <h2 class="gradient-text" style="font-size:var(--text-2xl);margin-bottom:var(--space-4)">You Found the Easter Egg!</h2>
+    <p style="color:var(--text-secondary);margin-bottom:var(--space-6);line-height:1.7">Congratulations, explorer! You've discovered the hidden Konami Code secret of StrangeInfinity. You are now an official member of the cosmic development crew. 🌠</p>
+    <p style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-6)">↑ ↑ ↓ ↓ ← → ← → B A</p>
+    <button id="easter-egg-close" class="btn btn-primary">🚀 Continue Exploring</button>
+  </div>
+</div>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/particles.js"></script>
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
 </html>
