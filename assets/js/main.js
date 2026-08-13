@@ -42,83 +42,41 @@ document.addEventListener('DOMContentLoaded', () => {
   ProjectRenderer.init();
 
 
-  /* ── 3. CUSTOM CURSOR ──────────────────────────────────────────── */
-  const dot  = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  let mouseX = 0, mouseY = 0;
-  let ringX  = 0, ringY  = 0;
-
-  const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
-
-  if (!isTouchDevice() && dot && ring) {
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
-    });
-
-    // Smooth ring follow with lerp
-    function animCursor() {
-      ringX = ringX + (mouseX - ringX) * 0.12;
-      ringY = ringY + (mouseY - ringY) * 0.12;
-      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
-      requestAnimationFrame(animCursor);
-    }
-    animCursor();
-
-    // Hover state on interactive elements
-    const hoverEls = 'a, button, [role="button"], .project-card, .product-card, .tech-card, .social-card, .repo-card, .filter-tab, .nav-link';
-    document.addEventListener('mouseover', e => {
-      if (e.target.closest(hoverEls)) {
-        dot.classList.add('cursor-hover');
-        ring.classList.add('cursor-hover');
-      }
-    });
-    document.addEventListener('mouseout', e => {
-      if (e.target.closest(hoverEls)) {
-        dot.classList.remove('cursor-hover');
-        ring.classList.remove('cursor-hover');
-      }
-    });
-  } else {
-    // Hide cursor elements on touch devices
-    if (dot)  dot.style.display  = 'none';
-    if (ring) ring.style.display = 'none';
-    document.body.style.cursor = 'auto';
-  }
 
 
   /* ── 4. STICKY NAVBAR ──────────────────────────────────────────── */
   const navbar = document.getElementById('navbar');
   let lastScrollY = 0;
+  let scrollTicking = false;
 
   function onScroll() {
-    const scrollY = window.scrollY;
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
 
-    // Glassmorphism effect on scroll
-    if (navbar) {
-      navbar.classList.toggle('scrolled', scrollY > 50);
+        if (navbar) {
+          navbar.classList.toggle('scrolled', scrollY > 50);
+        }
+
+        if (scrollY > 300) {
+          if (scrollY > lastScrollY + 8) {
+            navbar.style.transform = 'translateY(-100%)';
+          } else if (scrollY < lastScrollY - 8) {
+            navbar.style.transform = 'translateY(0)';
+          }
+        } else {
+          navbar.style.transform = 'translateY(0)';
+        }
+        lastScrollY = scrollY;
+
+        const btt = document.getElementById('back-to-top');
+        if (btt) btt.classList.toggle('visible', scrollY > 600);
+
+        updateActiveNav();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
-
-    // Hide/show navbar on scroll direction (UX trick)
-    // Navbar hides when scrolling down fast, shows on up
-    if (scrollY > 300) {
-      if (scrollY > lastScrollY + 5) {
-        navbar.style.transform = 'translateY(-100%)';
-      } else if (scrollY < lastScrollY - 5) {
-        navbar.style.transform = 'translateY(0)';
-      }
-    } else {
-      navbar.style.transform = 'translateY(0)';
-    }
-    lastScrollY = scrollY;
-
-    // Back to top
-    const btt = document.getElementById('back-to-top');
-    if (btt) btt.classList.toggle('visible', scrollY > 600);
-
-    // Update active nav link
-    updateActiveNav();
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -155,9 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = open ? 'hidden' : '';
     });
 
-    // Close menu on link click
+    // Close menu on link click and highlight active item
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        mobileMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
@@ -346,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let angle = 0;
 
     function draw() {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
       ctx.clearRect(0, 0, W, H);
 
       const sides = skills.length;
@@ -353,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Grid circles
       for (let ring = 1; ring <= 4; ring++) {
-        ctx.strokeStyle = `rgba(124,58,237,${0.08 * ring})`;
+        ctx.strokeStyle = isLight ? `rgba(79,70,229,${0.08 * ring})` : `rgba(99,102,241,${0.08 * ring})`;
         ctx.lineWidth   = 1;
         ctx.beginPath();
         for (let i = 0; i <= sides; i++) {
@@ -369,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Spokes
       for (let i = 0; i < sides; i++) {
         const a = i * step - Math.PI / 2;
-        ctx.strokeStyle = 'rgba(124,58,237,0.15)';
+        ctx.strokeStyle = isLight ? 'rgba(79,70,229,0.15)' : 'rgba(99,102,241,0.15)';
         ctx.lineWidth   = 1;
         ctx.beginPath();
         ctx.moveTo(cx, cy);
@@ -377,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
 
         // Labels
-        ctx.fillStyle  = 'rgba(167,139,202,0.7)';
+        ctx.fillStyle  = isLight ? '#475569' : '#cbd5e1';
         ctx.font       = '10px JetBrains Mono, monospace';
         ctx.textAlign  = 'center';
         const lx = cx + Math.cos(a) * (r + 14);
@@ -386,8 +347,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Data polygon
-      ctx.fillStyle   = 'rgba(124,58,237,0.15)';
-      ctx.strokeStyle = 'rgba(168,85,247,0.7)';
+      ctx.fillStyle   = isLight ? 'rgba(79,70,229,0.15)' : 'rgba(99,102,241,0.2)';
+      ctx.strokeStyle = isLight ? '#4f46e5' : '#818cf8';
       ctx.lineWidth   = 2;
       ctx.beginPath();
       for (let i = 0; i < sides; i++) {
