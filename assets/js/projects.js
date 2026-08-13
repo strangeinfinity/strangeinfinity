@@ -3,7 +3,7 @@
  * assets/js/projects.js
  *
  * Central data store for all projects, products, tech stack, and social links.
- * Edit this file to update the website content.
+ * Features open-source repositories from dev-hints.
  */
 
 /* ──────────────────────────────────────────────
@@ -13,11 +13,11 @@ const SI_CONFIG = {
 
   /* ── Social / Contact Links ── */
   social: {
-    github:    { url: 'https://github.com/StrangeInfinity',       handle: '@StrangeInfinity',   icon: '🐙' },
-    instagram: { url: 'https://instagram.com/strangeinfinity',     handle: '@strangeinfinity',   icon: '📸' },
-    linkedin:  { url: 'https://linkedin.com/in/strangeinfinity',   handle: 'StrangeInfinity',    icon: '💼' },
-    email:     { url: 'mailto:contact@strangeinfinity.dev',        handle: 'contact@strangeinfinity.dev', icon: '✉️' },
-    twitter:   { url: 'https://twitter.com/strangeinfinity',       handle: '@strangeinfinity',   icon: '🐦' },
+    github:    { url: 'https://github.com/strangeinfinity/',         handle: '@strangeinfinity',     icon: '<i class="fa-brands fa-github"></i>' },
+    instagram: { url: 'https://instagram.com/strangeinfinity.dev',  handle: '@strangeinfinity.dev', icon: '<i class="fa-brands fa-instagram"></i>' },
+    linkedin:  { url: 'https://in.linkedin.com/in/ayush-kumar-maurya/', handle: 'Ayush Kumar Maurya',   icon: '<i class="fa-brands fa-linkedin"></i>' },
+    email:     { url: 'mailto:strangeinfinity.dev@gmail.com',       handle: 'strangeinfinity.dev@gmail.com', icon: '<i class="fa-solid fa-envelope"></i>' },
+    twitter:   { url: 'https://x.com/strang3infinity',             handle: '@strang3infinity',     icon: '<i class="fa-brands fa-x-twitter"></i>' },
   },
 
   /* ── Site Meta ── */
@@ -29,215 +29,280 @@ const SI_CONFIG = {
 
   /* ── Stats ── */
   stats: [
-    { value: 10,  suffix: '+', label: 'Projects'        },
-    { value: 500, suffix: '+', label: 'GitHub Stars'    },
-    { value: 5,   suffix: 'K', label: 'Lines of Code'   },
-    { value: 3,   suffix: '+', label: 'Years Building'  },
+    { value: 16,  suffix: '+', label: 'Repositories'   },
+    { value: 25,  suffix: '+', label: 'GitHub Stars'   },
+    { value: 12,  suffix: 'K+', label: 'Lines of Code' },
+    { value: 3,   suffix: '+', label: 'Years Building' },
   ],
 
   /* ── Featured Products ── */
   products: [
     {
-      id:       'infinity-browser',
-      name:     'Infinity Browser',
-      icon:     '🌐',
+      id:       'infinity-writer',
+      name:     'Infinity Writer',
+      icon:     '<i class="fa-solid fa-feather-pointed" style="color:var(--color-primary-light)"></i>',
       featured: true,
       status:   'active',
       color:    'primary',
-      desc:     'A privacy-first, feature-rich desktop web browser built on PyQt6 and Chromium engine. Experience the web the way it was meant to be — fast, private, and beautiful.',
+      desc:     'Infinity Writer strictly focuses on generating clean, semantic, and production-ready HTML that natively supports dark mode right out of the box.',
+      features: [
+        'Generates clean & semantic HTML code',
+        'Native out-of-the-box dark mode support',
+        'Zero external runtime dependencies',
+        'Built-in typographic hierarchy',
+        'Accessible ARIA component structure',
+        'Production-ready export templates',
+      ],
+      links: {
+        github: 'https://github.com/dev-hints/Infinity-Writer',
+        demo:   'https://github.com/dev-hints/Infinity-Writer',
+        docs:   null,
+      },
+      tags: ['JavaScript', 'HTML5', 'CSS3', 'Web Tool'],
+    },
+    {
+      id:       'airpointer',
+      name:     'AirPointer',
+      icon:     '<i class="fa-solid fa-hand-pointer" style="color:var(--color-cyan)"></i>',
+      featured: true,
+      status:   'active',
+      color:    'cyan',
+      desc:     'A real-time virtual mouse system enabling touchless computer interaction via webcam hand gesture tracking powered by OpenCV and MediaPipe.',
+      features: [
+        'Touchless gesture cursor control',
+        'Real-time webcam hand tracking',
+        'Smooth mouse movement & click simulation',
+        'Customizable gesture sensitivity',
+        'Cross-platform Python desktop execution',
+        'Low latency & lightweight processing',
+      ],
+      links: {
+        github: 'https://github.com/dev-hints/AirPointer',
+        demo:   null,
+        docs:   null,
+      },
+      tags: ['Python', 'OpenCV', 'MediaPipe', 'Computer Vision'],
+    },
+    {
+      id:       'infinity-browser',
+      name:     'Infinity Browser',
+      icon:     '<i class="fa-solid fa-globe" style="color:var(--color-purple)"></i>',
+      featured: true,
+      status:   'active',
+      color:    'purple',
+      desc:     'A privacy-first, feature-rich desktop web browser built with Python and PyQt6. Experience fast, secure browsing with built-in productivity tools.',
       features: [
         'Privacy-first with built-in ad blocking',
-        'Download manager with live progress',
+        'Download manager with live progress tracking',
         'Secure local password vault',
-        'Bookmark manager & tab groups',
-        'Built-in PDF viewer',
-        'Custom CSS & JS injection',
+        'Bookmark manager & custom tab groups',
+        'Built-in PDF viewer & document reader',
+        'Custom CSS & JS script injection',
       ],
       links: {
-        github: 'https://github.com/StrangeInfinity/Infinity-Browser',
-        demo:   null,
+        github: 'https://github.com/dev-hints/infinity-browser',
+        demo:   'https://strangeinfinity.github.io/Infinity-Browser/',
         docs:   null,
       },
-      tags: ['Python', 'PyQt6', 'Chromium', 'Privacy'],
+      tags: ['Python', 'PyQt6', 'QtWebEngine', 'Desktop'],
     },
     {
-      id:       'velocix',
-      name:     'Velocix Speed Test',
-      icon:     '⚡',
+      id:       'notes-app',
+      name:     'Notes App',
+      icon:     '<i class="fa-solid fa-note-sticky" style="color:var(--color-pink)"></i>',
       featured: true,
-      status:   'beta',
-      color:    'cyan',
-      desc:     'Production-grade internet speed testing platform with real-time bandwidth analysis, animated SVG gauges, and enterprise-ready infrastructure.',
-      features: [
-        'Parallel binary streaming engine',
-        'Real-time throughput charts',
-        'Animated SVG gauge meters',
-        'Global server selection',
-        'ISP & network diagnostics',
-        'Historical test reports',
-      ],
-      links: {
-        github: 'https://github.com/StrangeInfinity/velocix',
-        demo:   null,
-        docs:   null,
-      },
-      tags: ['JavaScript', 'Node.js', 'WebSockets', 'Redis'],
-    },
-    {
-      id:       'cosmotrack',
-      name:     'CosmoTrack CLI',
-      icon:     '🖥️',
-      featured: false,
       status:   'active',
       color:    'pink',
-      desc:     'A production-ready, hacker-style system monitoring tool in Bash. Real-time CPU, RAM, disk, and uptime metrics with ANSI art visuals.',
+      desc:     'A visually stunning, highly interactive frontend-only Notes Application that brings a deep space experience right into your browser.',
       features: [
-        'ANSI color-coded dashboard',
-        'Real-time resource monitoring',
-        'Alert system for thresholds',
-        'Persistent logging to file',
-        'Lightweight — pure Bash',
-        'Global CLI install support',
+        'Deep space cosmic glassmorphism UI',
+        'Interactive task tagging & categories',
+        'Instant search & auto-save to LocalStorage',
+        'Rich text document formatting',
+        'Responsive layout across all devices',
+        'Pure Vanilla HTML, CSS & JavaScript',
       ],
       links: {
-        github: 'https://github.com/StrangeInfinity/cosmotrack',
-        demo:   null,
+        github: 'https://github.com/dev-hints/Notes-App',
+        demo:   'https://github.com/dev-hints/Notes-App',
         docs:   null,
       },
-      tags: ['Bash', 'Linux', 'CLI', 'ANSI'],
+      tags: ['JavaScript', 'CSS3', 'HTML5', 'Productivity'],
+    },
+    {
+      id:       '2048-nexus',
+      name:     '2048 Nexus',
+      icon:     '<i class="fa-solid fa-gamepad" style="color:var(--color-emerald)"></i>',
+      featured: true,
+      status:   'active',
+      color:    'emerald',
+      desc:     'Production-grade 2048 desktop game built with Python and PyQt6, featuring multiple game modes, AI play, ambient audio, themes, and leaderboards.',
+      features: [
+        'Multiple modes (Classic, Time Attack, AI)',
+        'Automated AI solver playback',
+        'Ambient cosmic audio & sound effects',
+        'Custom neon themes & skins',
+        'Local high-score leaderboards',
+        'Smooth tile merge animations',
+      ],
+      links: {
+        github: 'https://github.com/dev-hints/2048-Nexus',
+        demo:   'https://github.com/dev-hints/2048-Nexus',
+        docs:   null,
+      },
+      tags: ['Python', 'PyQt6', 'JavaScript', 'Game'],
     },
   ],
 
   /* ── All Projects ── */
   projects: [
     {
+      id:     'infinity-writer',
+      title:  'Infinity Writer',
+      icon:   '<i class="fa-solid fa-feather-pointed" style="color:var(--color-primary-light)"></i>',
+      status: 'active',
+      desc:   'Focuses strictly on generating clean, semantic, and production-ready HTML with native out-of-the-box dark mode support.',
+      tags:   ['JavaScript', 'HTML5', 'CSS3', 'Generator'],
+      github: 'https://github.com/dev-hints/Infinity-Writer',
+      demo:   'https://github.com/dev-hints/Infinity-Writer',
+    },
+    {
+      id:     'airpointer',
+      title:  'AirPointer Virtual Mouse',
+      icon:   '<i class="fa-solid fa-hand-pointer" style="color:var(--color-cyan)"></i>',
+      status: 'active',
+      desc:   'Touchless real-time virtual mouse system translating webcam hand gestures into cursor movement using computer vision.',
+      tags:   ['Python', 'OpenCV', 'MediaPipe', 'AI'],
+      github: 'https://github.com/dev-hints/AirPointer',
+      demo:   null,
+    },
+    {
       id:     'infinity-browser',
       title:  'Infinity Browser',
-      icon:   '🌐',
+      icon:   '<i class="fa-solid fa-globe" style="color:var(--color-purple)"></i>',
       status: 'active',
-      desc:   'Privacy-first desktop browser built with PyQt6 and Chromium. Feature-rich with download manager, password vault, and bookmark system.',
+      desc:   'Fast, privacy-first desktop web browser built with Python and PyQt6 featuring ad blocking, password vault, and downloads.',
       tags:   ['Python', 'PyQt6', 'Desktop', 'Privacy'],
-      github: 'https://github.com/StrangeInfinity/Infinity-Browser',
-      demo:   null,
+      github: 'https://github.com/dev-hints/infinity-browser',
+      demo:   'https://strangeinfinity.github.io/Infinity-Browser/',
     },
     {
-      id:     'velocix',
-      title:  'Velocix Speed Test',
-      icon:   '⚡',
-      status: 'beta',
-      desc:   'SaaS internet speed testing platform with real-time analytics, animated gauges, and enterprise infrastructure.',
-      tags:   ['Node.js', 'Fastify', 'PostgreSQL', 'Redis'],
-      github: 'https://github.com/StrangeInfinity/velocix',
-      demo:   null,
-    },
-    {
-      id:     'cosmotrack',
-      title:  'CosmoTrack CLI',
-      icon:   '🖥️',
+      id:     'notes-app',
+      title:  'Cosmic Notes App',
+      icon:   '<i class="fa-solid fa-note-sticky" style="color:var(--color-pink)"></i>',
       status: 'active',
-      desc:   'Hacker-style real-time system monitor in pure Bash with ASCII art, ANSI colors, and alert thresholds.',
-      tags:   ['Bash', 'Linux', 'Monitoring', 'CLI'],
-      github: 'https://github.com/StrangeInfinity/cosmotrack',
-      demo:   null,
+      desc:   'Visually stunning deep-space themed notes application with rich text formatting, categories, and local storage.',
+      tags:   ['JavaScript', 'CSS3', 'HTML5', 'Productivity'],
+      github: 'https://github.com/dev-hints/Notes-App',
+      demo:   'https://github.com/dev-hints/Notes-App',
     },
     {
       id:     '2048-nexus',
       title:  '2048 Nexus',
-      icon:   '🎮',
+      icon:   '<i class="fa-solid fa-gamepad" style="color:var(--color-emerald)"></i>',
       status: 'active',
-      desc:   'Production-ready 2048 desktop game with ambient sound, smooth animations, and beautiful glassmorphism UI.',
+      desc:   'Production-grade 2048 desktop & web game featuring multiple game modes, AI play, ambient audio, and neon UI.',
+      tags:   ['Python', 'PyQt6', 'JavaScript', 'Game'],
+      github: 'https://github.com/dev-hints/2048-Nexus',
+      demo:   'https://github.com/dev-hints/2048-Nexus',
+    },
+    {
+      id:     'snake-game',
+      title:  'Neon Snake Game',
+      icon:   '<i class="fa-solid fa-staff-snake" style="color:#22c55e"></i>',
+      status: 'active',
+      desc:   'Modern responsive Snake game built with HTML, CSS, and modular JavaScript with a dark neon glassmorphism UI.',
       tags:   ['JavaScript', 'HTML5', 'CSS3', 'Game'],
-      github: 'https://github.com/StrangeInfinity/2048-nexus',
-      demo:   null,
+      github: 'https://github.com/dev-hints/Snake-Game',
+      demo:   'https://github.com/dev-hints/Snake-Game',
     },
     {
-      id:     'strangeinfinity-web',
-      title:  'StrangeInfinity.github.io',
-      icon:   '🌌',
+      id:     'gemini-cli',
+      title:  'Gemini CLI Chatbot',
+      icon:   '<i class="fa-solid fa-terminal" style="color:#06b6d4"></i>',
       status: 'active',
-      desc:   'This very website — a futuristic portfolio and product showcase built with pure HTML, CSS, and Vanilla JavaScript.',
-      tags:   ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
-      github: 'https://github.com/StrangeInfinity/strangeinfinity.github.io',
-      demo:   'https://strangeinfinity.github.io',
+      desc:   'Lightweight terminal AI chatbot built entirely in Bash with a hacker/cosmic neon aesthetic and typing animations.',
+      tags:   ['Shell', 'Bash', 'AI', 'CLI'],
+      github: 'https://github.com/dev-hints/Gemini_cli',
+      demo:   null,
     },
     {
-      id:     'future-project',
-      title:  'Project Nebula',
-      icon:   '🔭',
-      status: 'planned',
-      desc:   'An upcoming open-source project from the StrangeInfinity lab. Stay tuned for the announcement.',
-      tags:   ['Coming Soon'],
-      github: null,
-      demo:   null,
+      id:     'calccosmos',
+      title:  'CalcCosmos Calculator',
+      icon:   '<i class="fa-solid fa-calculator" style="color:#f59e0b"></i>',
+      status: 'active',
+      desc:   'Responsive scientific calculator with advanced mathematical operations, history tracking, and cosmic themes.',
+      tags:   ['JavaScript', 'HTML5', 'CSS3', 'Math'],
+      github: 'https://github.com/dev-hints/CalcCosmos',
+      demo:   'https://github.com/dev-hints/CalcCosmos',
+    },
+    {
+      id:     'to-do',
+      title:  'To-Do Task Manager',
+      icon:   '<i class="fa-solid fa-square-check" style="color:#10b981"></i>',
+      status: 'active',
+      desc:   'Advanced productivity task management application with glassmorphism UI, progress tracking, and category filters.',
+      tags:   ['JavaScript', 'CSS3', 'HTML5', 'Productivity'],
+      github: 'https://github.com/dev-hints/To-Do',
+      demo:   'https://github.com/dev-hints/To-Do',
     },
   ],
 
   /* ── Technology Stack ── */
   technologies: [
-    { name: 'HTML5',       icon: '🌐', level: 95, color: '#e34f26' },
-    { name: 'CSS3',        icon: '🎨', level: 92, color: '#1572b6' },
-    { name: 'JavaScript',  icon: '⚡', level: 90, color: '#f7df1e' },
-    { name: 'Python',      icon: '🐍', level: 88, color: '#3776ab' },
-    { name: 'Java',        icon: '☕', level: 75, color: '#ed8b00' },
-    { name: 'C++',         icon: '⚙️', level: 72, color: '#00599c' },
-    { name: 'Bash',        icon: '💻', level: 85, color: '#4eaa25' },
-    { name: 'Git',         icon: '🔀', level: 90, color: '#f05032' },
-    { name: 'Linux',       icon: '🐧', level: 88, color: '#fcc624' },
-    { name: 'Docker',      icon: '🐳', level: 70, color: '#2496ed' },
-    { name: 'Node.js',     icon: '🟢', level: 78, color: '#339933' },
-    { name: 'PostgreSQL',  icon: '🐘', level: 72, color: '#336791' },
+    { name: 'HTML5',       icon: '<i class="devicon-html5-plain colored"></i>', level: 95, color: '#e34f26' },
+    { name: 'CSS3',        icon: '<i class="devicon-css3-plain colored"></i>', level: 92, color: '#1572b6' },
+    { name: 'JavaScript',  icon: '<i class="devicon-javascript-plain colored"></i>', level: 90, color: '#f7df1e' },
+    { name: 'Python',      icon: '<i class="devicon-python-plain colored"></i>', level: 88, color: '#3776ab' },
+    { name: 'OpenCV',      icon: '<i class="devicon-opencv-plain colored"></i>', level: 80, color: '#5C3EE8' },
+    { name: 'PyQt6',       icon: '<i class="devicon-qt-original colored"></i>', level: 85, color: '#41CD52' },
+    { name: 'Bash / Shell',icon: '<i class="devicon-bash-plain colored"></i>', level: 85, color: '#4eaa25' },
+    { name: 'Git & GitHub',icon: '<i class="devicon-git-plain colored"></i>', level: 90, color: '#f05032' },
+    { name: 'Linux',       icon: '<i class="devicon-linux-plain colored"></i>', level: 88, color: '#fcc624' },
   ],
 
-  /* ── GitHub Repositories (manual, since no backend) ── */
+  /* ── GitHub Repositories ── */
   repos: [
-    { name: 'Infinity-Browser', desc: 'Privacy-first desktop browser built with PyQt6 & Chromium engine', lang: 'Python',     stars: '⭐ 42',  forks: '🍴 8'  },
-    { name: 'velocix',          desc: 'Production-grade internet speed testing SaaS platform',               lang: 'JavaScript', stars: '⭐ 28',  forks: '🍴 5'  },
-    { name: 'cosmotrack',       desc: 'Hacker-style real-time system monitor in pure Bash',                  lang: 'Shell',      stars: '⭐ 65',  forks: '🍴 12' },
-    { name: '2048-nexus',       desc: 'Glassmorphism 2048 desktop game with ambient audio',                  lang: 'JavaScript', stars: '⭐ 19',  forks: '🍴 3'  },
-    { name: 'strangeinfinity.github.io', desc: 'Futuristic portfolio & product showcase',                   lang: 'HTML',       stars: '⭐ 14',  forks: '🍴 2'  },
+    { name: 'Infinity-Writer', desc: 'Generates clean, semantic HTML with native out-of-the-box dark mode support', lang: 'JavaScript', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 12', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 3' },
+    { name: 'AirPointer',      desc: 'Real-time virtual mouse system using webcam hand gesture tracking',        lang: 'Python',     stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 15', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 4' },
+    { name: 'infinity-browser',desc: 'Fast, private desktop web browser built with Python and PyQt6',            lang: 'Python',     stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 3',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 1' },
+    { name: 'Notes-App',       desc: 'Deep space-themed notes app built with pure HTML/CSS/JS',                   lang: 'CSS',        stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 2',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 0' },
+    { name: '2048-Nexus',      desc: '2048 desktop game with AI solver, ambient audio, and neon UI',            lang: 'Python',     stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 2',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 0' },
+    { name: 'Snake-Game',      desc: 'Responsive neon Snake game built with pure HTML, CSS, & modular JS',       lang: 'JavaScript', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 2',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 0' },
+    { name: 'Gemini_cli',      desc: 'Hacker-style terminal AI chatbot in pure Bash with typing animations',    lang: 'Shell',      stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 2',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 0' },
+    { name: 'CalcCosmos',      desc: 'Responsive cosmic scientific calculator built with Vanilla JS & CSS',     lang: 'JavaScript', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 2',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 0' },
+    { name: 'To-Do',           desc: 'Glassmorphism task manager with progress tracking & categories',           lang: 'CSS',        stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 2',  forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 0' },
   ],
 
   /* ── Timeline ── */
   timeline: [
     {
-      date:    'Q1 2024',
-      title:   'StrangeInfinity Founded',
-      desc:    'Started the StrangeInfinity open-source initiative with a mission to build privacy-first, cosmic-grade software tools.',
+      date:    'Q1 2026',
+      title:   'Open-Source Foundations',
+      desc:    'Initiated dev-hints open-source projects including web applications, games, and developer utilities.',
       active:  false,
     },
     {
-      date:    'Q2 2024',
-      title:   'Infinity Browser v1.0',
-      desc:    'Launched the first version of Infinity Browser — a PyQt6-based desktop browser with privacy features and download management.',
+      date:    'Q2 2026',
+      title:   'Infinity Browser & Desktop Apps',
+      desc:    'Developed Infinity Browser for privacy-first desktop browsing alongside PyQt6 2048 Nexus game.',
       active:  false,
     },
     {
-      date:    'Q3 2024',
-      title:   'CosmoTrack CLI Released',
-      desc:    'Open-sourced CosmoTrack, a real-time system monitoring tool in pure Bash with ANSI art and alert thresholds.',
+      date:    'Q3 2026',
+      title:   'AirPointer & Gemini CLI',
+      desc:    'Released AirPointer computer-vision virtual mouse and Gemini CLI hacker-style terminal chatbot in pure Bash.',
       active:  false,
     },
     {
-      date:    'Q1 2025',
-      title:   '2048 Nexus & More',
-      desc:    'Released 2048 Nexus with ambient sound and glassmorphism UI. Continued expanding the open-source portfolio.',
-      active:  false,
-    },
-    {
-      date:    'Q2 2025',
-      title:   'Velocix Speed Test (Beta)',
-      desc:    'Launched Velocix — a production-grade SaaS speed testing platform built with Fastify, Socket.io, and Redis.',
+      date:    'Q4 2026',
+      title:   'Infinity Writer & Notes App',
+      desc:    'Launched Infinity Writer clean HTML generator and Cosmic Notes application.',
       active:  true,
-    },
-    {
-      date:    'Q3 2025 →',
-      title:   'Project Nebula',
-      desc:    'Working on the next generation of StrangeInfinity products. More announcements coming soon.',
-      active:  false,
     },
   ],
 
-  /* ── Tech Quotes (for widget) ── */
+  /* ── Tech Quotes ── */
   quotes: [
     { text: 'Any sufficiently advanced technology is indistinguishable from magic.', author: 'Arthur C. Clarke' },
     { text: 'The best way to predict the future is to invent it.', author: 'Alan Kay' },
@@ -248,15 +313,14 @@ const SI_CONFIG = {
     { text: 'Programs must be written for people to read, and only incidentally for machines to execute.', author: 'Harold Abelson' },
     { text: 'Make it work, make it right, make it fast.', author: 'Kent Beck' },
     { text: 'The universe is under no obligation to make sense to you.', author: 'Neil deGrasse Tyson' },
-    { text: 'We are all connected; to each other, biologically. To the earth, chemically. To the rest of the universe, atomically.', author: 'Neil deGrasse Tyson' },
   ],
 
   /* ── Core Values ── */
   values: [
-    { icon: '🔓', title: 'Open Source',   desc: 'We believe in transparency. Our code lives in the open for the world to learn, contribute, and improve.' },
-    { icon: '🔒', title: 'Privacy First', desc: 'Your data belongs to you. We design systems that respect privacy by default, not as an afterthought.' },
-    { icon: '⚡', title: 'Performance',   desc: 'Every millisecond matters. We obsess over performance so our tools feel instant and powerful.' },
-    { icon: '🌌', title: 'Innovation',    desc: 'We push beyond the ordinary. Inspired by the cosmos, we build what hasn\'t been built before.' },
+    { icon: '<i class="fa-solid fa-lock-open" style="color:var(--color-primary-light)"></i>', title: 'Open Source',   desc: 'Everything lives in the open. We build accessible, transparent code for the global developer community.' },
+    { icon: '<i class="fa-solid fa-shield-halved" style="color:var(--color-cyan)"></i>', title: 'Privacy First', desc: 'Your data belongs to you. Zero telemetry, local storage, and end-to-end encrypted designs by default.' },
+    { icon: '<i class="fa-solid fa-bolt" style="color:#f59e0b"></i>', title: 'Performance',   desc: 'Every millisecond matters. Lightweight, zero-bloat implementations tailored for speed and efficiency.' },
+    { icon: '<i class="fa-solid fa-atom" style="color:var(--color-secondary)"></i>', title: 'Innovation',    desc: 'Exploring computer vision, CLI AI tools, PyQt desktop apps, and cutting-edge web applications.' },
   ],
 
 };
@@ -276,7 +340,7 @@ const ProjectRenderer = (() => {
       : SI_CONFIG.projects.filter(p => p.tags.some(t => t.toLowerCase().includes(filter)));
 
     container.innerHTML = projects.map((p, i) => `
-      <article class="project-card reveal" style="transition-delay:${i * 0.08}s"
+      <article class="project-card reveal" style="transition-delay:${i * 0.05}s"
                data-project="${p.id}" role="article" aria-label="${p.title}">
         <div class="project-card-header">
           <span class="project-icon" aria-hidden="true">${p.icon}</span>
@@ -292,10 +356,10 @@ const ProjectRenderer = (() => {
         <div class="project-card-footer">
           ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
                class="btn btn-ghost btn-sm" aria-label="View ${p.title} on GitHub">
-               🐙 GitHub</a>` : ''}
+               <i class="fa-brands fa-github"></i> GitHub</a>` : ''}
           ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
                class="btn btn-primary btn-sm" aria-label="View ${p.title} live demo">
-               🚀 Live Demo</a>` : ''}
+               <i class="fa-solid fa-rocket"></i> Demo</a>` : ''}
           ${!p.github && !p.demo ? `<span class="btn btn-ghost btn-sm" style="opacity:0.5;cursor:default;">Coming Soon</span>` : ''}
         </div>
       </article>
@@ -324,10 +388,10 @@ const ProjectRenderer = (() => {
         <div class="product-actions">
           ${p.links.github ? `<a href="${p.links.github}" target="_blank" rel="noopener noreferrer"
                class="btn btn-outline" aria-label="View ${p.name} on GitHub">
-               <span>🐙 GitHub</span></a>` : ''}
+               <span><i class="fa-brands fa-github"></i> GitHub</span></a>` : ''}
           ${p.links.demo ? `<a href="${p.links.demo}" target="_blank" rel="noopener noreferrer"
                class="btn btn-primary" aria-label="${p.name} live demo">
-               🚀 Demo</a>` : ''}
+               <i class="fa-solid fa-rocket"></i> Demo</a>` : ''}
           ${!p.links.github && !p.links.demo ? `<span class="btn btn-ghost" style="opacity:0.5;cursor:default">In Development</span>` : ''}
         </div>
       </article>
@@ -364,9 +428,9 @@ const ProjectRenderer = (() => {
     if (!container) return;
 
     container.innerHTML = SI_CONFIG.repos.map(r => `
-      <a href="https://github.com/StrangeInfinity/${r.name}" target="_blank" rel="noopener noreferrer"
+      <a href="https://github.com/dev-hints/${r.name}" target="_blank" rel="noopener noreferrer"
          class="repo-card reveal" aria-label="Repository: ${r.name}">
-        <div class="repo-name">📦 ${r.name}</div>
+        <div class="repo-name"><i class="fa-solid fa-cube" style="color:var(--color-primary-light);margin-right:0.4rem;"></i>${r.name}</div>
         <p class="repo-desc">${r.desc}</p>
         <div class="repo-meta">
           <span class="repo-lang">${r.lang}</span>
@@ -411,10 +475,11 @@ const ProjectRenderer = (() => {
     if (!container) return;
 
     const socials = [
-      { key: 'github',    name: 'GitHub',    bg: 'rgba(36,41,47,0.5)'       },
-      { key: 'instagram', name: 'Instagram', bg: 'rgba(225,48,108,0.15)'    },
-      { key: 'linkedin',  name: 'LinkedIn',  bg: 'rgba(0,119,181,0.15)'     },
-      { key: 'email',     name: 'Email',     bg: 'rgba(124,58,237,0.15)'    },
+      { key: 'github',    name: 'GitHub',      bg: 'rgba(36,41,47,0.5)'       },
+      { key: 'instagram', name: 'Instagram',   bg: 'rgba(225,48,108,0.15)'    },
+      { key: 'twitter',   name: 'X (Twitter)', bg: 'rgba(29,161,242,0.15)'   },
+      { key: 'linkedin',  name: 'LinkedIn',    bg: 'rgba(0,119,181,0.15)'     },
+      { key: 'email',     name: 'Email',       bg: 'rgba(99,102,241,0.15)'    },
     ];
 
     container.innerHTML = socials.map((s, i) => {
@@ -427,7 +492,7 @@ const ProjectRenderer = (() => {
             <div class="social-card-name">${s.name}</div>
             <div class="social-card-handle">${data.handle}</div>
           </div>
-          <span class="social-card-arrow" aria-hidden="true">↗</span>
+          <span class="social-card-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.85em;"></i></span>
         </a>
       `;
     }).join('');

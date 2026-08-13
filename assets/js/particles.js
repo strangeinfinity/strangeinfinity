@@ -2,25 +2,21 @@
  * StrangeInfinity — Particle & Starfield Engine
  * assets/js/particles.js
  *
- * Canvas-based animated cosmic background:
- *   • Starfield with twinkling
- *   • Floating nebula orbs
- *   • Mouse parallax interaction
- *   • Shooting stars
- *   • Connection lines between close particles
+ * Highly optimized, 60fps mobile-ready cosmic particle background.
  */
 
 const ParticleEngine = (() => {
   let canvas, ctx, W, H, animId;
-  let mouse = { x: W / 2, y: H / 2 };
+  let mouse = { x: 0, y: 0 };
+  let isMobile = false;
 
-  // ── Configuration ──
+  // ── Dynamic Mobile-Aware Configuration ──
   const CFG = {
-    starCount:      160,
-    nebulaCount:    5,
-    connectionDist: 120,
-    mouseRadius:    200,
-    shootInterval:  4000,   // ms between shooting stars
+    starCount:      80,
+    nebulaCount:    3,
+    connectionDist: 90,
+    mouseRadius:    160,
+    shootInterval:  5000,
   };
 
   // ── Data arrays ──
@@ -29,12 +25,11 @@ const ParticleEngine = (() => {
   let shootingStars = [];
 
   // ── Utility helpers ──
-  const rand    = (a, b)    => Math.random() * (b - a) + a;
-  const randInt = (a, b)    => Math.floor(rand(a, b + 1));
-  const lerp    = (a, b, t) => a + (b - a) * t;
+  const rand    = (a, b) => Math.random() * (b - a) + a;
+  const randInt = (a, b) => Math.floor(rand(a, b + 1));
 
   // ── Color helpers ──
-  const COLORS = ['rgba(168,85,247,', 'rgba(6,182,212,', 'rgba(244,114,182,', 'rgba(192,132,252,'];
+  const COLORS = ['rgba(99,102,241,', 'rgba(6,182,212,', 'rgba(236,72,153,', 'rgba(129,140,248,'];
   const starColor = () => COLORS[randInt(0, COLORS.length - 1)];
 
   // ── Star class ──
@@ -43,12 +38,12 @@ const ParticleEngine = (() => {
     reset() {
       this.x     = rand(0, W);
       this.y     = rand(0, H);
-      this.z     = rand(0.1, 1);        // depth (parallax weight)
-      this.r     = rand(0.4, 1.8) * this.z;
+      this.z     = rand(0.1, 1);
+      this.r     = rand(0.5, 1.6) * this.z;
       this.color = starColor();
       this.alpha = rand(0.2, 0.9);
       this.alphaDir = rand(-0.003, 0.003);
-      this.vx   = rand(-0.05, 0.05) * this.z;
+      this.vx   = rand(-0.04, 0.04) * this.z;
       this.vy   = rand(-0.02, 0.02) * this.z;
     }
     update() {
@@ -56,47 +51,45 @@ const ParticleEngine = (() => {
       this.y += this.vy;
       this.alpha += this.alphaDir;
       if (this.alpha <= 0.1 || this.alpha >= 1) this.alphaDir *= -1;
-      // Mouse parallax
-      const dx = (mouse.x / W - 0.5) * this.z * 0.6;
-      const dy = (mouse.y / H - 0.5) * this.z * 0.6;
-      this.x += dx;
-      this.y += dy;
-      // Wrap around
+
+      if (!isMobile) {
+        const dx = (mouse.x / W - 0.5) * this.z * 0.4;
+        const dy = (mouse.y / H - 0.5) * this.z * 0.4;
+        this.x += dx;
+        this.y += dy;
+      }
+
       if (this.x < -5) this.x = W + 5;
       if (this.x > W + 5) this.x = -5;
       if (this.y < -5) this.y = H + 5;
       if (this.y > H + 5) this.y = -5;
     }
     draw() {
-      ctx.save();
       ctx.globalAlpha = this.alpha;
       ctx.fillStyle   = this.color + this.alpha + ')';
-      ctx.shadowBlur  = this.r * 4;
-      ctx.shadowColor = this.color + '0.8)';
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
       ctx.fill();
-      ctx.restore();
     }
   }
 
   // ── Nebula class ──
   class Nebula {
     constructor() {
-      this.x      = rand(0, W);
-      this.y      = rand(0, H);
-      this.r      = rand(120, 280);
-      this.color  = COLORS[randInt(0, COLORS.length - 1)];
-      this.alpha  = rand(0.03, 0.12);
+      this.x        = rand(0, W);
+      this.y        = rand(0, H);
+      this.r        = rand(100, 220);
+      this.color    = COLORS[randInt(0, COLORS.length - 1)];
+      this.alpha    = rand(0.02, 0.08);
       this.alphaDir = rand(-0.0002, 0.0002);
-      this.dx     = rand(-0.08, 0.08);
-      this.dy     = rand(-0.04, 0.04);
+      this.dx       = rand(-0.06, 0.06);
+      this.dy       = rand(-0.03, 0.03);
     }
     update() {
       this.x += this.dx;
       this.y += this.dy;
       this.alpha += this.alphaDir;
-      if (this.alpha <= 0.02 || this.alpha >= 0.15) this.alphaDir *= -1;
+      if (this.alpha <= 0.01 || this.alpha >= 0.1) this.alphaDir *= -1;
       if (this.x + this.r < 0)  this.x = W + this.r;
       if (this.x - this.r > W)  this.x = -this.r;
       if (this.y + this.r < 0)  this.y = H + this.r;
@@ -118,11 +111,11 @@ const ParticleEngine = (() => {
     constructor() {
       this.x    = rand(0, W * 0.7);
       this.y    = rand(0, H * 0.4);
-      this.len  = rand(80, 180);
-      this.spd  = rand(8, 16);
-      this.ang  = rand(0.3, 0.7);  // radians (downward-right)
+      this.len  = rand(60, 140);
+      this.spd  = rand(8, 14);
+      this.ang  = 0.5;
       this.life = 1;
-      this.dec  = rand(0.015, 0.03);
+      this.dec  = rand(0.02, 0.04);
     }
     update() { this.life -= this.dec; this.x += this.spd; this.y += this.spd * 0.4; }
     draw() {
@@ -130,9 +123,9 @@ const ParticleEngine = (() => {
       const tailY = Math.sin(this.ang) * this.len;
       const g = ctx.createLinearGradient(this.x - tail, this.y - tailY, this.x, this.y);
       g.addColorStop(0, `rgba(255,255,255,0)`);
-      g.addColorStop(1, `rgba(192,132,252,${this.life * 0.9})`);
+      g.addColorStop(1, `rgba(129,140,248,${this.life * 0.8})`);
       ctx.strokeStyle = g;
-      ctx.lineWidth   = 1.5 * this.life;
+      ctx.lineWidth   = 1.2 * this.life;
       ctx.beginPath();
       ctx.moveTo(this.x - tail, this.y - tailY);
       ctx.lineTo(this.x, this.y);
@@ -143,14 +136,16 @@ const ParticleEngine = (() => {
 
   // ── Draw connection lines between stars ──
   function drawConnections() {
-    for (let i = 0; i < stars.length; i++) {
-      for (let j = i + 1; j < stars.length; j++) {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const limit = stars.length;
+    for (let i = 0; i < limit; i++) {
+      for (let j = i + 1; j < limit; j++) {
         const dx   = stars[i].x - stars[j].x;
         const dy   = stars[i].y - stars[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < CFG.connectionDist) {
-          const alpha = (1 - dist / CFG.connectionDist) * 0.08;
-          ctx.strokeStyle = `rgba(124,58,237,${alpha})`;
+          const alpha = (1 - dist / CFG.connectionDist) * (isLight ? 0.04 : 0.06);
+          ctx.strokeStyle = isLight ? `rgba(79,70,229,${alpha})` : `rgba(99,102,241,${alpha})`;
           ctx.lineWidth   = 0.5;
           ctx.beginPath();
           ctx.moveTo(stars[i].x, stars[i].y);
@@ -165,16 +160,10 @@ const ParticleEngine = (() => {
   function render() {
     ctx.clearRect(0, 0, W, H);
 
-    // Nebulae (behind stars)
     nebulae.forEach(n => { n.update(); n.draw(); });
-
-    // Connection lines
     drawConnections();
-
-    // Stars
     stars.forEach(s => { s.update(); s.draw(); });
 
-    // Shooting stars
     shootingStars = shootingStars.filter(ss => !ss.isDead());
     shootingStars.forEach(ss => { ss.update(); ss.draw(); });
 
@@ -185,31 +174,49 @@ const ParticleEngine = (() => {
   function resize() {
     W = canvas.width  = window.innerWidth;
     H = canvas.height = window.innerHeight;
+    isMobile = W < 768;
+
+    CFG.starCount      = isMobile ? 35 : 75;
+    CFG.nebulaCount    = isMobile ? 2  : 3;
+    CFG.connectionDist = isMobile ? 60 : 90;
+
     mouse = { x: W / 2, y: H / 2 };
+
+    stars   = Array.from({ length: CFG.starCount }, () => new Star());
+    nebulae = Array.from({ length: CFG.nebulaCount }, () => new Nebula());
   }
 
-  // ── Shoot a new star periodically ──
+  // ── Shoot periodic star ──
   let shootTimer;
   function scheduleShoot() {
     shootTimer = setInterval(() => {
-      shootingStars.push(new ShootingStar());
-    }, CFG.shootInterval);
+      if (shootingStars.length < 2) shootingStars.push(new ShootingStar());
+    }, isMobile ? 8000 : 5000);
   }
 
   // ── Public API ──
   function init() {
     canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
-    ctx = canvas.getContext('2d');
+    ctx = canvas.getContext('2d', { alpha: true });
     resize();
 
-    // Create initial particles
-    stars   = Array.from({ length: CFG.starCount }, () => new Star());
-    nebulae = Array.from({ length: CFG.nebulaCount }, () => new Nebula());
+    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (e.touches.length) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      }
+    }, { passive: true });
 
-    // Event listeners
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animId);
+      } else {
+        render();
+      }
+    });
 
     scheduleShoot();
     render();

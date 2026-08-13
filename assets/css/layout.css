@@ -133,7 +133,7 @@ section {
   border: var(--glass-border);
   color: var(--text-secondary);
   font-size: var(--text-lg);
-  cursor: none;
+  cursor: pointer;
   transition: var(--transition-normal);
 }
 .theme-toggle:hover {
@@ -168,7 +168,7 @@ section {
   flex-direction: column;
   gap: 5px;
   width: 28px;
-  cursor: none;
+  cursor: pointer;
   padding: var(--space-1);
 }
 .hamburger span {
@@ -207,11 +207,29 @@ section {
   opacity: 1;
 }
 .mobile-menu .nav-link {
-  padding: var(--space-4);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
   font-size: var(--text-base);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
 }
-.mobile-menu .nav-link:hover { background: var(--bg-glass-hover); }
+.mobile-menu .nav-link::after {
+  display: none !important;
+}
+.mobile-menu .nav-link:hover,
+.mobile-menu .nav-link:active {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.mobile-menu .nav-link.active {
+  background: var(--gradient-primary);
+  color: #ffffff !important;
+  font-weight: 600;
+}
 
 /* ── Hero ── */
 #hero {
@@ -274,13 +292,17 @@ section {
 .hero-title {
   font-size: clamp(var(--text-4xl), 7vw, 5.5rem);
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
+  padding-bottom: var(--space-2);
 }
 
 .hero-title .brand-name {
-  display: block;
+  display: inline-block;
+  padding-bottom: 0.18em;
+  padding-top: 0.05em;
+  padding-right: 0.05em;
   background: var(--gradient-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -469,16 +491,17 @@ footer {
 }
 .footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
 .footer-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: var(--space-6);
   border-top: var(--glass-border);
+  text-align: center;
 }
 
 /* ── Back to top ── */
@@ -495,7 +518,7 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: var(--text-xl);
-  cursor: none;
+  cursor: pointer;
   z-index: var(--z-overlay);
   box-shadow: var(--shadow-glow-primary), var(--shadow-md);
   transform: translateY(100px);
@@ -575,4 +598,22 @@ section > .container,
 section > * {
   position: relative;
   z-index: var(--z-base);
+}
+
+/* ── Mobile GPU Scroll Performance Optimization ── */
+@media (max-width: 768px) {
+  .glass-card,
+  .project-card,
+  .product-card,
+  .tech-card,
+  .social-card,
+  .stat-card,
+  .value-card,
+  #navbar.scrolled,
+  .mobile-menu {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: var(--bg-surface) !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
 }

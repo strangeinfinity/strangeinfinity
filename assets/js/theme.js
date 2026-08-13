@@ -11,9 +11,9 @@ const ThemeManager = (() => {
   const LIGHT = 'light';
 
   // ── Icons ──
-  const ICONS = { dark: '🌙', light: '☀️' };
+  const ICONS = { dark: '<i class="fa-solid fa-moon"></i>', light: '<i class="fa-solid fa-sun"></i>' };
 
-  let currentTheme = DARK;
+  let currentTheme = LIGHT;
 
   /** Apply theme to DOM */
   function applyTheme(theme) {
@@ -23,12 +23,15 @@ const ThemeManager = (() => {
 
     // Update toggle button icon
     const btn = document.getElementById('theme-toggle');
-    if (btn) btn.setAttribute('aria-label', `Switch to ${theme === DARK ? LIGHT : DARK} mode`);
+    if (btn) {
+      btn.setAttribute('aria-label', `Switch to ${theme === DARK ? LIGHT : DARK} mode`);
+      btn.innerHTML = theme === DARK ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+    }
 
     // Update theme widget
     const icon = document.getElementById('theme-status-icon');
     const text = document.getElementById('theme-status-text');
-    if (icon) icon.textContent = theme === DARK ? '🌑' : '🌞';
+    if (icon) icon.innerHTML = theme === DARK ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
     if (text) text.textContent = theme === DARK ? 'Dark Mode Active' : 'Light Mode Active';
 
     // Dispatch event so other modules can react
@@ -40,15 +43,13 @@ const ThemeManager = (() => {
     applyTheme(currentTheme === DARK ? LIGHT : DARK);
   }
 
-  /** Initialize: read saved preference or system preference */
+  /** Initialize: read saved preference or default to light */
   function init() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === DARK || saved === LIGHT) {
       applyTheme(saved);
     } else {
-      // Respect OS preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      applyTheme(prefersDark ? DARK : LIGHT);
+      applyTheme(LIGHT);
     }
 
     // Wire up toggle button

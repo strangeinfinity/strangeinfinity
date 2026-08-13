@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
@@ -10,16 +10,63 @@
 
   gtag('config', 'G-RCEZHSD62X');
 </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png" />
+
+  <!-- Primary Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="StrangeInfinity — Open-source software, cosmic tools, and boundary-breaking technology. Portfolio of projects, products, and experiments." />
-  <meta name="keywords" content="StrangeInfinity, open source, software, Infinity Browser, portfolio, GitHub, developer" />
+  <title>StrangeInfinity — Open-Source Software, Desktop Apps &amp; Innovations</title>
+  <meta name="title" content="StrangeInfinity — Open-Source Software, Desktop Apps &amp; Innovations" />
+  <meta name="description" content="StrangeInfinity is an open-source development studio crafting desktop software, Infinity Browser, web applications, productivity utilities, and futuristic tech tools." />
+  <meta name="keywords" content="StrangeInfinity, Infinity Browser, open source, desktop apps, Python, PyQt6, Web Development, Software Engineering, dev-hints, Ayush Kumar Maurya" />
   <meta name="author" content="StrangeInfinity" />
-  <meta property="og:title" content="StrangeInfinity — Building the Future" />
-  <meta property="og:description" content="Open-source software, cosmic tools, and boundary-breaking technology." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://strangeinfinity.github.io/" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#7c3aed" />
-  <title>StrangeInfinity — Building the Future, One Commit at a Time</title>
+  <meta property="og:url" content="https://strangeinfinity.github.io/" />
+  <meta property="og:site_name" content="StrangeInfinity" />
+  <meta property="og:title" content="StrangeInfinity — Open-Source Software &amp; Desktop Applications" />
+  <meta property="og:description" content="Crafting open-source tools, Infinity Browser, and futuristic products from the edge of the digital cosmos." />
+  <meta property="og:image" content="https://strangeinfinity.github.io/assets/images/logo.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:creator" content="@strang3infinity" />
+  <meta name="twitter:title" content="StrangeInfinity — Open-Source Software &amp; Desktop Applications" />
+  <meta name="twitter:description" content="Crafting open-source tools, Infinity Browser, and futuristic products from the edge of the digital cosmos." />
+  <meta name="twitter:image" content="https://strangeinfinity.github.io/assets/images/logo.png" />
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "StrangeInfinity",
+    "url": "https://strangeinfinity.github.io/",
+    "logo": "https://strangeinfinity.github.io/assets/images/logo.png",
+    "sameAs": [
+      "https://github.com/strangeinfinity/",
+      "https://x.com/strang3infinity",
+      "https://instagram.com/strangeinfinity.dev",
+      "https://in.linkedin.com/in/ayush-kumar-maurya/"
+    ],
+    "description": "Open-source software studio crafting desktop applications, developer tools, and web experiences."
+  }
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Icon Libraries: Font Awesome 6 & Devicon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/variables.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
@@ -33,12 +80,9 @@
 <div id="loading-screen" role="status" aria-label="Loading StrangeInfinity">
   <img src="assets/images/logo.png" alt="StrangeInfinity Logo" class="loader-logo" width="80" height="80" />
   <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-  <p class="loader-text">INITIALIZING STRANGEINFINITY.SYS</p>
+  <p class="loader-text">STRANGEINFINITY</p>
 </div>
 
-<!-- ═══════════════ CUSTOM CURSOR ═══════════════ -->
-<div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
-<div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
 
 <!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
 <canvas id="particle-canvas" aria-hidden="true"></canvas>
@@ -64,7 +108,7 @@
       <!-- Actions -->
       <div class="nav-actions">
         <div id="nav-social" class="nav-social" aria-label="Social links"></div>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">🌙</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
         <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -73,12 +117,12 @@
   </nav>
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
-    <a href="#hero"         class="nav-link">🏠 Home</a>
-    <a href="#projects"     class="nav-link">🚀 Projects</a>
-    <a href="#products"     class="nav-link">📦 Products</a>
-    <a href="#technologies" class="nav-link">⚙️ Technologies</a>
-    <a href="#about"        class="nav-link">💫 About</a>
-    <a href="#contact"      class="nav-link">✉️ Contact</a>
+    <a href="#hero"         class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="#projects"     class="nav-link"><i class="fa-solid fa-rocket"></i> Projects</a>
+    <a href="#products"     class="nav-link"><i class="fa-solid fa-box"></i> Products</a>
+    <a href="#technologies" class="nav-link"><i class="fa-solid fa-gear"></i> Tech</a>
+    <a href="#about"        class="nav-link"><i class="fa-solid fa-user"></i> About</a>
+    <a href="#contact"      class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
   </div>
 </header>
 
@@ -89,10 +133,7 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge">
-        <span class="badge-dot" aria-hidden="true"></span>
-        Open Source · Cosmic Tech · v2025
-      </div>
+
       <h1 class="hero-title">
         We Build<br />
         <span class="brand-name">StrangeInfinity</span>
@@ -101,12 +142,12 @@
         Crafting <strong style="color:var(--color-primary-glow)"><span id="hero-typewriter">software</span><span style="animation:cursorBlink 1s step-end infinite;color:var(--color-secondary)">|</span></strong> that pushes beyond the ordinary. Open-source tools, futuristic products, and boundary-breaking experiments — from the edge of the digital cosmos.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary" id="cta-projects">🚀 Explore Projects</a>
-        <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><span>🐙 GitHub</span></a>
+        <a href="#projects" class="btn btn-primary" id="cta-projects"><i class="fa-solid fa-rocket"></i> Explore Projects</a>
+        <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><span><i class="fa-brands fa-github"></i> GitHub</span></a>
       </div>
       <div class="hero-stats" aria-label="Key statistics">
-        <div class="hero-stat"><span class="hero-stat-value">10+</span><span class="hero-stat-label">Projects</span></div>
-        <div class="hero-stat"><span class="hero-stat-value">500+</span><span class="hero-stat-label">GitHub Stars</span></div>
+        <div class="hero-stat"><span class="hero-stat-value">24+</span><span class="hero-stat-label">Repositories</span></div>
+        <div class="hero-stat"><span class="hero-stat-value">25+</span><span class="hero-stat-label">GitHub Stars</span></div>
         <div class="hero-stat"><span class="hero-stat-value">3+</span><span class="hero-stat-label">Years</span></div>
       </div>
     </div>
@@ -138,19 +179,19 @@
           From privacy-first browsers to real-time monitoring dashboards, every project reflects a commitment to craftsmanship, open collaboration, and pushing the boundaries of what's possible with code.
         </p>
         <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-8)">
-          Our mission is simple: build technology that <em style="color:var(--color-primary-glow)">matters</em>, share it openly, and inspire the next generation of builders.
+          Our mission is simple: build technology that <em style="color:var(--color-primary-light)">matters</em>, share it openly, and inspire the next generation of builders.
         </p>
         <div class="stats-grid" aria-label="Statistics">
           <div class="stat-card">
-            <span class="stat-number" data-count="10" data-suffix="+">0+</span>
-            <span class="stat-label">Open Source Projects</span>
+            <span class="stat-number" data-count="24" data-suffix="+">0+</span>
+            <span class="stat-label">GitHub Repositories</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number" data-count="500" data-suffix="+">0+</span>
+            <span class="stat-number" data-count="25" data-suffix="+">0+</span>
             <span class="stat-label">GitHub Stars</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number" data-count="50" data-suffix="K+">0K+</span>
+            <span class="stat-number" data-count="15" data-suffix="K+">0K+</span>
             <span class="stat-label">Lines of Code</span>
           </div>
           <div class="stat-card">
@@ -167,6 +208,18 @@
   </div>
 </section>
 
+<!-- ═══════════════ TIMELINE / ROADMAP ═══════════════ -->
+<section id="timeline" aria-label="Project Timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">The Journey</p>
+      <h2 class="section-title">Development <span class="gradient-text">Roadmap</span></h2>
+      <p class="section-subtitle">Milestones and key evolution stages behind dev-hints projects.</p>
+    </div>
+    <div class="timeline" id="timeline-list" role="list" aria-label="Timeline of events"></div>
+  </div>
+</section>
+
 <!-- ═══════════════ PROJECTS ═══════════════ -->
 <section id="projects" aria-label="Projects">
   <div class="bg-orb bg-orb-1" style="top:10%;left:-100px;" aria-hidden="true"></div>
@@ -178,10 +231,10 @@
     </div>
     <!-- Filter Tabs -->
     <div class="filter-tabs reveal" role="tablist" aria-label="Filter projects by technology">
-      <button class="filter-tab active" data-filter="all"        role="tab" aria-selected="true">✦ All</button>
-      <button class="filter-tab"        data-filter="python"     role="tab" aria-selected="false">🐍 Python</button>
-      <button class="filter-tab"        data-filter="javascript" role="tab" aria-selected="false">⚡ JavaScript</button>
-      <button class="filter-tab"        data-filter="bash"       role="tab" aria-selected="false">💻 Shell</button>
+      <button class="filter-tab active" data-filter="all"        role="tab" aria-selected="true"><i class="fa-solid fa-border-all"></i> All</button>
+      <button class="filter-tab"        data-filter="python"     role="tab" aria-selected="false"><i class="fa-brands fa-python"></i> Python</button>
+      <button class="filter-tab"        data-filter="javascript" role="tab" aria-selected="false"><i class="fa-brands fa-js"></i> JavaScript</button>
+      <button class="filter-tab"        data-filter="bash"       role="tab" aria-selected="false"><i class="fa-solid fa-terminal"></i> Shell</button>
     </div>
     <div id="projects-grid" class="projects-grid" role="list" aria-label="Project cards"></div>
   </div>
@@ -212,106 +265,7 @@
   </div>
 </section>
 
-<!-- ═══════════════ GITHUB DASHBOARD ═══════════════ -->
-<section id="github" aria-label="GitHub Dashboard">
-  <div class="bg-orb bg-orb-3" style="bottom:10%;left:10%;" aria-hidden="true"></div>
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-label">Open Source Activity</p>
-      <h2 class="section-title">GitHub <span class="gradient-text">Dashboard</span></h2>
-    </div>
-    <div class="github-grid">
-      <div>
-        <div class="contrib-graph reveal" role="figure" aria-label="GitHub contribution activity graph">
-          <p class="contrib-title">Contribution Activity — StrangeInfinity</p>
-          <div id="contrib-grid" class="contrib-grid" aria-hidden="true"></div>
-          <div style="display:flex;gap:var(--space-2);align-items:center;margin-top:var(--space-4);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted);">
-            <span>Less</span>
-            <div style="width:12px;height:12px;border-radius:2px;background:rgba(124,58,237,0.05)"></div>
-            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l1"></div>
-            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l2"></div>
-            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l3"></div>
-            <div style="width:12px;height:12px;border-radius:2px;" class="contrib-l4"></div>
-            <span>More</span>
-          </div>
-        </div>
-        <!-- GitHub Stats Cards -->
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-6)">
-          <div class="stat-card reveal delay-1" aria-label="Total repositories">
-            <span class="stat-number">12</span>
-            <span class="stat-label">Repositories</span>
-          </div>
-          <div class="stat-card reveal delay-2" aria-label="Total stars">
-            <span class="stat-number">168</span>
-            <span class="stat-label">Total Stars</span>
-          </div>
-          <div class="stat-card reveal delay-3" aria-label="Total forks">
-            <span class="stat-number">30</span>
-            <span class="stat-label">Total Forks</span>
-          </div>
-        </div>
-      </div>
-      <!-- Repos List -->
-      <div id="repos-list" class="repos-list" role="list" aria-label="Featured repositories"></div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════ TIMELINE ═══════════════ -->
-<section id="timeline" aria-label="Project Timeline">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-label">The Journey</p>
-      <h2 class="section-title">Project <span class="gradient-text">Roadmap</span></h2>
-      <p class="section-subtitle">The milestones and story behind StrangeInfinity.</p>
-    </div>
-    <div class="timeline" id="timeline-list" role="list" aria-label="Timeline of events"></div>
-  </div>
-</section>
-
-<!-- ═══════════════ COSMIC WIDGETS ═══════════════ -->
-<section id="widgets" aria-label="Cosmic Widgets">
-  <div class="bg-orb bg-orb-1" style="top:30%;right:-50px;" aria-hidden="true"></div>
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-label">Command Center</p>
-      <h2 class="section-title">Cosmic <span class="gradient-text">Widgets</span></h2>
-    </div>
-    <div class="widgets-grid">
-      <!-- Clock -->
-      <div class="widget-card reveal delay-1" aria-label="Live clock">
-        <span class="widget-label">🕐 Live Clock</span>
-        <div id="clock-display" class="clock-display" aria-live="polite">00:00:00</div>
-        <div id="clock-date" class="clock-date">Loading date...</div>
-      </div>
-      <!-- Theme Status -->
-      <div class="widget-card reveal delay-2" aria-label="Theme status">
-        <span class="widget-label">🎨 Theme Status</span>
-        <div id="theme-status-icon" class="theme-status-icon" aria-hidden="true">🌑</div>
-        <div id="theme-status-text" class="theme-status-text">Dark Mode Active</div>
-        <button class="btn btn-ghost btn-sm" style="margin-top:var(--space-2)" onclick="ThemeManager.toggle()">Toggle Theme</button>
-      </div>
-      <!-- Visitor Counter -->
-      <div class="widget-card reveal delay-3" aria-label="Visitor counter">
-        <span class="widget-label">👁️ Your Visit #</span>
-        <div class="clock-display" style="font-size:var(--text-3xl)" aria-live="polite"><span id="visitor-count">...</span></div>
-        <div class="clock-date">Session visit counter</div>
-      </div>
-      <!-- Quote -->
-      <div class="widget-card reveal delay-4" aria-label="Tech quote of the moment" style="grid-column:span 1">
-        <span class="widget-label">💬 Tech Wisdom</span>
-        <p id="quote-text" class="quote-text" style="transition:opacity 0.3s ease" aria-live="polite">"Loading wisdom..."</p>
-        <div id="quote-author" class="quote-author"></div>
-        <button id="quote-refresh" class="btn btn-ghost btn-sm" style="margin-top:auto" aria-label="Next quote">↻ Next Quote</button>
-      </div>
-      <!-- Radar -->
-      <div class="widget-card reveal delay-5" aria-label="Skill radar visualization">
-        <span class="widget-label">📡 Skill Radar</span>
-        <canvas id="radar-canvas" aria-label="Interactive skill radar chart" role="img"></canvas>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
 <section id="contact" aria-label="Contact and Social Links">
@@ -321,11 +275,11 @@
         <p class="section-label">Get in Touch</p>
         <h2 class="contact-hero-text">Let's Build <span class="gradient-text">Together</span></h2>
         <p class="contact-hero-desc">Have an idea, collaboration, or just want to say hi? Reach out through any of these channels. All projects and discussions are welcome.</p>
-        <a href="mailto:contact@strangeinfinity.dev" class="contact-email-link" aria-label="Send email to StrangeInfinity">
-          ✉️ contact@strangeinfinity.dev
+        <a href="mailto:strangeinfinity.dev@gmail.com" class="contact-email-link" aria-label="Send email to StrangeInfinity">
+          <i class="fa-solid fa-envelope"></i> strangeinfinity.dev@gmail.com
         </a>
         <div style="margin-top:var(--space-8);">
-          <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🐙 View GitHub Profile</a>
+          <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fa-brands fa-github"></i> View GitHub Profile</a>
         </div>
       </div>
       <div>
@@ -364,27 +318,16 @@
       <div>
         <p class="footer-col-title">Projects</p>
         <nav class="footer-links" aria-label="Key projects">
-          <a href="https://github.com/StrangeInfinity/Infinity-Browser" target="_blank" rel="noopener noreferrer">Infinity Browser</a>
-          <a href="https://github.com/StrangeInfinity/velocix" target="_blank" rel="noopener noreferrer">Velocix Speed Test</a>
-          <a href="https://github.com/StrangeInfinity/cosmotrack" target="_blank" rel="noopener noreferrer">CosmoTrack CLI</a>
-          <a href="https://github.com/StrangeInfinity/2048-nexus" target="_blank" rel="noopener noreferrer">2048 Nexus</a>
+          <a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer">Infinity Writer</a>
+          <a href="https://github.com/dev-hints/AirPointer" target="_blank" rel="noopener noreferrer">AirPointer</a>
+          <a href="https://strangeinfinity.github.io/Infinity-Browser/" target="_blank" rel="noopener noreferrer">Infinity Browser</a>
+          <a href="https://github.com/dev-hints/Notes-App" target="_blank" rel="noopener noreferrer">Notes App</a>
         </nav>
       </div>
-      <div>
-        <p class="footer-col-title">Open Source</p>
-        <nav class="footer-links" aria-label="Open source links">
-          <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-          <a href="https://github.com/StrangeInfinity?tab=repositories" target="_blank" rel="noopener noreferrer">All Repositories</a>
-          <a href="https://github.com/StrangeInfinity?tab=stars" target="_blank" rel="noopener noreferrer">Starred Repos</a>
-        </nav>
-      </div>
+
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 <a href="https://github.com/StrangeInfinity">StrangeInfinity</a>. Open-source &amp; built with ❤️ and ∞ curiosity.</p>
-      <div class="footer-legal">
-        <a href="https://github.com/StrangeInfinity" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="#" aria-label="MIT License">MIT License</a>
-      </div>
+      <p class="footer-copy">© 2026 <a href="https://strangeinfinity.github.io/">StrangeInfinity</a>. Open-source &amp; built with <i class="fa-solid fa-heart" style="color:#ef4444"></i> and ∞ curiosity.</p>
     </div>
   </div>
 </footer>
@@ -396,7 +339,7 @@
 <!-- Keyboard Shortcuts Panel -->
 <aside id="shortcuts-panel" role="complementary" aria-label="Keyboard shortcuts" aria-hidden="true">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4)">
-    <span style="font-weight:700;color:var(--text-primary)">⌨️ Keyboard Shortcuts</span>
+    <span style="font-weight:700;color:var(--text-primary)"><i class="fa-solid fa-keyboard"></i> Keyboard Shortcuts</span>
     <button id="shortcuts-close" style="color:var(--text-muted);font-size:var(--text-lg)" aria-label="Close shortcuts panel">×</button>
   </div>
   <div class="glow-divider"></div>
@@ -422,18 +365,18 @@
       <kbd>Esc</kbd>
     </div>
     <div class="glow-divider"></div>
-    <p style="font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-mono)">Try the Konami Code for a surprise 🎮</p>
+    <p style="font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-mono)">Try the Konami Code for a surprise <i class="fa-solid fa-gamepad"></i></p>
   </div>
 </aside>
 
 <!-- Easter Egg Modal -->
 <div id="easter-egg-modal" role="dialog" aria-modal="true" aria-label="Easter egg discovered!" aria-hidden="true">
   <div class="easter-egg-content">
-    <div style="font-size:4rem;margin-bottom:var(--space-4)">🎉🌌🚀</div>
+    <div style="font-size:3.5rem;margin-bottom:var(--space-4);color:var(--color-primary-light)"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
     <h2 class="gradient-text" style="font-size:var(--text-2xl);margin-bottom:var(--space-4)">You Found the Easter Egg!</h2>
-    <p style="color:var(--text-secondary);margin-bottom:var(--space-6);line-height:1.7">Congratulations, explorer! You've discovered the hidden Konami Code secret of StrangeInfinity. You are now an official member of the cosmic development crew. 🌠</p>
+    <p style="color:var(--text-secondary);margin-bottom:var(--space-6);line-height:1.7">Congratulations, explorer! You've discovered the hidden Konami Code secret. You are now an official member of the cosmic development crew.</p>
     <p style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-6)">↑ ↑ ↓ ↓ ← → ← → B A</p>
-    <button id="easter-egg-close" class="btn btn-primary">🚀 Continue Exploring</button>
+    <button id="easter-egg-close" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Continue Exploring</button>
   </div>
 </div>
 
