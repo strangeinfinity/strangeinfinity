@@ -55,8 +55,8 @@ const SI_CONFIG = {
       ],
       links: {
         github: 'https://github.com/dev-hints/Infinity-Writer',
-        demo:   'https://github.com/dev-hints/Infinity-Writer',
-        docs:   null,
+        demo:   'https://strangeinfinity.github.io/Infinity-Writer/',
+        docs:   'https://strangeinfinity.github.io/Infinity-Writer/docs.html',
       },
       tags: ['JavaScript', 'HTML5', 'CSS3', 'Web Tool'],
     },
@@ -102,7 +102,7 @@ const SI_CONFIG = {
       links: {
         github: 'https://github.com/dev-hints/infinity-browser',
         demo:   'https://strangeinfinity.github.io/Infinity-Browser/',
-        docs:   null,
+        docs:   'https://strangeinfinity.github.io/Infinity-Browser/docs.html',
       },
       tags: ['Python', 'PyQt6', 'QtWebEngine', 'Desktop'],
     },
@@ -164,7 +164,7 @@ const SI_CONFIG = {
       desc:   'Focuses strictly on generating clean, semantic, and production-ready HTML with native out-of-the-box dark mode support.',
       tags:   ['JavaScript', 'HTML5', 'CSS3', 'Generator'],
       github: 'https://github.com/dev-hints/Infinity-Writer',
-      demo:   'https://github.com/dev-hints/Infinity-Writer',
+      demo:   'https://strangeinfinity.github.io/Infinity-Writer/',
     },
     {
       id:     'airpointer',
@@ -386,13 +386,16 @@ const ProjectRenderer = (() => {
           ${p.features.map(f => `<li class="product-feature">${f}</li>`).join('')}
         </ul>
         <div class="product-actions">
+          ${p.links.docs ? `<a href="${p.links.docs}" target="_blank" rel="noopener noreferrer"
+               class="btn btn-ghost" aria-label="View ${p.name} Documentation">
+               <i class="fa-solid fa-book"></i> Docs</a>` : ''}
           ${p.links.github ? `<a href="${p.links.github}" target="_blank" rel="noopener noreferrer"
                class="btn btn-outline" aria-label="View ${p.name} on GitHub">
                <span><i class="fa-brands fa-github"></i> GitHub</span></a>` : ''}
           ${p.links.demo ? `<a href="${p.links.demo}" target="_blank" rel="noopener noreferrer"
                class="btn btn-primary" aria-label="${p.name} live demo">
                <i class="fa-solid fa-rocket"></i> Demo</a>` : ''}
-          ${!p.links.github && !p.links.demo ? `<span class="btn btn-ghost" style="opacity:0.5;cursor:default">In Development</span>` : ''}
+          ${!p.links.github && !p.links.demo && !p.links.docs ? `<span class="btn btn-ghost" style="opacity:0.5;cursor:default">In Development</span>` : ''}
         </div>
       </article>
     `).join('');

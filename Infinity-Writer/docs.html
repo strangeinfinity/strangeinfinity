@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/infinity-writer.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/infinity-writer.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/infinity-writer.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Writer Documentation — User Manual, Features &amp; Architecture</title>
+  <meta name="title" content="Infinity Writer Documentation — User Manual, Features &amp; Architecture" />
+  <meta name="description" content="Official documentation, architecture breakdown, keyboard shortcuts, formatting guides, and semantic markup specs for Infinity Writer." />
+  <meta name="keywords" content="Infinity Writer documentation, semantic HTML generator docs, dark mode HTML manual, clean HTML writer guide, web writer shortcuts" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://strangeinfinity.github.io/Infinity-Writer/docs.html" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://strangeinfinity.github.io/Infinity-Writer/docs.html" />
+  <meta property="og:site_name" content="Infinity Writer Docs" />
+  <meta property="og:title" content="Infinity Writer Documentation — Architecture &amp; User Manual" />
+  <meta property="og:description" content="Complete documentation, keyboard shortcuts, semantic standards, and export templates for Infinity Writer." />
+  <meta property="og:image" content="https://strangeinfinity.github.io/Infinity-Writer/icons/infinity-writer.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="Infinity Writer Documentation — Architecture &amp; User Manual" />
+  <meta name="twitter:description" content="Complete documentation, keyboard shortcuts, semantic standards, and export templates for Infinity Writer." />
+  <meta name="twitter:image" content="https://strangeinfinity.github.io/Infinity-Writer/icons/infinity-writer.png" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Icon Libraries: Font Awesome 6 & Devicon with SRI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- Custom Documentation Layout Styles -->
+  <style>
+    .docs-container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-8);
+      padding-top: calc(var(--nav-height) + var(--space-8));
+      padding-bottom: var(--space-20);
+    }
+    @media (max-width: 992px) {
+      .docs-container { grid-template-columns: 1fr; }
+      .docs-sidebar { position: static !important; width: 100% !important; }
+    }
+    .docs-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-6));
+      height: fit-content;
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .docs-toc-title {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .docs-toc-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .docs-toc-link {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .docs-toc-link:hover {
+      color: var(--color-primary-light);
+      background: var(--bg-elevated);
+    }
+    .docs-toc-link.active {
+      color: #ffffff;
+      background: var(--gradient-primary);
+      font-weight: 600;
+    }
+    .doc-section {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+    .doc-section h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: var(--text-primary);
+    }
+    .doc-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+    .doc-tile {
+      background: var(--bg-elevated);
+      border: var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .doc-tile b {
+      display: block;
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--color-primary-light);
+      margin-bottom: var(--space-1);
+    }
+    .doc-tile span {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    .shortcuts-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-4);
+    }
+    .shortcuts-table th, .shortcuts-table td {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+      font-size: var(--text-sm);
+    }
+    .shortcuts-table th {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+    }
+    .shortcuts-table td kbd {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.2em 0.5em;
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Infinity Writer Documentation Home">
+        <img src="icons/infinity-writer.png" alt="Infinity Writer Logo" width="38" height="38" loading="lazy" />
+        <span>Infinity <span style="color:var(--color-secondary)">Docs</span></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Portfolio</a></li>
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Writer Home</a></li>
+        <li><a href="index.html#templates" class="nav-link"><i class="fa-solid fa-file-code"></i> Templates</a></li>
+        <li><a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> Repository</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-sun"></i></button>
+        <a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Portfolio</a>
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Writer Home</a>
+    <a href="index.html#templates" class="nav-link"><i class="fa-solid fa-file-code"></i> Templates</a>
+    <a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> Repository</a>
+  </div>
+</header>
+
+<main class="container docs-container">
+  <!-- ═══════════════ TABLE OF CONTENTS SIDEBAR ═══════════════ -->
+  <aside class="docs-sidebar">
+    <div class="docs-toc-title"><i class="fa-solid fa-list-ol"></i> Table of Contents</div>
+    <nav class="docs-toc-links" aria-label="Documentation sections">
+      <a href="#overview" class="docs-toc-link active"><i class="fa-solid fa-circle-info"></i> Overview</a>
+      <a href="#opensource" class="docs-toc-link"><i class="fa-brands fa-github"></i> Open Source</a>
+      <a href="#features" class="docs-toc-link"><i class="fa-solid fa-feather-pointed"></i> Key Features</a>
+      <a href="#darkmode" class="docs-toc-link"><i class="fa-solid fa-moon"></i> Dark Mode System</a>
+      <a href="#semantics" class="docs-toc-link"><i class="fa-solid fa-universal-access"></i> Semantics &amp; ARIA</a>
+      <a href="#exports" class="docs-toc-link"><i class="fa-solid fa-file-export"></i> Export Formats</a>
+      <a href="#shortcuts" class="docs-toc-link"><i class="fa-solid fa-keyboard"></i> Keyboard Shortcuts</a>
+      <a href="#architecture" class="docs-toc-link"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
+    </nav>
+  </aside>
+
+  <!-- ═══════════════ DOCUMENTATION CONTENT ═══════════════ -->
+  <div class="docs-content">
+    
+    <!-- Hero Banner -->
+    <div class="doc-section" style="background:var(--gradient-card)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
+        <div>
+          <span class="project-tag" style="background:rgba(99,102,241,0.15);color:var(--color-primary-light);margin-bottom:var(--space-2);display:inline-block">v1.0.0 Documentation</span>
+          <h1 style="font-size:var(--text-3xl);margin-bottom:var(--space-2)">Infinity Writer Docs</h1>
+          <p style="color:var(--text-secondary);margin:0">Official technical manual, semantic standards, and keyboard reference for Infinity Writer.</p>
+        </div>
+        <a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fa-brands fa-github"></i> View Repo</a>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section id="overview" class="doc-section reveal">
+      <h2><i class="fa-solid fa-circle-info" style="color:var(--color-primary-light)"></i> Overview</h2>
+      <p>
+        Infinity Writer is a lightweight, distraction-free document composer developed in Vanilla JavaScript and HTML5. It addresses the common pitfall of web text editors: generating bloated, non-semantic HTML loaded with unmaintainable inline styling.
+      </p>
+      <div class="doc-grid">
+        <div class="doc-tile"><b>Developer</b><span>StrangeInfinity</span></div>
+        <div class="doc-tile"><b>Core Stack</b><span>Vanilla JavaScript (ES6+), HTML5, CSS3 Custom Properties</span></div>
+        <div class="doc-tile"><b>Runtime Target</b><span>All modern browsers (Chrome, Firefox, Safari, Edge, Brave)</span></div>
+        <div class="doc-tile"><b>Dependencies</b><span>0 KB — Zero third-party runtime dependencies</span></div>
+      </div>
+    </section>
+
+    <!-- Open Source -->
+    <section id="opensource" class="doc-section reveal">
+      <h2><i class="fa-brands fa-github" style="color:var(--color-secondary)"></i> Open Source</h2>
+      <p>
+        Infinity Writer is completely open-source software licensed under the MIT License. Developers are free to inspect the codebase, integrate the engine into existing workflows, or contribute improvements.
+      </p>
+      <div class="doc-grid">
+        <div class="doc-tile"><b>Repository</b><span><a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer">github.com/dev-hints/Infinity-Writer</a></span></div>
+        <div class="doc-tile"><b>Contributions</b><span>Pull requests, issues, and feature proposals welcome</span></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="doc-section reveal">
+      <h2><i class="fa-solid fa-feather-pointed" style="color:#22c55e"></i> Key Features</h2>
+      <p>
+        Engineered specifically for writers, developers, and technical bloggers who care about HTML output quality.
+      </p>
+      <div class="doc-grid">
+        <div class="doc-tile"><b>Semantic Output</b><span>Strict adherence to HTML5 elements with meaningful hierarchy</span></div>
+        <div class="doc-tile"><b>Native Dark Mode</b><span>Automatic dark/light CSS variables embedded in templates</span></div>
+        <div class="doc-tile"><b>ARIA Ready</b><span>WCAG 2.1 accessible document landmarks and structure</span></div>
+        <div class="doc-tile"><b>Instant Preview</b><span>Live bidirectional preview with synchronous markup updates</span></div>
+      </div>
+    </section>
+
+    <!-- Dark Mode System -->
+    <section id="darkmode" class="doc-section reveal">
+      <h2><i class="fa-solid fa-moon" style="color:var(--color-secondary)"></i> Dark Mode Architecture</h2>
+      <p>
+        Infinity Writer generates HTML documents that natively adapt to the reader's operating system preferences without JavaScript overhead:
+      </p>
+      <pre><code>:root {
+  color-scheme: light dark;
+  --bg-color: #ffffff;
+  --text-color: #1e293b;
+  --link-color: #4f46e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0b0f19;
+    --text-color: #f1f5f9;
+    --link-color: #818cf8;
+  }
+}</code></pre>
+    </section>
+
+    <!-- Semantics & ARIA -->
+    <section id="semantics" class="doc-section reveal">
+      <h2><i class="fa-solid fa-universal-access" style="color:var(--color-cyan)"></i> Semantics &amp; ARIA</h2>
+      <p>
+        Generated markup is strictly organized with appropriate semantic elements:
+      </p>
+      <ul style="color:var(--text-secondary);line-height:1.8;padding-left:var(--space-6)">
+        <li><strong><code>&lt;article&gt;</code> &amp; <code>&lt;section&gt;</code></strong>: Proper content grouping instead of generic unstyled <code>&lt;div&gt;</code> tags.</li>
+        <li><strong><code>&lt;header&gt;</code> &amp; <code>&lt;time&gt;</code></strong>: Standard metadata encapsulation with machine-readable timestamps.</li>
+        <li><strong><code>&lt;figure&gt;</code> &amp; <code>&lt;figcaption&gt;</code></strong>: Accessible media captions without nested class clutter.</li>
+        <li><strong><code>&lt;blockquote&gt;</code> &amp; <code>&lt;cite&gt;</code></strong>: Semantic quotes and author references.</li>
+      </ul>
+    </section>
+
+    <!-- Export Formats -->
+    <section id="exports" class="doc-section reveal">
+      <h2><i class="fa-solid fa-file-export" style="color:#ef4444"></i> Export Formats</h2>
+      <p>
+        Export your documents in multiple formats depending on your deployment target:
+      </p>
+      <div class="doc-grid">
+        <div class="doc-tile"><b>Complete HTML5 (.html)</b><span>Self-contained document with responsive viewport and theme tokens</span></div>
+        <div class="doc-tile"><b>Semantic Fragment</b><span>Raw body markup ready for Next.js, Astro, or Hugo templates</span></div>
+        <div class="doc-tile"><b>Markdown (.md)</b><span>Clean standard GitHub Flavored Markdown</span></div>
+        <div class="doc-tile"><b>Print Stylesheet</b><span>Optimized CSS for PDF generation and browser printing</span></div>
+      </div>
+    </section>
+
+    <!-- Keyboard Shortcuts -->
+    <section id="shortcuts" class="doc-section reveal">
+      <h2><i class="fa-solid fa-keyboard" style="color:var(--color-primary-light)"></i> Keyboard Shortcuts</h2>
+      <p>
+        Accelerate your drafting workflow with streamlined editor keyboard shortcuts.
+      </p>
+      <table class="shortcuts-table">
+        <thead>
+          <tr>
+            <th>Shortcut</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td><td>Format Bold Text</td></tr>
+          <tr><td><kbd>Ctrl</kbd> + <kbd>I</kbd></td><td>Format Italic Text</td></tr>
+          <tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>Insert Hyperlink</td></tr>
+          <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd></td><td>Toggle Live Preview Panel</td></tr>
+          <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd></td><td>Export Clean HTML Document</td></tr>
+          <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd></td><td>Toggle Dark/Light Mode Preview</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Architecture Breakdown -->
+    <section id="architecture" class="doc-section reveal">
+      <h2><i class="fa-solid fa-diagram-project" style="color:var(--color-secondary)"></i> Architecture Breakdown</h2>
+      <p>
+        Designed with a lean modular architecture:
+      </p>
+      <ul style="color:var(--text-secondary);line-height:1.8;padding-left:var(--space-6)">
+        <li><strong>Parser Engine</strong>: Lightweight regex and AST tokenizer converting raw text input into semantic nodes.</li>
+        <li><strong>DOM Serializer</strong>: Strict HTML5 output generator removing invalid or duplicate tags.</li>
+        <li><strong>Theme Engine</strong>: Zero-runtime CSS variable injection with <code>color-scheme</code> declaration.</li>
+        <li><strong>Export Pipeline</strong>: In-memory blob generator for instant downloads with zero server-side round trips.</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="icons/infinity-writer.png" alt="Infinity Writer" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">Infinity Writer</span>
+        </a>
+        <p class="footer-tagline">Building the future, one commit at a time. Open-source software by StrangeInfinity.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigation</p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="../index.html">Main Portfolio</a>
+          <a href="index.html">Writer Home</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#templates">Templates</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Source Code</p>
+        <nav class="footer-links" aria-label="Key links">
+          <a href="https://github.com/dev-hints/Infinity-Writer" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+          <a href="https://strangeinfinity.github.io/Infinity-Browser/" target="_blank" rel="noopener noreferrer">Infinity Browser</a>
+          <a href="../index.html">StrangeInfinity Main Site</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://strangeinfinity.github.io/">StrangeInfinity</a>. Open-source &amp; built with <i class="fa-solid fa-heart" style="color:#ef4444"></i> and ∞ curiosity.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- Scripts -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & BTT
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+
+      // TOC active link highlighting
+      const sections = document.querySelectorAll('section[id]');
+      const tocLinks = document.querySelectorAll('.docs-toc-link');
+      let current = '';
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollY + 140) current = sec.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hamburger Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>

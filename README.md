@@ -65,7 +65,7 @@ The StrangeInfinity portal highlights several flagship software products and ope
         <li>🌓 Seamless dark & light mode styling</li>
         <li>⚡ Zero external runtime dependencies</li>
       </ul>
-      <p><a href="https://github.com/dev-hints/Infinity-Writer"><strong>Explore Repository »</strong></a></p>
+      <p><a href="https://strangeinfinity.github.io/Infinity-Writer/"><strong>Visit Writer Portal »</strong></a> • <a href="https://github.com/dev-hints/Infinity-Writer">GitHub</a></p>
     </td>
   </tr>
   <tr>
