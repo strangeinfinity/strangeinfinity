@@ -422,16 +422,30 @@ const SI_CONFIG = {
    ────────────────────────────────────────────── */
 const ProjectRenderer = (() => {
 
-  /** Render project cards */
-  function renderProjects(filter = 'all') {
+  const INITIAL_LIMIT = 6;
+  let currentFilter = 'all';
+  let isExpanded = false;
+
+  /** Render project cards with 6-item default pagination */
+  function renderProjects(filter = 'all', keepExpanded = false) {
     const container = document.getElementById('projects-grid');
+    const paginationWrap = document.getElementById('projects-pagination-wrap');
     if (!container) return;
 
-    const projects = filter === 'all'
-      ? SI_CONFIG.projects
-      : SI_CONFIG.projects.filter(p => p.tags.some(t => t.toLowerCase().includes(filter)));
+    if (filter !== currentFilter && !keepExpanded) {
+      isExpanded = false;
+    }
+    currentFilter = filter;
 
-    container.innerHTML = projects.map((p, i) => `
+    const allFilteredProjects = currentFilter === 'all'
+      ? SI_CONFIG.projects
+      : SI_CONFIG.projects.filter(p => p.tags.some(t => t.toLowerCase().includes(currentFilter)));
+
+    const visibleProjects = isExpanded
+      ? allFilteredProjects
+      : allFilteredProjects.slice(0, INITIAL_LIMIT);
+
+    container.innerHTML = visibleProjects.map((p, i) => `
       <article class="project-card reveal" style="transition-delay:${i * 0.05}s"
                data-project="${p.id}" role="article" aria-label="${p.title}">
         <div class="project-card-header">
@@ -457,9 +471,39 @@ const ProjectRenderer = (() => {
       </article>
     `).join('');
 
+    // Pagination / Load More button
+    if (paginationWrap) {
+      if (allFilteredProjects.length > INITIAL_LIMIT) {
+        paginationWrap.innerHTML = `
+          <button id="btn-toggle-projects" class="btn btn-outline" style="margin:0 auto;display:inline-flex;align-items:center;gap:var(--space-2);">
+            <span>
+              <i class="fa-solid ${isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'}"></i>
+              ${isExpanded ? 'Show Fewer Projects' : `View All Projects (${allFilteredProjects.length})`}
+            </span>
+          </button>
+        `;
+        const toggleBtn = document.getElementById('btn-toggle-projects');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            renderProjects(currentFilter, true);
+            if (!isExpanded) {
+              const projectsSection = document.getElementById('projects');
+              if (projectsSection) {
+                projectsSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          });
+        }
+      } else {
+        paginationWrap.innerHTML = '';
+      }
+    }
+
     // Trigger reveal for new cards
     requestAnimationFrame(() => {
       container.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+      if (paginationWrap) paginationWrap.classList.add('revealed');
     });
   }
 

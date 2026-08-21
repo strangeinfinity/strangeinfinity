@@ -490,6 +490,7 @@
           currentExpr = currentExpr.slice(0, -1);
           if (exprEl) exprEl.innerText = currentExpr;
         } else if (act === '=') {
+          try {
             // Safe mathematical expression evaluator with strict whitelist
             const sanitized = currentExpr
               .replace(/π/g, `${Math.PI}`)

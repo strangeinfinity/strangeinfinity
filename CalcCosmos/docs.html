@@ -259,8 +259,15 @@
       <section id="parser" class="doc-section">
         <h2><i class="fa-solid fa-sitemap" style="color:var(--color-cyan)"></i> Shunting-Yard Expression Parser</h2>
         <p>
-          Infix expressions (e.g. <code>3 + 4 * 2 / ( 1 - 5 ) ^ 2</code>) are converted into Reverse Polish Notation (RPN) using operator precedence tables before stack evaluation:
+          Infix mathematical expressions (e.g. <code>sin(π / 6) + 4 * 2 / (1 - 5)^2</code>) are converted into Reverse Polish Notation (RPN) using Dijkstra's operator precedence algorithm before linear stack evaluation:
         </p>
+
+        <pre><code><span style="color:var(--text-muted)">// 1. Tokenizer pass</span>
+Infix:   "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"
+Tokens:  [NUM(3), OP(+), NUM(4), OP(*), NUM(2), OP(/), LPAREN, NUM(1), OP(-), NUM(5), RPAREN, OP(^), NUM(2), OP(^), NUM(3)]
+
+<span style="color:var(--text-muted)">// 2. Shunting-Yard output queue (RPN)</span>
+RPN:     "3 4 2 * 1 5 - 2 3 ^ ^ / +"</code></pre>
 
         <div class="table-container">
           <table class="doc-table">
@@ -269,13 +276,61 @@
                 <th>Operator</th>
                 <th>Precedence</th>
                 <th>Associativity</th>
+                <th>Semantics</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>+</code> , <code>-</code></td><td>1</td><td>Left</td></tr>
-              <tr><td><code>*</code> , <code>/</code> , <code>%</code></td><td>2</td><td>Left</td></tr>
-              <tr><td><code>^</code> (Power)</td><td>3</td><td>Right</td></tr>
-              <tr><td><code>sin</code> , <code>cos</code> , <code>log</code></td><td>4</td><td>Right</td></tr>
+              <tr><td><code>+</code> , <code>-</code></td><td>1</td><td>Left</td><td>Binary Addition / Subtraction</td></tr>
+              <tr><td><code>*</code> , <code>/</code> , <code>%</code></td><td>2</td><td>Left</td><td>Multiplication / Division / Modulo</td></tr>
+              <tr><td><code>^</code> (Power)</td><td>3</td><td>Right</td><td>Exponentiation (Right-associative)</td></tr>
+              <tr><td><code>sin</code>, <code>cos</code>, <code>tan</code>, <code>sqrt</code></td><td>4</td><td>Right</td><td>Unary Function Evaluation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. PRECISION MITIGATION -->
+      <section id="precision" class="doc-section">
+        <h2><i class="fa-solid fa-infinity" style="color:#f59e0b"></i> IEEE-754 Precision Mitigation Engine</h2>
+        <p>
+          Standard JavaScript binary 64-bit floating point arithmetic suffers from binary fraction conversion errors (e.g. <code>0.1 + 0.2 = 0.30000000000000004</code>). CalcCosmos eliminates this through dynamic scaling and epsilon-rounded fixed precision formatting:
+        </p>
+
+        <pre><code><span style="color:var(--text-muted)">// Precision serialization formula</span>
+function safeRound(value, precision = 12) {
+  const factor = Math.pow(10, precision);
+  return Math.round((value + Number.EPSILON) * factor) / factor;
+}</code></pre>
+
+        <div class="doc-grid">
+          <div class="doc-tile"><b>Epsilon Smoothing</b><span>Corrects boundary binary rounding drift</span></div>
+          <div class="doc-tile"><b>Max Digit Buffer</b><span>Up to 16 decimal places of precision</span></div>
+          <div class="doc-tile"><b>Zero Division Trap</b><span>Catches <code>n / 0</code> and returns localized <code>Undefined</code></span></div>
+          <div class="doc-tile"><b>Domain Protection</b><span>Protects <code>sqrt(-x)</code> and <code>ln(0)</code></span></div>
+        </div>
+      </section>
+
+      <!-- 4. MEMORY REGISTERS -->
+      <section id="memory" class="doc-section">
+        <h2><i class="fa-solid fa-hard-drive" style="color:#ec4899"></i> Memory Registers (M+, M-, MR, MC)</h2>
+        <p>
+          CalcCosmos provides hardware-equivalent accumulator memory registers for multi-step scientific workflows:
+        </p>
+
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Register</th>
+                <th>Operation</th>
+                <th>Formula</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>MC</code></td><td>Memory Clear</td><td><code>Memory_Register = 0</code></td></tr>
+              <tr><td><code>MR</code></td><td>Memory Recall</td><td>Injects current <code>Memory_Register</code> value into active expression</td></tr>
+              <tr><td><code>M+</code></td><td>Memory Add</td><td><code>Memory_Register = Memory_Register + Current_Result</code></td></tr>
+              <tr><td><code>M-</code></td><td>Memory Subtract</td><td><code>Memory_Register = Memory_Register - Current_Result</code></td></tr>
             </tbody>
           </table>
         </div>

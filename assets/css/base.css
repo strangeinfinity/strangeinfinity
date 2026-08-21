@@ -75,18 +75,39 @@ a {
 }
 a:hover { color: var(--color-secondary); }
 
-/* ── Code ── */
+/* ── Code & Pre Blocks ── */
 code, pre {
   font-family: var(--font-mono);
   font-size: 0.9em;
 }
 
 code {
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 0.1em 0.4em;
-  color: var(--color-primary-glow);
+  padding: 0.15em 0.45em;
+  color: var(--color-primary-light);
+  font-size: 0.85em;
+}
+
+pre {
+  background: var(--bg-elevated);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  overflow-x: auto;
+  color: var(--text-primary);
+  line-height: 1.65;
+  box-shadow: var(--shadow-sm);
+  margin: var(--space-4) 0;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
 }
 
 /* ── Lists ── */

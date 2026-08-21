@@ -178,12 +178,23 @@
       border-radius: var(--radius-sm);
     }
     .mock-screenshot {
-      background: #0d1117;
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      background: var(--bg-elevated);
+      border: var(--glass-border);
       border-radius: var(--radius-lg);
-      padding: var(--space-4);
+      padding: var(--space-6);
       margin: var(--space-6) 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow-sm);
+    }
+    .mock-screenshot pre {
+      margin: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -292,7 +303,7 @@ python airpointer.py</code></pre>
         <p>The internal pipeline processes frames in four synchronized stages without blocking the main event loop:</p>
 
         <div class="mock-screenshot">
-          <pre style="margin:0;color:var(--color-cyan);font-family:var(--font-mono);font-size:12px;">
+          <pre>
 [ Webcam Frame (60 FPS) ]
           │
           ▼
