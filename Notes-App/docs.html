@@ -46,6 +46,33 @@
   <meta name="twitter:description" content="Complete documentation, schema specifications, export formats, and shortcut reference for Cosmic Notes App." />
   <meta name="twitter:image" content="https://strangeinfinity.github.io/Notes-App/icons/notes-app.png" />
 
+  <!-- JSON-LD TechArticle Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Cosmic Notes Documentation — Architecture & Markdown Engine",
+    "description": "Complete technical documentation for Cosmic Notes App covering state architecture, GFM markdown AST parser specs, and LocalStorage JSON schema.",
+    "url": "https://strangeinfinity.github.io/Notes-App/docs.html",
+    "image": "https://strangeinfinity.github.io/Notes-App/icons/notes-app.png",
+    "author": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "url": "https://strangeinfinity.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://strangeinfinity.github.io/assets/images/logo.png"
+      }
+    },
+    "datePublished": "2026-08-21T00:00:00+00:00",
+    "dateModified": "2026-08-21T18:00:00+00:00"
+  }
+  </script>
+
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -241,6 +268,14 @@
     <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
     <div class="docs-content">
       
+<div class="doc-section" style="margin-bottom:var(--space-8);">
+        <p class="section-label" style="margin-bottom:var(--space-2);"><i class="fa-solid fa-book-bookmark"></i> Official Technical Documentation</p>
+        <h1 style="font-size:clamp(var(--text-2xl), 4vw, 2.5rem);font-weight:800;color:var(--text-primary);margin-bottom:var(--space-3);">
+          Cosmic Notes App <span class="gradient-text">Documentation</span>
+        </h1>
+        <p style="color:var(--text-secondary);margin:0;font-size:var(--text-sm);">Complete technical documentation for Cosmic Notes App covering state architecture, GFM markdown AST parser specs, and LocalStorage JSON schema.</p>
+      </div>
+
       <!-- 1. OVERVIEW -->
       <section id="overview" class="doc-section">
         <h2><i class="fa-solid fa-note-sticky" style="color:var(--color-pink)"></i> Cosmic Notes Workspace</h2>
