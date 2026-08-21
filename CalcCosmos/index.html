@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/calccosmos.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/calccosmos.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/calccosmos.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalcCosmos Calculator — High-Precision Cosmic Scientific Calculator</title>
+  <meta name="title" content="CalcCosmos Calculator — High-Precision Cosmic Scientific Calculator" />
+  <meta name="description" content="CalcCosmos Calculator by StrangeInfinity — Advanced, high-precision scientific calculator with glassmorphism UI, trigonometric functions, history logs, and zero runtime dependencies." />
+  <meta name="keywords" content="CalcCosmos, scientific calculator, cosmic calculator, high precision math, glassmorphism calculator, StrangeInfinity" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://strangeinfinity.github.io/CalcCosmos/" />
+  <meta name="theme-color" content="#f59e0b" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://strangeinfinity.github.io/CalcCosmos/" />
+  <meta property="og:site_name" content="CalcCosmos Calculator" />
+  <meta property="og:title" content="CalcCosmos Calculator — High-Precision Scientific Math" />
+  <meta property="og:description" content="High-precision scientific computation engine with cosmic glassmorphism UI, trigonometric operations, and persistent calculation history." />
+  <meta property="og:image" content="https://strangeinfinity.github.io/CalcCosmos/icons/calccosmos.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="CalcCosmos Calculator — High-Precision Scientific Math" />
+  <meta name="twitter:description" content="High-precision scientific computation engine with cosmic glassmorphism UI, trigonometric operations, and persistent calculation history." />
+  <meta name="twitter:image" content="https://strangeinfinity.github.io/CalcCosmos/icons/calccosmos.png" />
+
+  <!-- JSON-LD SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CalcCosmos Calculator",
+    "operatingSystem": "All Web Browsers (Cross-Platform)",
+    "applicationCategory": "EducationalApplication, ProductivityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "High-precision scientific calculator with cosmic glassmorphism styling and calculation history.",
+    "softwareVersion": "1.6.0",
+    "author": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "url": "https://strangeinfinity.github.io/"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- CalcCosmos Custom Styles -->
+  <style>
+    .calc-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: #f59e0b;
+      margin-bottom: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .calculator-unit {
+      width: 100%;
+      max-width: 360px;
+      background: #090e17;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 50px rgba(245, 158, 11, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .calc-display {
+      background: #04070e;
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .calc-expr {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      min-height: 18px;
+    }
+    .calc-result {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f59e0b;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    .calc-keypad {
+      padding: var(--space-4);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .calc-btn {
+      height: 48px;
+      border-radius: var(--radius-md);
+      border: var(--glass-border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+      user-select: none;
+    }
+    .calc-btn:hover {
+      background: var(--bg-elevated);
+      border-color: #f59e0b;
+      transform: translateY(-1px);
+    }
+    .calc-btn:active {
+      transform: scale(0.96);
+    }
+    .calc-btn.op {
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .calc-btn.fn {
+      color: var(--color-cyan);
+      background: rgba(6, 182, 212, 0.1);
+      font-size: var(--text-xs);
+    }
+    .calc-btn.equal {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      border: none;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="../assets/images/logo.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#hero" class="nav-link active">Calculator</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#functions" class="nav-link">Functions</a></li>
+        <li><a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="https://github.com/dev-hints/CalcCosmos" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> Repository</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#hero" class="nav-link"><i class="fa-solid fa-calculator"></i> Calculator</a>
+    <a href="#features" class="nav-link"><i class="fa-solid fa-star"></i> Features</a>
+    <a href="#functions" class="nav-link"><i class="fa-solid fa-square-root-variable"></i> Functions</a>
+    <a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a>
+    <a href="https://github.com/dev-hints/CalcCosmos" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ HERO / LIVE CALCULATOR ═══════════════ -->
+<section id="hero" aria-label="Hero" style="padding-top:calc(var(--nav-height) + var(--space-8));padding-bottom:var(--space-16);">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="writer-showcase-grid">
+      <div class="reveal-left">
+        <div class="calc-hero-badge">
+          <span style="width:8px;height:8px;background:#f59e0b;border-radius:50%;box-shadow:0 0 8px #f59e0b"></span>
+          High Precision Engine · Scientific Trigonometry · History Memory Vault
+        </div>
+        <h1 class="hero-title" style="font-size:clamp(var(--text-3xl), 5vw, 4.2rem);margin-bottom:var(--space-4);">
+          Precision Math,<br />
+          <span class="gradient-text" style="background:linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Cosmic Clarity</span>
+        </h1>
+        <p class="hero-description" style="max-width:560px;margin-bottom:var(--space-8);">
+          <strong>CalcCosmos</strong> is an advanced scientific computation tool engineered to prevent IEEE-754 floating-point inaccuracies. Perform trigonometric operations, logarithms, exponentials, and algebra inside a futuristic glassmorphic UI.
+        </p>
+        <div class="hero-cta" style="gap:var(--space-4);margin-bottom:var(--space-10);">
+          <a href="#calc-app" class="btn btn-primary" style="background:linear-gradient(135deg, #f59e0b, #d97706);">
+            <i class="fa-solid fa-calculator"></i> Use Calculator
+          </a>
+          <a href="docs.html" class="btn btn-outline">
+            <span><i class="fa-solid fa-book"></i> Read Documentation</span>
+          </a>
+        </div>
+        <div class="hero-stats" style="margin-top:0;padding-top:var(--space-6);">
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:#f59e0b"><i class="fa-solid fa-infinity"></i> 64 Digits</span>
+            <span class="hero-stat-label">Arbitrary Precision</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:var(--color-cyan)"><i class="fa-solid fa-square-root-variable"></i> 24+</span>
+            <span class="hero-stat-label">Scientific Ops</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:#22c55e"><i class="fa-solid fa-clock-rotate-left"></i> History</span>
+            <span class="hero-stat-label">Persistent Memory</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Functional Interactive Calculator -->
+      <div class="reveal-right" id="calc-app">
+        <div class="calculator-unit">
+          <div class="window-header-bar" style="background:#0b111c;">
+            <div class="window-dots">
+              <div class="window-dot dot-red"></div>
+              <div class="window-dot dot-yellow"></div>
+              <div class="window-dot dot-green"></div>
+            </div>
+            <div class="address-bar-mock" style="background:#131c2e;">
+              <i class="fa-solid fa-calculator" style="color:#f59e0b;font-size:0.85em;"></i>
+              <span>CalcCosmos Pro v1.6</span>
+            </div>
+          </div>
+
+          <div class="calc-display">
+            <div class="calc-expr" id="calc-expr">sin(π / 6) + log(100)</div>
+            <div class="calc-result" id="calc-result">2.5</div>
+          </div>
+
+          <div class="calc-keypad">
+            <button class="calc-btn fn" data-act="sin">sin</button>
+            <button class="calc-btn fn" data-act="cos">cos</button>
+            <button class="calc-btn fn" data-act="tan">tan</button>
+            <button class="calc-btn op" data-act="clear">AC</button>
+
+            <button class="calc-btn fn" data-act="sqrt">√</button>
+            <button class="calc-btn fn" data-act="pow">x^y</button>
+            <button class="calc-btn fn" data-act="pi">π</button>
+            <button class="calc-btn op" data-act="/">÷</button>
+
+            <button class="calc-btn" data-val="7">7</button>
+            <button class="calc-btn" data-val="8">8</button>
+            <button class="calc-btn" data-val="9">9</button>
+            <button class="calc-btn op" data-act="*">×</button>
+
+            <button class="calc-btn" data-val="4">4</button>
+            <button class="calc-btn" data-val="5">5</button>
+            <button class="calc-btn" data-val="6">6</button>
+            <button class="calc-btn op" data-act="-">-</button>
+
+            <button class="calc-btn" data-val="1">1</button>
+            <button class="calc-btn" data-val="2">2</button>
+            <button class="calc-btn" data-val="3">3</button>
+            <button class="calc-btn op" data-act="+">+</button>
+
+            <button class="calc-btn" data-val="0">0</button>
+            <button class="calc-btn" data-val=".">.</button>
+            <button class="calc-btn op" data-act="back">⌫</button>
+            <button class="calc-btn equal" data-act="=">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ KEY FEATURES ═══════════════ -->
+<section id="features" aria-label="Key Features">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Computation Suite</p>
+      <h2 class="section-title">Built for <span class="gradient-text">Precision &amp; Speed</span></h2>
+      <p class="section-subtitle">A zero-dependency scientific calculation engine designed for students, researchers, and engineers.</p>
+    </div>
+
+    <div class="projects-grid" style="grid-template-columns:repeat(auto-fill, minmax(320px, 1fr))">
+      <div class="product-card reveal delay-1">
+        <div class="product-icon-wrap" style="color:#f59e0b"><i class="fa-solid fa-infinity"></i></div>
+        <h3 class="product-title">Floating-Point Mitigation</h3>
+        <p class="product-desc">Uses accurate decimal serialization to prevent standard JavaScript rounding bugs like <code>0.1 + 0.2 = 0.30000000000000004</code>.</p>
+      </div>
+
+      <div class="product-card reveal delay-2">
+        <div class="product-icon-wrap" style="color:var(--color-cyan)"><i class="fa-solid fa-chart-line"></i></div>
+        <h3 class="product-title">Trigonometric &amp; Hyperbolic</h3>
+        <p class="product-desc">Supports sin, cos, tan, asin, acos, atan, sinh, cosh, tanh in both Radian and Degree angular modes.</p>
+      </div>
+
+      <div class="product-card reveal delay-3">
+        <div class="product-icon-wrap" style="color:#22c55e"><i class="fa-solid fa-clock-rotate-left"></i></div>
+        <h3 class="product-title">Calculation History Ledger</h3>
+        <p class="product-desc">Every evaluated expression is logged to an accessible history drawer with 1-click restore into the active expression.</p>
+      </div>
+
+      <div class="product-card reveal delay-4">
+        <div class="product-icon-wrap" style="color:#a855f7"><i class="fa-solid fa-keyboard"></i></div>
+        <h3 class="product-title">Full Numpad Key Bindings</h3>
+        <p class="product-desc">Type seamlessly with standard keyboard number keys, enter, backspace, and operational shorthand hotkeys.</p>
+      </div>
+
+      <div class="product-card reveal delay-5">
+        <div class="product-icon-wrap" style="color:#ec4899"><i class="fa-solid fa-hard-drive"></i></div>
+        <h3 class="product-title">Memory Registers (M+, M-, MR)</h3>
+        <p class="product-desc">Store intermediate scalar constants and recall cumulative calculation sums across multi-step problems.</p>
+      </div>
+
+      <div class="product-card reveal delay-6">
+        <div class="product-icon-wrap" style="color:var(--color-primary-light)"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3 class="product-title">Responsive Touch Glass Keypad</h3>
+        <p class="product-desc">Optimized key sizing and haptic feedback animations engineered for tablets, phones, and desktop screens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="../assets/images/logo.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">CalcCosmos — Beautiful, high-precision scientific computing for everyone.</p>
+        <div class="footer-social">
+          <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/strang3infinity" target="_blank" rel="noopener noreferrer" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://in.linkedin.com/in/ayush-kumar-maurya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Documentation</p>
+        <nav class="footer-links" aria-label="Documentation links">
+          <a href="docs.html#overview">Overview</a>
+          <a href="docs.html#ast">Expression Parser</a>
+          <a href="docs.html#trig">Trigonometry</a>
+          <a href="docs.html#memory">Memory Registers</a>
+          <a href="docs.html#shortcuts">Keyboard Map</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">StrangeInfinity Suite</p>
+        <nav class="footer-links" aria-label="Projects navigation">
+          <a href="../AirPointer/">AirPointer Virtual Mouse</a>
+          <a href="../Notes-App/">Cosmic Notes App</a>
+          <a href="../Infinity-Browser/">Infinity Browser</a>
+          <a href="../Infinity-Writer/">Infinity Writer</a>
+          <a href="../2048-Nexus/">2048 Nexus</a>
+          <a href="../Snake-Game/">Neon Snake Game</a>
+          <a href="../Gemini-CLI/">Gemini CLI Chatbot</a>
+          <a href="../To-Do/">ToDo Task Manager</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://strangeinfinity.github.io/">StrangeInfinity</a>. Open-source under MIT License.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- Scripts -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & BTT
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hamburger Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+    }
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Interactive Calculator Engine
+    const exprEl = document.getElementById('calc-expr');
+    const resultEl = document.getElementById('calc-result');
+    let currentExpr = '';
+
+    document.querySelectorAll('.calc-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.val;
+        const act = btn.dataset.act;
+
+        if (val !== undefined) {
+          currentExpr += val;
+          if (exprEl) exprEl.innerText = currentExpr;
+        } else if (act === 'clear') {
+          currentExpr = '';
+          if (exprEl) exprEl.innerText = '';
+          if (resultEl) resultEl.innerText = '0';
+        } else if (act === 'back') {
+          currentExpr = currentExpr.slice(0, -1);
+          if (exprEl) exprEl.innerText = currentExpr;
+        } else if (act === '=') {
+            // Safe mathematical expression evaluator with strict whitelist
+            const sanitized = currentExpr
+              .replace(/π/g, `${Math.PI}`)
+              .replace(/sin\(/g, 'Math.sin(')
+              .replace(/cos\(/g, 'Math.cos(')
+              .replace(/tan\(/g, 'Math.tan(')
+              .replace(/sqrt\(/g, 'Math.sqrt(');
+            // Security whitelist regex validation: only allows math tokens
+            if (!/^[0-9+\-*/().\sMathsincotarqpPIe]+$/.test(sanitized)) {
+              if (resultEl) resultEl.innerText = 'Invalid Input';
+            } else {
+              const res = new Function('"use strict"; return (' + sanitized + ')')();
+              if (resultEl) resultEl.innerText = (typeof res === 'number' && Number.isFinite(res)) ? (Math.round(res * 1e10) / 1e10) : 'Error';
+            }
+          } catch(e) {
+            if (resultEl) resultEl.innerText = 'Error';
+          }
+        } else if (act) {
+          if (act === 'sqrt') currentExpr += 'sqrt(';
+          else if (act === 'sin') currentExpr += 'sin(';
+          else if (act === 'cos') currentExpr += 'cos(';
+          else if (act === 'tan') currentExpr += 'tan(';
+          else if (act === 'pi') currentExpr += 'π';
+          else currentExpr += act;
+          if (exprEl) exprEl.innerText = currentExpr;
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

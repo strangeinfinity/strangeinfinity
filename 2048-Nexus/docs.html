@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/2048-nexus.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/2048-nexus.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/2048-nexus.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 Nexus Documentation — Game Mechanics, Expectimax AI &amp; PyQt6</title>
+  <meta name="title" content="2048 Nexus Documentation — Game Mechanics, Expectimax AI &amp; PyQt6" />
+  <meta name="description" content="Technical documentation for 2048 Nexus. Explore the Expectimax heuristic solver, tile probability matrix, and desktop PyQt6 architecture." />
+  <meta name="keywords" content="2048 Nexus docs, expectimax algorithm, heuristic scoring, PyQt6 game architecture, tile spawn matrix" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://strangeinfinity.github.io/2048-Nexus/docs.html" />
+  <meta name="theme-color" content="#10b981" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://strangeinfinity.github.io/2048-Nexus/docs.html" />
+  <meta property="og:site_name" content="2048 Nexus Docs" />
+  <meta property="og:title" content="2048 Nexus Documentation — Mechanics &amp; AI Solver" />
+  <meta property="og:description" content="Complete architecture, Expectimax AI search depth formulas, and controls for 2048 Nexus." />
+  <meta property="og:image" content="https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="2048 Nexus Documentation — Mechanics &amp; AI Solver" />
+  <meta name="twitter:description" content="Complete architecture, Expectimax AI search depth formulas, and controls for 2048 Nexus." />
+  <meta name="twitter:image" content="https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- Custom Documentation Layout Styles -->
+  <style>
+    .docs-container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-8);
+      padding-top: calc(var(--nav-height) + var(--space-8));
+      padding-bottom: var(--space-20);
+    }
+    @media (max-width: 992px) {
+      .docs-container { grid-template-columns: 1fr; }
+      .docs-sidebar { position: static !important; width: 100% !important; }
+    }
+    .docs-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-6));
+      height: fit-content;
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .docs-toc-title {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .docs-toc-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .docs-toc-link {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .docs-toc-link:hover {
+      color: #10b981;
+      background: var(--bg-elevated);
+    }
+    .docs-toc-link.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, #10b981, #0891b2);
+      font-weight: 600;
+    }
+    .doc-section {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+    .doc-section h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: var(--text-primary);
+    }
+    .doc-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+    .doc-tile {
+      background: var(--bg-elevated);
+      border: var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .doc-tile b { display: block; color: var(--text-primary); margin-bottom: var(--space-1); }
+    .doc-tile span { font-size: var(--text-xs); color: var(--text-muted); font-family: var(--font-mono); }
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: var(--space-6);
+    }
+    table.doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+    }
+    table.doc-table th, table.doc-table td {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: var(--glass-border);
+      text-align: left;
+    }
+    table.doc-table th {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+    }
+    table.doc-table td code {
+      font-family: var(--font-mono);
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="../assets/images/logo.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Game Home</a></li>
+        <li><a href="#overview" class="nav-link active">Documentation</a></li>
+        <li><a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> Repository</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Game Home</a>
+    <a href="#overview" class="nav-link"><i class="fa-solid fa-book"></i> Overview</a>
+    <a href="#mechanics" class="nav-link"><i class="fa-solid fa-calculator"></i> Mechanics</a>
+    <a href="#expectimax" class="nav-link"><i class="fa-solid fa-brain"></i> Expectimax AI</a>
+    <a href="#shortcuts" class="nav-link"><i class="fa-solid fa-keyboard"></i> Controls</a>
+    <a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> Repository</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="docs-container">
+    
+    <!-- ═══════════════ SIDEBAR TOC ═══════════════ -->
+    <aside class="docs-sidebar" aria-label="Table of Contents">
+      <div class="docs-toc-title"><i class="fa-solid fa-list"></i> Table of Contents</div>
+      <nav class="docs-toc-links" aria-label="Documentation sections">
+        <a href="#overview" class="docs-toc-link active"><i class="fa-solid fa-circle-info"></i> Overview</a>
+        <a href="#installation" class="docs-toc-link"><i class="fa-solid fa-download"></i> Installation &amp; Launch</a>
+        <a href="#mechanics" class="docs-toc-link"><i class="fa-solid fa-calculator"></i> Tile Probability &amp; Math</a>
+        <a href="#expectimax" class="docs-toc-link"><i class="fa-solid fa-brain"></i> Expectimax Heuristic AI</a>
+        <a href="#architecture" class="docs-toc-link"><i class="fa-solid fa-sitemap"></i> PyQt6 Architecture</a>
+        <a href="#shortcuts" class="docs-toc-link"><i class="fa-solid fa-keyboard"></i> Controls Reference</a>
+      </nav>
+    </aside>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <div class="docs-content">
+      
+      <!-- 1. OVERVIEW -->
+      <section id="overview" class="doc-section">
+        <h2><i class="fa-solid fa-gamepad" style="color:#10b981"></i> 2048 Nexus Technical Overview</h2>
+        <p>
+          <strong>2048 Nexus</strong> is an open-source, hardware-accelerated puzzle game implementation engineered in Python using PyQt6 and Qt Graphics View. It supports custom grid geometry from 3x3 to 8x8, unlimited move undo history, real-time expectimax AI calculation, and responsive web canvas compatibility.
+        </p>
+
+        <div class="doc-grid">
+          <div class="doc-tile"><b>GUI Framework</b><span>PyQt6 / QGraphicsView / CSS3 Web</span></div>
+          <div class="doc-tile"><b>AI Solver</b><span>Expectimax Search Tree (Depth 4-6)</span></div>
+          <div class="doc-tile"><b>Audio System</b><span>Pygame Sound Mixer / Web Audio API</span></div>
+          <div class="doc-tile"><b>Leaderboard</b><span>Local SQLite / JSON encrypted high scores</span></div>
+        </div>
+      </section>
+
+      <!-- 2. INSTALLATION -->
+      <section id="installation" class="doc-section">
+        <h2><i class="fa-solid fa-download" style="color:var(--color-primary-light)"></i> Installation &amp; Launch</h2>
+        <pre><code><span style="color:var(--text-muted)"># Clone the repository</span>
+git clone https://github.com/dev-hints/2048-Nexus.git
+cd 2048-Nexus
+
+<span style="color:var(--text-muted)"># Install Python dependencies</span>
+pip install PyQt6 pygame numpy
+
+<span style="color:var(--text-muted)"># Launch with default settings</span>
+python main.py
+
+<span style="color:var(--text-muted)"># Launch 5x5 board with AI auto-solver enabled</span>
+python main.py --grid 5 --ai</code></pre>
+      </section>
+
+      <!-- 3. MECHANICS & MATH -->
+      <section id="mechanics" class="doc-section">
+        <h2><i class="fa-solid fa-calculator" style="color:#22c55e"></i> Tile Probability &amp; Scoring Matrix</h2>
+        <p>
+          Every valid swipe shifts non-zero matrix elements towards the vector edge. Consecutive matching pairs merge into their power of two sum:
+        </p>
+
+        <p><code>Score_Add = Tile_A + Tile_B = 2^(k+1)</code></p>
+
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Probability</th>
+                <th>Conditions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Spawn Tile '2'</strong></td><td><code>90.0%</code></td><td>Random empty grid coordinate</td></tr>
+              <tr><td><strong>Spawn Tile '4'</strong></td><td><code>10.0%</code></td><td>Random empty grid coordinate</td></tr>
+              <tr><td><strong>Game Over</strong></td><td><code>Deterministic</code></td><td>0 empty cells &amp; 0 adjacent merge pairs</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. EXPECTIMAX AI -->
+      <section id="expectimax" class="doc-section">
+        <h2><i class="fa-solid fa-brain" style="color:var(--color-cyan)"></i> Expectimax AI Heuristic Solver</h2>
+        <p>
+          The auto-solver searches game tree states up to depth 5 using an Expectimax model with four weighted evaluation heuristics:
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6);">
+          <div class="doc-tile">
+            <b>1. Corner Weight Matrix (w = 3.5)</b>
+            <span>Favors placing the highest value tile in the top-left corner.</span>
+          </div>
+          <div class="doc-tile">
+            <b>2. Monotonicity (w = 2.2)</b>
+            <span>Ensures values strictly increase or decrease along columns and rows.</span>
+          </div>
+          <div class="doc-tile">
+            <b>3. Smoothness (w = 1.0)</b>
+            <span>Minimizes numerical value differences between adjacent cells.</span>
+          </div>
+          <div class="doc-tile">
+            <b>4. Free Tiles Count (w = 2.8)</b>
+            <span>Rewards maintaining maximum open board real estate.</span>
+          </div>
+        </div>
+
+        <pre><code><span style="color:var(--text-muted)"># Expectimax node evaluation score</span>
+Total_Score = (3.5 * corner_score) + (2.2 * monotonicity) + (1.0 * smoothness) + (2.8 * empty_cells)</code></pre>
+      </section>
+
+      <!-- 5. SHORTCUTS -->
+      <section id="shortcuts" class="doc-section">
+        <h2><i class="fa-solid fa-keyboard" style="color:#f59e0b"></i> Keyboard Controls Reference</h2>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Key Binding</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>Arrow Keys</code> / <code>W A S D</code></td><td>Move tiles in direction</td></tr>
+              <tr><td><code>U</code> / <code>Ctrl + Z</code></td><td>Undo last move</td></tr>
+              <tr><td><code>Spacebar</code></td><td>Execute single AI suggested step</td></tr>
+              <tr><td><code>A</code></td><td>Toggle continuous AI auto-play mode</td></tr>
+              <tr><td><code>R</code></td><td>Restart game session</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="../assets/images/logo.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">2048 Nexus Documentation — Engineering intelligence into classic arcade gaming.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigation</p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">Game Home</a>
+          <a href="../index.html">Main Portal</a>
+          <a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://strangeinfinity.github.io/">StrangeInfinity</a>. Open-source under MIT License.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- Scripts -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & BTT
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+
+      // Active TOC link
+      const sections = document.querySelectorAll('section[id]');
+      const tocLinks = document.querySelectorAll('.docs-toc-link');
+      let current = '';
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollY + 140) current = sec.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hamburger Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+    }
+  });
+</script>
+</body>
+</html>

@@ -49,45 +49,94 @@ The StrangeInfinity portal highlights several flagship software products and ope
   <tr>
     <td width="50%" valign="top">
       <h3>🌐 Infinity Browser</h3>
-      <p>A fast, privacy-focused desktop web browser built with Python and Qt. Designed to provide a streamlined, distraction-free browsing experience with built-in ad blocking, local password security, and custom script support.</p>
-      <ul>
-        <li>🛡️ Built-in tracking and ad protection</li>
-        <li>📁 Integrated download manager & PDF reader</li>
-        <li>🔒 Local secure credential vault</li>
-      </ul>
-      <p><a href="https://strangeinfinity.github.io/Infinity-Browser/"><strong>Visit Browser Portal »</strong></a></p>
+      <p>A fast, privacy-focused desktop web browser built with Python and PyQt6. Features built-in ad blocking, local encrypted password vault, and media downloader.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/Infinity-Browser/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/Infinity-Browser/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/infinity-browser">GitHub</a>
+      </p>
     </td>
     <td width="50%" valign="top">
       <h3>✍️ Infinity Writer</h3>
-      <p>A specialized, distraction-free writing and markup tool built to generate pristine, semantic, and production-ready HTML code with out-of-the-box native dark mode styling.</p>
-      <ul>
-        <li>📄 Clean, standards-compliant HTML output</li>
-        <li>🌓 Seamless dark & light mode styling</li>
-        <li>⚡ Zero external runtime dependencies</li>
-      </ul>
-      <p><a href="https://strangeinfinity.github.io/Infinity-Writer/"><strong>Visit Writer Portal »</strong></a> • <a href="https://github.com/dev-hints/Infinity-Writer">GitHub</a></p>
+      <p>Specialized distraction-free writing tool built to generate pristine, semantic HTML5 with native out-of-the-box dark mode support and 0 dependencies.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/Infinity-Writer/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/Infinity-Writer/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/Infinity-Writer">GitHub</a>
+      </p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3>🖐️ AirPointer</h3>
-      <p>A touchless virtual mouse system that translates natural hand gestures captured via webcam into real-time cursor navigation and click actions using computer vision.</p>
-      <ul>
-        <li>👁️ Real-time hand landmark tracking</li>
-        <li>🖱️ Gesture-based pointer & click controls</li>
-        <li>⚡ Lightweight, low-latency execution</li>
-      </ul>
-      <p><a href="https://github.com/dev-hints/AirPointer"><strong>Explore Repository »</strong></a></p>
+      <h3>🖐️ AirPointer Virtual Mouse</h3>
+      <p>A real-time touchless virtual mouse system translating webcam hand gestures into ultra-smooth OS cursor movements using MediaPipe and OpenCV.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/AirPointer/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/AirPointer/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/AirPointer">GitHub</a>
+      </p>
     </td>
     <td width="50%" valign="top">
-      <h3>📝 Cosmic Notes</h3>
-      <p>A responsive, visually engaging note-taking suite designed with a cosmic glassmorphism aesthetic, rich-text editing, instant category filtering, and offline local persistence.</p>
-      <ul>
-        <li>🌌 Deep space glassmorphic interface</li>
-        <li>🏷️ Dynamic tag indexing & instant search</li>
-        <li>💾 Local offline auto-save storage</li>
-      </ul>
-      <p><a href="https://github.com/dev-hints/Notes-App"><strong>Explore Repository »</strong></a></p>
+      <h3>📝 Cosmic Notes App</h3>
+      <p>A futuristic deep-space glassmorphic markdown workspace with category tags, instant fuzzy search, and local storage encryption.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/Notes-App/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/Notes-App/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/Notes-App">GitHub</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🎮 2048 Nexus</h3>
+      <p>Cyberpunk arcade puzzle game built with Python & PyQt6 featuring multiple grid sizes (3x3 to 8x8), undo move stack, and Expectimax AI auto-solver.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/2048-Nexus/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/2048-Nexus/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/2048-Nexus">GitHub</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🐍 Neon Snake Game</h3>
+      <p>Modern retro-futuristic arcade game on HTML5 Canvas with dynamic particle explosions, power-ups, and synthesized Web Audio sound effects.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/Snake-Game/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/Snake-Game/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/Snake-Game">GitHub</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>⚡ Gemini CLI Chatbot</h3>
+      <p>100% Pure Bash shell script AI streaming assistant. Chat in interactive REPL, pipe Unix commands, and stream responses in real-time.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/Gemini-CLI/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/Gemini-CLI/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/Gemini_cli">GitHub</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🔢 CalcCosmos Calculator</h3>
+      <p>High-precision scientific computation engine with cosmic glassmorphism UI, trigonometric operations, and persistent calculation history.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/CalcCosmos/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/CalcCosmos/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/CalcCosmos">GitHub</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>✅ ToDo Task Manager</h3>
+      <p>Distraction-free personal task management and Pomodoro workstation built with cosmic glassmorphism and 100% local persistence.</p>
+      <p>
+        <a href="https://strangeinfinity.github.io/To-Do/"><strong>Portal »</strong></a> • 
+        <a href="https://strangeinfinity.github.io/To-Do/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/To-Do">GitHub</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
     </td>
   </tr>
 </table>

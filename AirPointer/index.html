@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/airpointer.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/airpointer.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/airpointer.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirPointer Virtual Mouse — Touchless AI Hand Tracking &amp; Gesture Cursor</title>
+  <meta name="title" content="AirPointer Virtual Mouse — Touchless AI Hand Tracking &amp; Gesture Cursor" />
+  <meta name="description" content="AirPointer is a real-time touchless AI virtual mouse system powered by OpenCV and MediaPipe. Control your computer seamlessly using webcam hand gestures." />
+  <meta name="keywords" content="AirPointer, virtual mouse, AI hand tracking, MediaPipe gestures, OpenCV Python, touchless mouse, computer vision cursor, StrangeInfinity" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://strangeinfinity.github.io/AirPointer/" />
+  <meta name="theme-color" content="#06b6d4" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://strangeinfinity.github.io/AirPointer/" />
+  <meta property="og:site_name" content="AirPointer Virtual Mouse" />
+  <meta property="og:title" content="AirPointer Virtual Mouse — Touchless AI Hand Tracking" />
+  <meta property="og:description" content="Touchless real-time virtual mouse system translating webcam hand gestures into ultra-smooth OS cursor movements using MediaPipe and OpenCV." />
+  <meta property="og:image" content="https://strangeinfinity.github.io/AirPointer/icons/airpointer.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="AirPointer Virtual Mouse — Touchless AI Hand Tracking" />
+  <meta name="twitter:description" content="Touchless real-time virtual mouse system translating webcam hand gestures into ultra-smooth OS cursor movements using MediaPipe and OpenCV." />
+  <meta name="twitter:image" content="https://strangeinfinity.github.io/AirPointer/icons/airpointer.png" />
+
+  <!-- JSON-LD SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AirPointer Virtual Mouse",
+    "operatingSystem": "Windows, Linux, macOS",
+    "applicationCategory": "UtilityApplication, AccessibilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "Real-time AI touchless virtual mouse translating webcam hand gestures into cursor movements with sub-pixel smoothing.",
+    "softwareVersion": "2.1.0",
+    "author": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "url": "https://strangeinfinity.github.io/"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- AirPointer Specific Styles -->
+  <style>
+    .airpointer-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-cyan);
+      margin-bottom: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .cv-window {
+      background: var(--bg-card);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.15);
+      overflow: hidden;
+      transition: var(--transition-normal);
+    }
+    .cv-viewport {
+      position: relative;
+      background: #090d16;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cv-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .cv-hud-overlay {
+      position: absolute;
+      inset: 0;
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .cv-hud-top, .cv-hud-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hud-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: var(--color-cyan);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-tag.active {
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+    .hand-wireframe {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+    .tracking-node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-cyan);
+      box-shadow: 0 0 12px var(--color-cyan);
+      transform: translate(-50%, -50%);
+    }
+    .tracking-node.tip {
+      background: #22c55e;
+      box-shadow: 0 0 16px #22c55e;
+      width: 14px;
+      height: 14px;
+    }
+    .tracking-cursor-target {
+      position: absolute;
+      top: 25%;
+      left: 60%;
+      width: 32px;
+      height: 32px;
+      border: 2px dashed #22c55e;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+    .gesture-card {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .gesture-card:hover {
+      border-color: var(--color-cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.15);
+    }
+    .gesture-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--color-cyan);
+    }
+    .demo-pad {
+      background: var(--bg-surface);
+      border: 2px dashed rgba(6, 182, 212, 0.4);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      text-align: center;
+      cursor: crosshair;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .demo-virtual-cursor {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px var(--color-cyan);
+      transition: width 0.1s, height 0.1s, background-color 0.1s;
+    }
+    .demo-virtual-cursor.clicking {
+      background: rgba(34, 197, 94, 0.6);
+      border-color: #22c55e;
+      box-shadow: 0 0 20px #22c55e;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="../assets/images/logo.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#hero" class="nav-link active">Overview</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#gestures" class="nav-link">Gestures</a></li>
+        <li><a href="#testpad" class="nav-link">Live Testpad</a></li>
+        <li><a href="#install" class="nav-link">Install</a></li>
+        <li><a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="https://github.com/dev-hints/AirPointer" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> Repository</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#hero" class="nav-link"><i class="fa-solid fa-house"></i> Overview</a>
+    <a href="#features" class="nav-link"><i class="fa-solid fa-star"></i> Features</a>
+    <a href="#gestures" class="nav-link"><i class="fa-solid fa-hand"></i> Gestures</a>
+    <a href="#testpad" class="nav-link"><i class="fa-solid fa-vial"></i> Live Testpad</a>
+    <a href="#install" class="nav-link"><i class="fa-solid fa-download"></i> Installation</a>
+    <a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a>
+    <a href="https://github.com/dev-hints/AirPointer" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" aria-label="Hero" style="padding-top:calc(var(--nav-height) + var(--space-8));padding-bottom:var(--space-16);">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="writer-showcase-grid">
+      <div class="reveal-left">
+        <div class="airpointer-hero-badge">
+          <span style="width:8px;height:8px;background:var(--color-cyan);border-radius:50%;box-shadow:0 0 8px var(--color-cyan)"></span>
+          AI Vision · OpenCV · MediaPipe · 21 Hand Landmarks · 60 FPS
+        </div>
+        <h1 class="hero-title" style="font-size:clamp(var(--text-3xl), 5vw, 4.2rem);margin-bottom:var(--space-4);">
+          Touchless AI<br />
+          <span class="gradient-text" style="background:linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Virtual Mouse Control</span>
+        </h1>
+        <p class="hero-description" style="max-width:560px;margin-bottom:var(--space-8);">
+          <strong>AirPointer</strong> turns any standard webcam into a high-precision, touchless cursor controller. Move, click, scroll, and drag across your screen with natural hand gestures in real-time.
+        </p>
+        <div class="hero-cta" style="gap:var(--space-4);margin-bottom:var(--space-10);">
+          <a href="#install" class="btn btn-primary" style="background:linear-gradient(135deg, #06b6d4, #2563eb);">
+            <i class="fa-solid fa-terminal"></i> Get Started
+          </a>
+          <a href="docs.html" class="btn btn-outline">
+            <span><i class="fa-solid fa-book"></i> Read Documentation</span>
+          </a>
+        </div>
+        <div class="hero-stats" style="margin-top:0;padding-top:var(--space-6);">
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:var(--color-cyan)"><i class="fa-solid fa-gauge-high"></i> 60 FPS</span>
+            <span class="hero-stat-label">Ultra-Low Latency</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:#22c55e"><i class="fa-solid fa-bullseye"></i> 21 Nodes</span>
+            <span class="hero-stat-label">3D Hand Landmarks</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:var(--color-primary-light)"><i class="fa-solid fa-microchip"></i> &lt;4% CPU</span>
+            <span class="hero-stat-label">Lightweight Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-Time AI Simulation Mockup -->
+      <div class="reveal-right">
+        <div class="cv-window">
+          <div class="window-header-bar">
+            <div class="window-dots">
+              <div class="window-dot dot-red"></div>
+              <div class="window-dot dot-yellow"></div>
+              <div class="window-dot dot-green"></div>
+            </div>
+            <div class="address-bar-mock">
+              <i class="fa-solid fa-camera" style="color:var(--color-cyan);font-size:0.85em;"></i>
+              <span>AirPointer AI Telemetry — /dev/video0 [Active]</span>
+            </div>
+          </div>
+          
+          <div class="cv-viewport">
+            <div class="cv-grid"></div>
+            
+            <div class="cv-hud-overlay">
+              <div class="cv-hud-top">
+                <span class="hud-tag active"><i class="fa-solid fa-circle"></i> TRACKING LOCK: OK</span>
+                <span class="hud-tag"><i class="fa-solid fa-wave-square"></i> LATENCY: 4.2ms · 60 FPS</span>
+              </div>
+              
+              <div class="cv-hud-bottom">
+                <span class="hud-tag"><i class="fa-solid fa-arrows-to-dot"></i> POS: X:1420 Y:890</span>
+                <span class="hud-tag active"><i class="fa-solid fa-hand-pointer"></i> GESTURE: PINCH CLICK</span>
+              </div>
+            </div>
+
+            <!-- Hand Wireframe Graphic -->
+            <div class="hand-wireframe">
+              <div class="tracking-cursor-target"></div>
+              <!-- Wrist -->
+              <div class="tracking-node" style="top:90%;left:50%"></div>
+              <!-- Thumb -->
+              <div class="tracking-node" style="top:70%;left:25%"></div>
+              <div class="tracking-node" style="top:55%;left:18%"></div>
+              <div class="tracking-node tip" style="top:42%;left:32%"></div>
+              <!-- Index -->
+              <div class="tracking-node" style="top:60%;left:45%"></div>
+              <div class="tracking-node" style="top:40%;left:48%"></div>
+              <div class="tracking-node tip" style="top:25%;left:52%"></div>
+              <!-- Middle -->
+              <div class="tracking-node" style="top:60%;left:58%"></div>
+              <div class="tracking-node" style="top:42%;left:62%"></div>
+              <div class="tracking-node tip" style="top:28%;left:65%"></div>
+              <!-- Ring -->
+              <div class="tracking-node" style="top:62%;left:70%"></div>
+              <div class="tracking-node" style="top:48%;left:74%"></div>
+              <div class="tracking-node tip" style="top:38%;left:76%"></div>
+              <!-- Pinky -->
+              <div class="tracking-node" style="top:68%;left:80%"></div>
+              <div class="tracking-node" style="top:58%;left:84%"></div>
+              <div class="tracking-node tip" style="top:50%;left:88%"></div>
+              <!-- SVG skeleton lines -->
+              <svg style="position:absolute;inset:0;width:100%;height:100%;stroke:rgba(6,182,212,0.4);stroke-width:2;fill:none;">
+                <polyline points="120,216 60,168 43,132 76,100" />
+                <polyline points="120,216 108,144 115,96 124,60" />
+                <polyline points="120,216 139,144 148,100 156,67" />
+                <polyline points="120,216 168,148 177,115 182,91" />
+                <polyline points="120,216 192,163 201,139 211,120" />
+              </svg>
+            </div>
+          </div>
+
+          <div style="padding:var(--space-4);background:var(--bg-card);display:flex;justify-content:space-between;align-items:center;border-top:var(--glass-border);">
+            <div style="display:flex;gap:var(--space-3);align-items:center;">
+              <span class="project-tag" style="background:rgba(6,182,212,0.15);color:var(--color-cyan);border-color:rgba(6,182,212,0.3)">Kalman Smoother: Enabled</span>
+              <span class="project-tag" style="background:rgba(34,197,94,0.15);color:#22c55e">Confidence: 98.4%</span>
+            </div>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">MediaPipe Hands v0.10.x</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ KEY FEATURES ═══════════════ -->
+<section id="features" aria-label="Key Features">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Computer Vision Innovation</p>
+      <h2 class="section-title">Engineered for <span class="gradient-text">Precision &amp; Comfort</span></h2>
+      <p class="section-subtitle">A state-of-the-art gesture interaction pipeline that eliminates physical mouse strain and brings sci-fi interactions to reality.</p>
+    </div>
+
+    <div class="projects-grid" style="grid-template-columns:repeat(auto-fill, minmax(320px, 1fr))">
+      <div class="product-card reveal delay-1">
+        <div class="product-icon-wrap" style="color:var(--color-cyan)"><i class="fa-solid fa-hand-dots"></i></div>
+        <h3 class="product-title">21 Hand Landmark Tracking</h3>
+        <p class="product-desc">Real-time 3D spatial coordinate detection for every joint and fingertip using MediaPipe's optimized lightweight neural network.</p>
+      </div>
+
+      <div class="product-card reveal delay-2">
+        <div class="product-icon-wrap" style="color:#3b82f6"><i class="fa-solid fa-bezier-curve"></i></div>
+        <h3 class="product-title">Sub-Pixel Cursor Smoothing</h3>
+        <p class="product-desc">Exponential moving average and Kalman filters eliminate jitter and camera noise while retaining instant, snappy response.</p>
+      </div>
+
+      <div class="product-card reveal delay-3">
+        <div class="product-icon-wrap" style="color:#22c55e"><i class="fa-solid fa-mouse-pointer"></i></div>
+        <h3 class="product-title">Click, Drag &amp; Scroll Gestures</h3>
+        <p class="product-desc">Intuitive pinch triggers for single clicks, double clicks, right clicks, sustained dragging, and vertical/horizontal scrolling.</p>
+      </div>
+
+      <div class="product-card reveal delay-4">
+        <div class="product-icon-wrap" style="color:#f59e0b"><i class="fa-solid fa-sun"></i></div>
+        <h3 class="product-title">Dynamic Light Compensation</h3>
+        <p class="product-desc">Adaptive contrast and brightness thresholds ensure flawless gesture detection even in dimly lit rooms or direct backlight.</p>
+      </div>
+
+      <div class="product-card reveal delay-5">
+        <div class="product-icon-wrap" style="color:#8b5cf6"><i class="fa-solid fa-desktop"></i></div>
+        <h3 class="product-title">Multi-Monitor Geometry</h3>
+        <p class="product-desc">Effortlessly span your virtual cursor across multiple displays with custom coordinate mapping and boundary warping.</p>
+      </div>
+
+      <div class="product-card reveal delay-6">
+        <div class="product-icon-wrap" style="color:#ec4899"><i class="fa-solid fa-sliders"></i></div>
+        <h3 class="product-title">Full Configuration Control</h3>
+        <p class="product-desc">Fine-tune sensitivity, deadzones, activation distances, camera source indexes, and custom key bindings via JSON or GUI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GESTURES GUIDE ═══════════════ -->
+<section id="gestures" aria-label="Gesture Controls">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Intuitive Motion</p>
+      <h2 class="section-title">Natural Hand <span class="gradient-text">Gestures</span></h2>
+      <p class="section-subtitle">Learn the simple fingertip motions that control your entire operating system.</p>
+    </div>
+
+    <div class="projects-grid" style="grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:var(--space-6);">
+      <div class="gesture-card reveal delay-1">
+        <div class="gesture-icon-wrap"><i class="fa-solid fa-arrow-pointer"></i></div>
+        <h3 style="font-size:var(--text-lg);margin:0">Cursor Movement</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm)">Extend index finger. The cursor smoothly tracks your fingertip in real-time across the screen.</p>
+        <span class="project-tag" style="background:rgba(6,182,212,0.1);color:var(--color-cyan);width:fit-content">Index Tip Active</span>
+      </div>
+
+      <div class="gesture-card reveal delay-2">
+        <div class="gesture-icon-wrap" style="color:#22c55e;background:rgba(34,197,94,0.12)"><i class="fa-solid fa-hand-point-up"></i></div>
+        <h3 style="font-size:var(--text-lg);margin:0">Left Click</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm)">Pinch index finger and thumb together within the threshold distance to execute a primary click.</p>
+        <span class="project-tag" style="background:rgba(34,197,94,0.1);color:#22c55e;width:fit-content">Pinch Distance &lt; 30px</span>
+      </div>
+
+      <div class="gesture-card reveal delay-3">
+        <div class="gesture-icon-wrap" style="color:#8b5cf6;background:rgba(139,92,246,0.12)"><i class="fa-solid fa-hand-peace"></i></div>
+        <h3 style="font-size:var(--text-lg);margin:0">Right Click</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm)">Extend both Index and Middle fingers in a peace sign pose to trigger context menus.</p>
+        <span class="project-tag" style="background:rgba(139,92,246,0.1);color:#8b5cf6;width:fit-content">V-Sign Pose</span>
+      </div>
+
+      <div class="gesture-card reveal delay-4">
+        <div class="gesture-icon-wrap" style="color:#f59e0b;background:rgba(245,158,11,0.12)"><i class="fa-solid fa-arrows-up-down"></i></div>
+        <h3 style="font-size:var(--text-lg);margin:0">Smooth Scroll</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm)">Keep index and middle fingers parallel and swipe up or down to scroll documents and web pages.</p>
+        <span class="project-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b;width:fit-content">Parallel Swipe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ INTERACTIVE TESTPAD ═══════════════ -->
+<section id="testpad" aria-label="Interactive Testpad">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Interactive Experience</p>
+      <h2 class="section-title">Simulated Gesture <span class="gradient-text">Testpad</span></h2>
+      <p class="section-subtitle">Move your cursor over the pad below to preview the virtual tracking and smoothing engine live.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="demo-pad" id="demo-pad">
+        <div class="demo-virtual-cursor" id="virtual-cursor"></div>
+        <p style="color:var(--text-primary);font-weight:600;margin-bottom:var(--space-2);z-index:1;">Move Cursor in This Zone</p>
+        <p style="color:var(--text-muted);font-size:var(--text-sm);max-width:460px;z-index:1;">Click or hold mouse down to simulate gesture pinch trigger and click activation.</p>
+        <div style="margin-top:var(--space-4);display:flex;gap:var(--space-3);z-index:1;">
+          <span class="hud-tag" id="demo-coords"><i class="fa-solid fa-crosshairs"></i> X: 0 | Y: 0</span>
+          <span class="hud-tag" id="demo-state"><i class="fa-solid fa-check"></i> STATE: IDLE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ INSTALLATION / CODE ═══════════════ -->
+<section id="install" aria-label="Installation Guide">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Quick Start</p>
+      <h2 class="section-title">Up &amp; Running in <span class="gradient-text">Seconds</span></h2>
+      <p class="section-subtitle">Clone the repository, install standard Python dependencies, and launch.</p>
+    </div>
+
+    <div class="reveal" style="max-width:800px;margin:0 auto;">
+      <div class="glass-card" style="padding:var(--space-6);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4)">
+          <div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--color-cyan);font-weight:700;">
+            <i class="fa-solid fa-terminal"></i> Terminal Setup
+          </div>
+          <span class="project-tag" style="background:rgba(34,197,94,0.15);color:#22c55e">Python 3.9+</span>
+        </div>
+
+        <pre><code><span style="color:var(--text-muted)"># 1. Clone repository</span>
+git clone https://github.com/dev-hints/AirPointer.git
+cd AirPointer
+
+<span style="color:var(--text-muted)"># 2. Create and activate virtual environment</span>
+python3 -m venv venv
+source venv/bin/activate  <span style="color:var(--text-muted)"># On Windows: venv\Scripts\activate</span>
+
+<span style="color:var(--text-muted)"># 3. Install requirements</span>
+pip install opencv-python mediapipe pyautogui pynput
+
+<span style="color:var(--text-muted)"># 4. Launch AirPointer</span>
+python airpointer.py --camera 0 --smoothing 0.75</code></pre>
+
+        <div style="display:flex;gap:var(--space-4);margin-top:var(--space-6);flex-wrap:wrap;">
+          <a href="https://github.com/dev-hints/AirPointer" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1">
+            <i class="fa-brands fa-github"></i> Star on GitHub
+          </a>
+          <a href="docs.html" class="btn btn-outline" style="flex:1">
+            <span><i class="fa-solid fa-book"></i> View Full Documentation</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="../assets/images/logo.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">AirPointer — Next-generation touchless human-computer interaction powered by AI and computer vision.</p>
+        <div class="footer-social">
+          <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/strang3infinity" target="_blank" rel="noopener noreferrer" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://in.linkedin.com/in/ayush-kumar-maurya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Documentation</p>
+        <nav class="footer-links" aria-label="Documentation links">
+          <a href="docs.html#overview">Overview</a>
+          <a href="docs.html#install">Setup Guide</a>
+          <a href="docs.html#landmarks">Landmark Model</a>
+          <a href="docs.html#gestures">Gesture Mapping</a>
+          <a href="docs.html#troubleshoot">Troubleshooting</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">StrangeInfinity Suite</p>
+        <nav class="footer-links" aria-label="Projects navigation">
+          <a href="../Infinity-Browser/">Infinity Browser</a>
+          <a href="../Infinity-Writer/">Infinity Writer</a>
+          <a href="../Notes-App/">Cosmic Notes App</a>
+          <a href="../2048-Nexus/">2048 Nexus</a>
+          <a href="../Snake-Game/">Neon Snake Game</a>
+          <a href="../Gemini-CLI/">Gemini CLI Chatbot</a>
+          <a href="../CalcCosmos/">CalcCosmos Calculator</a>
+          <a href="../To-Do/">ToDo Task Manager</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://strangeinfinity.github.io/">StrangeInfinity</a>. Open-source under MIT License.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- Scripts -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & BTT
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hamburger Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Interactive Demo Pad
+    const pad = document.getElementById('demo-pad');
+    const cursor = document.getElementById('virtual-cursor');
+    const coords = document.getElementById('demo-coords');
+    const state = document.getElementById('demo-state');
+
+    if (pad && cursor) {
+      pad.addEventListener('mousemove', (e) => {
+        const rect = pad.getBoundingClientRect();
+        const x = Math.round(e.clientX - rect.left);
+        const y = Math.round(e.clientY - rect.top);
+        cursor.style.left = `${x}px`;
+        cursor.style.top = `${y}px`;
+        if (coords) coords.innerHTML = `<i class="fa-solid fa-crosshairs"></i> X: ${x} | Y: ${y}`;
+      });
+
+      pad.addEventListener('mousedown', () => {
+        cursor.classList.add('clicking');
+        if (state) {
+          state.classList.add('active');
+          state.innerHTML = `<i class="fa-solid fa-hand-pointer"></i> STATE: PINCH CLICK`;
+        }
+      });
+
+      pad.addEventListener('mouseup', () => {
+        cursor.classList.remove('clicking');
+        if (state) {
+          state.classList.remove('active');
+          state.innerHTML = `<i class="fa-solid fa-check"></i> STATE: MOVING`;
+        }
+      });
+
+      pad.addEventListener('mouseleave', () => {
+        if (state) {
+          state.classList.remove('active');
+          state.innerHTML = `<i class="fa-solid fa-check"></i> STATE: IDLE`;
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>

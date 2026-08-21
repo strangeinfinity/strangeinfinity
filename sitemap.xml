@@ -8,29 +8,25 @@
                             http://www.google.com/schemas/sitemap-image/1.1
                             http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
-  <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 1. Home / Main Showcase Hub                                        -->
-  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- 1. Home / Main Showcase Hub -->
   <url>
     <loc>https://strangeinfinity.github.io/</loc>
-    <lastmod>2026-08-17T09:15:00+00:00</lastmod>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/" />
     <image:image>
       <image:loc>https://strangeinfinity.github.io/assets/images/logo.png</image:loc>
-      <image:title>StrangeInfinity — Open-Source Software Studio Logo</image:title>
+      <image:title>StrangeInfinity — Open-Source Software Studio</image:title>
       <image:caption>Official logo and showcase portal for StrangeInfinity open-source products and tools.</image:caption>
     </image:image>
   </url>
 
-  <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 2. Infinity Browser Product Landing Page                           -->
-  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- 2. Infinity Browser -->
   <url>
     <loc>https://strangeinfinity.github.io/Infinity-Browser/</loc>
-    <lastmod>2026-08-17T09:15:00+00:00</lastmod>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Infinity-Browser/" />
@@ -41,13 +37,9 @@
       <image:caption>Local-first browser with built-in YouTube downloader, encrypted password vault, and ad blocker.</image:caption>
     </image:image>
   </url>
-
-  <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 3. Infinity Browser Official Documentation                         -->
-  <!-- ══════════════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://strangeinfinity.github.io/Infinity-Browser/docs.html</loc>
-    <lastmod>2026-08-17T09:15:00+00:00</lastmod>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Infinity-Browser/docs.html" />
@@ -59,12 +51,10 @@
     </image:image>
   </url>
 
-  <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. Infinity Writer Product Landing Page                            -->
-  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- 3. Infinity Writer -->
   <url>
     <loc>https://strangeinfinity.github.io/Infinity-Writer/</loc>
-    <lastmod>2026-08-17T09:15:00+00:00</lastmod>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Infinity-Writer/" />
@@ -75,13 +65,9 @@
       <image:caption>Distraction-free writer producing clean, semantic HTML with native dark mode support.</image:caption>
     </image:image>
   </url>
-
-  <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 5. Infinity Writer Official Documentation                          -->
-  <!-- ══════════════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://strangeinfinity.github.io/Infinity-Writer/docs.html</loc>
-    <lastmod>2026-08-17T09:15:00+00:00</lastmod>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Infinity-Writer/docs.html" />
@@ -90,6 +76,202 @@
       <image:loc>https://strangeinfinity.github.io/Infinity-Writer/icons/infinity-writer.png</image:loc>
       <image:title>Infinity Writer Technical Documentation &amp; Architecture</image:title>
       <image:caption>Official user manual, semantic standards, keyboard shortcuts, and export templates guide.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 4. AirPointer Virtual Mouse -->
+  <url>
+    <loc>https://strangeinfinity.github.io/AirPointer/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/AirPointer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/AirPointer/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/AirPointer/icons/airpointer.png</image:loc>
+      <image:title>AirPointer Virtual Mouse — Touchless AI Hand Tracking</image:title>
+      <image:caption>Real-time touchless AI virtual mouse system powered by OpenCV and MediaPipe.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/AirPointer/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/AirPointer/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/AirPointer/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/AirPointer/icons/airpointer.png</image:loc>
+      <image:title>AirPointer Technical Documentation &amp; Calibration</image:title>
+      <image:caption>21 MediaPipe hand landmarks, smoothing algorithms, and gesture state machine.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 5. Cosmic Notes App -->
+  <url>
+    <loc>https://strangeinfinity.github.io/Notes-App/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Notes-App/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/Notes-App/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/Notes-App/icons/notes-app.png</image:loc>
+      <image:title>Cosmic Notes App — Deep-Space Glassmorphism Workspace</image:title>
+      <image:caption>Markdown notes app with local storage vault and deep-space aesthetic.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/Notes-App/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Notes-App/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/Notes-App/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/Notes-App/icons/notes-app.png</image:loc>
+      <image:title>Cosmic Notes Documentation &amp; Architecture</image:title>
+      <image:caption>Local-first state model, Markdown parser specs, and keyboard shortcuts.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 6. 2048 Nexus -->
+  <url>
+    <loc>https://strangeinfinity.github.io/2048-Nexus/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/2048-Nexus/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/2048-Nexus/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png</image:loc>
+      <image:title>2048 Nexus — Cyberpunk Arcade &amp; AI Solver</image:title>
+      <image:caption>Python PyQt6 and web puzzle game featuring Expectimax AI auto-solver.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/2048-Nexus/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/2048-Nexus/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/2048-Nexus/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png</image:loc>
+      <image:title>2048 Nexus Documentation &amp; AI Algorithms</image:title>
+      <image:caption>Expectimax heuristic tree depth math and PyQt6 architecture guide.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 7. Neon Snake Game -->
+  <url>
+    <loc>https://strangeinfinity.github.io/Snake-Game/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Snake-Game/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/Snake-Game/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/Snake-Game/icons/snake-game.png</image:loc>
+      <image:title>Neon Snake Game — Cyberpunk HTML5 Canvas Arcade</image:title>
+      <image:caption>Responsive neon arcade snake game with Web Audio API synthesizer.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/Snake-Game/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Snake-Game/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/Snake-Game/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/Snake-Game/icons/snake-game.png</image:loc>
+      <image:title>Neon Snake Game Technical Documentation</image:title>
+      <image:caption>Fixed timestep game loop and procedural sound wave generator reference.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 8. Gemini CLI Chatbot -->
+  <url>
+    <loc>https://strangeinfinity.github.io/Gemini-CLI/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Gemini-CLI/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/Gemini-CLI/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/Gemini-CLI/icons/gemini-cli.png</image:loc>
+      <image:title>Gemini CLI Chatbot — Pure Bash AI Streaming Assistant</image:title>
+      <image:caption>100% Pure Bash AI terminal companion with SSE streaming and Unix pipes.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/Gemini-CLI/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/Gemini-CLI/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/Gemini-CLI/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/Gemini-CLI/icons/gemini-cli.png</image:loc>
+      <image:title>Gemini CLI Documentation &amp; Architecture</image:title>
+      <image:caption>Bash SSE stream parser, API key configuration, and stdin pipeline automation.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 9. CalcCosmos Calculator -->
+  <url>
+    <loc>https://strangeinfinity.github.io/CalcCosmos/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/CalcCosmos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/CalcCosmos/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/CalcCosmos/icons/calccosmos.png</image:loc>
+      <image:title>CalcCosmos Calculator — High-Precision Scientific Math</image:title>
+      <image:caption>Scientific calculator with arbitrary precision and calculation history.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/CalcCosmos/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/CalcCosmos/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/CalcCosmos/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/CalcCosmos/icons/calccosmos.png</image:loc>
+      <image:title>CalcCosmos Technical Documentation</image:title>
+      <image:caption>Shunting-yard AST parser and trigonometric evaluation specifications.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 10. ToDo Task Manager -->
+  <url>
+    <loc>https://strangeinfinity.github.io/To-Do/</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/To-Do/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/To-Do/" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/To-Do/icons/to-do.png</image:loc>
+      <image:title>ToDo Task Manager — Cosmic Productivity &amp; Pomodoro</image:title>
+      <image:caption>Personal task manager with category priority tags and Pomodoro timer.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://strangeinfinity.github.io/To-Do/docs.html</loc>
+    <lastmod>2026-08-21T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://strangeinfinity.github.io/To-Do/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://strangeinfinity.github.io/To-Do/docs.html" />
+    <image:image>
+      <image:loc>https://strangeinfinity.github.io/To-Do/icons/to-do.png</image:loc>
+      <image:title>ToDo Task Manager Technical Documentation</image:title>
+      <image:caption>Data model JSON schema, Pomodoro interval timing, and backup guides.</image:caption>
     </image:image>
   </url>
 

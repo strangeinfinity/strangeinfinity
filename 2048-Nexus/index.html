@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/2048-nexus.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/2048-nexus.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/2048-nexus.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 Nexus — Cyberpunk Arcade, Multiple Grid Modes &amp; AI Solver</title>
+  <meta name="title" content="2048 Nexus — Cyberpunk Arcade, Multiple Grid Modes &amp; AI Solver" />
+  <meta name="description" content="2048 Nexus by StrangeInfinity — A next-gen 2048 game with Python &amp; PyQt6 desktop app and playable web edition, multiple grid modes, neon themes, and Expectimax AI solver." />
+  <meta name="keywords" content="2048 Nexus, 2048 game, AI solver 2048, PyQt6 2048, neon 2048, expectimax algorithm, StrangeInfinity" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://strangeinfinity.github.io/2048-Nexus/" />
+  <meta name="theme-color" content="#10b981" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://strangeinfinity.github.io/2048-Nexus/" />
+  <meta property="og:site_name" content="2048 Nexus" />
+  <meta property="og:title" content="2048 Nexus — Cyberpunk Arcade &amp; AI Solver" />
+  <meta property="og:description" content="Play the next-generation 2048 game featuring neon cyber visuals, multiple grid sizes (3x3 to 8x8), undo moves, and built-in Expectimax AI auto-play." />
+  <meta property="og:image" content="https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="2048 Nexus — Cyberpunk Arcade &amp; AI Solver" />
+  <meta name="twitter:description" content="Play the next-generation 2048 game featuring neon cyber visuals, multiple grid sizes (3x3 to 8x8), undo moves, and built-in Expectimax AI auto-play." />
+  <meta name="twitter:image" content="https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png" />
+
+  <!-- JSON-LD SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "2048 Nexus",
+    "operatingSystem": "Windows, Linux, Web Browsers",
+    "applicationCategory": "GameApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "Production-grade 2048 game with multiple grid modes, Expectimax AI auto-solver, and neon aesthetics.",
+    "softwareVersion": "2.0.0",
+    "author": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "url": "https://strangeinfinity.github.io/"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- 2048 Nexus Custom Game Styles -->
+  <style>
+    .nexus-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: #10b981;
+      margin-bottom: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .game-window {
+      background: var(--bg-card);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
+      overflow: hidden;
+    }
+    .game-board-container {
+      background: #090e17;
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .game-hud {
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hud-stat-box {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-4);
+      text-align: center;
+    }
+    .hud-stat-label {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .hud-stat-val {
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: #10b981;
+      font-family: var(--font-mono);
+    }
+    .grid-2048 {
+      width: 300px;
+      height: 300px;
+      background: #111827;
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-lg);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 8px;
+      padding: 8px;
+      position: relative;
+    }
+    .tile {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #ffffff;
+      transition: all 0.15s ease-in-out;
+      user-select: none;
+    }
+    .tile-2    { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.4); }
+    .tile-4    { background: rgba(6, 182, 212, 0.25); color: #67e8f9; border: 1px solid rgba(6, 182, 212, 0.5); }
+    .tile-8    { background: rgba(16, 185, 129, 0.3); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.6); box-shadow: 0 0 8px rgba(16, 185, 129, 0.3); }
+    .tile-16   { background: rgba(245, 158, 11, 0.35); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.7); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
+    .tile-32   { background: rgba(239, 68, 68, 0.4); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.8); box-shadow: 0 0 12px rgba(239, 68, 68, 0.5); }
+    .tile-64   { background: rgba(236, 72, 153, 0.45); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.9); box-shadow: 0 0 14px rgba(236, 72, 153, 0.6); }
+    .tile-128  { background: rgba(168, 85, 247, 0.5); color: #e9d5ff; border: 1px solid #a855f7; font-size: 1.1rem; box-shadow: 0 0 16px #a855f7; }
+    .tile-256  { background: rgba(234, 179, 8, 0.6); color: #fef08a; border: 1px solid #eab308; font-size: 1.1rem; box-shadow: 0 0 18px #eab308; }
+    .tile-512  { background: rgba(14, 165, 233, 0.7); color: #e0f2fe; border: 1px solid #0ea5e9; font-size: 1.1rem; box-shadow: 0 0 20px #0ea5e9; }
+    .tile-1024 { background: rgba(34, 197, 94, 0.8); color: #ffffff; border: 1px solid #22c55e; font-size: 0.95rem; box-shadow: 0 0 22px #22c55e; }
+    .tile-2048 { background: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6); color: #ffffff; border: 2px solid #ffffff; font-size: 0.95rem; box-shadow: 0 0 30px rgba(236, 72, 153, 0.9); animation: pulseGlow 1.5s infinite; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="../assets/images/logo.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#hero" class="nav-link active">Game</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#modes" class="nav-link">Game Modes</a></li>
+        <li><a href="#desktop" class="nav-link">PyQt6 Desktop</a></li>
+        <li><a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> Repository</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#hero" class="nav-link"><i class="fa-solid fa-gamepad"></i> Play 2048</a>
+    <a href="#features" class="nav-link"><i class="fa-solid fa-star"></i> Features</a>
+    <a href="#modes" class="nav-link"><i class="fa-solid fa-shapes"></i> Game Modes</a>
+    <a href="#desktop" class="nav-link"><i class="fa-solid fa-desktop"></i> Desktop App</a>
+    <a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a>
+    <a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ HERO / LIVE GAME ═══════════════ -->
+<section id="hero" aria-label="Hero" style="padding-top:calc(var(--nav-height) + var(--space-8));padding-bottom:var(--space-16);">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="writer-showcase-grid">
+      <div class="reveal-left">
+        <div class="nexus-hero-badge">
+          <span style="width:8px;height:8px;background:#10b981;border-radius:50%;box-shadow:0 0 8px #10b981"></span>
+          Python · PyQt6 · Expectimax AI · Cyberpunk Synthwave Edition
+        </div>
+        <h1 class="hero-title" style="font-size:clamp(var(--text-3xl), 5vw, 4.2rem);margin-bottom:var(--space-4);">
+          2048 Nexus<br />
+          <span class="gradient-text" style="background:linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Evolutionary Arcade</span>
+        </h1>
+        <p class="hero-description" style="max-width:560px;margin-bottom:var(--space-8);">
+          Experience the iconic number merge puzzle re-imagined with high-octane cyberpunk neon aesthetics, multi-grid dimensions (3x3 to 8x8), undo move mechanics, and automated AI solvers.
+        </p>
+        <div class="hero-cta" style="gap:var(--space-4);margin-bottom:var(--space-10);">
+          <a href="#game-board" class="btn btn-primary" style="background:linear-gradient(135deg, #10b981, #0891b2);">
+            <i class="fa-solid fa-gamepad"></i> Play Below
+          </a>
+          <a href="docs.html" class="btn btn-outline">
+            <span><i class="fa-solid fa-book"></i> Read Documentation</span>
+          </a>
+        </div>
+        <div class="hero-stats" style="margin-top:0;padding-top:var(--space-6);">
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:#10b981"><i class="fa-solid fa-brain"></i> AI Solver</span>
+            <span class="hero-stat-label">Expectimax Engine</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:var(--color-cyan)"><i class="fa-solid fa-border-all"></i> 6 Grids</span>
+            <span class="hero-stat-label">3x3 up to 8x8</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" style="color:var(--color-primary-light)"><i class="fa-solid fa-rotate-left"></i> Undo</span>
+            <span class="hero-stat-label">Unlimited Steps</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playable / Interactive 2048 Game Board -->
+      <div class="reveal-right" id="game-board">
+        <div class="game-window">
+          <div class="window-header-bar">
+            <div class="window-dots">
+              <div class="window-dot dot-red"></div>
+              <div class="window-dot dot-yellow"></div>
+              <div class="window-dot dot-green"></div>
+            </div>
+            <div class="address-bar-mock">
+              <i class="fa-solid fa-gamepad" style="color:#10b981;font-size:0.85em;"></i>
+              <span>2048-nexus.py — PyQt6 Arcade Engine</span>
+            </div>
+          </div>
+
+          <div class="game-board-container">
+            <div class="game-hud">
+              <div class="hud-stat-box">
+                <div class="hud-stat-label">Score</div>
+                <div class="hud-stat-val" id="score-val">2048</div>
+              </div>
+              <div class="hud-stat-box">
+                <div class="hud-stat-label">Best</div>
+                <div class="hud-stat-val">16384</div>
+              </div>
+              <button class="btn btn-outline btn-sm" id="btn-restart-game"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+            </div>
+
+            <!-- 4x4 Interactive Grid -->
+            <div class="grid-2048" id="grid-2048" tabindex="0" aria-label="2048 Game Grid">
+              <div class="tile tile-2">2</div>
+              <div class="tile tile-4">4</div>
+              <div class="tile tile-8">8</div>
+              <div class="tile tile-16">16</div>
+              
+              <div class="tile tile-32">32</div>
+              <div class="tile tile-64">64</div>
+              <div class="tile tile-128">128</div>
+              <div class="tile tile-256">256</div>
+              
+              <div class="tile tile-512">512</div>
+              <div class="tile tile-1024">1024</div>
+              <div class="tile tile-2048">2048</div>
+              <div class="tile tile-4">4</div>
+              
+              <div class="tile"></div>
+              <div class="tile tile-2">2</div>
+              <div class="tile"></div>
+              <div class="tile tile-8">8</div>
+            </div>
+
+            <!-- Controls Helper -->
+            <div style="display:flex;gap:var(--space-2);font-family:var(--font-mono);font-size:11px;color:var(--text-muted);align-items:center;">
+              <span>Controls:</span>
+              <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd>
+              <span>or</span>
+              <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ KEY FEATURES ═══════════════ -->
+<section id="features" aria-label="Key Features">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Arcade Engineering</p>
+      <h2 class="section-title">Beyond the <span class="gradient-text">Classic Grid</span></h2>
+      <p class="section-subtitle">Packed with features designed for both casual high-score chasers and algorithmic enthusiasts.</p>
+    </div>
+
+    <div class="projects-grid" style="grid-template-columns:repeat(auto-fill, minmax(320px, 1fr))">
+      <div class="product-card reveal delay-1">
+        <div class="product-icon-wrap" style="color:#10b981"><i class="fa-solid fa-brain"></i></div>
+        <h3 class="product-title">Expectimax AI Solver</h3>
+        <p class="product-desc">Watch the computer automatically play with dynamic heuristics (monotonicity, smoothness, corner lock) reaching 4096+ effortlessly.</p>
+      </div>
+
+      <div class="product-card reveal delay-2">
+        <div class="product-icon-wrap" style="color:var(--color-cyan)"><i class="fa-solid fa-shapes"></i></div>
+        <h3 class="product-title">Multi-Dimension Grids</h3>
+        <p class="product-desc">Challenge yourself on 3x3 Micro, 4x4 Classic, 5x5 Expanded, 6x6 Giant, or 8x8 Cosmic boards with custom target tile goals.</p>
+      </div>
+
+      <div class="product-card reveal delay-3">
+        <div class="product-icon-wrap" style="color:#a855f7"><i class="fa-solid fa-rotate-left"></i></div>
+        <h3 class="product-title">Full Undo Move Tree</h3>
+        <p class="product-desc">Miscalculated a move? Step backward through your game state history with full stack restoration.</p>
+      </div>
+
+      <div class="product-card reveal delay-4">
+        <div class="product-icon-wrap" style="color:#f59e0b"><i class="fa-solid fa-music"></i></div>
+        <h3 class="product-title">Synthwave Audio &amp; FX</h3>
+        <p class="product-desc">Punchy electronic sound effects on tile merges, combos, game over, and victory states.</p>
+      </div>
+
+      <div class="product-card reveal delay-5">
+        <div class="product-icon-wrap" style="color:#ef4444"><i class="fa-solid fa-trophy"></i></div>
+        <h3 class="product-title">Local &amp; Mode Leaderboards</h3>
+        <p class="product-desc">Tracks high scores, max tile reached, total moves, and average game completion time per grid mode.</p>
+      </div>
+
+      <div class="product-card reveal delay-6">
+        <div class="product-icon-wrap" style="color:#ec4899"><i class="fa-solid fa-desktop"></i></div>
+        <h3 class="product-title">PyQt6 Native Desktop App</h3>
+        <p class="product-desc">Smooth hardware-accelerated animations, zero browser lag, and standalone single-executable desktop binaries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DESKTOP SETUP ═══════════════ -->
+<section id="desktop" aria-label="Desktop App Setup">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Standalone Desktop App</p>
+      <h2 class="section-title">Run with <span class="gradient-text">Python &amp; PyQt6</span></h2>
+      <p class="section-subtitle">Experience maximum framerates and zero input lag with the native desktop build.</p>
+    </div>
+
+    <div class="reveal" style="max-width:800px;margin:0 auto;">
+      <div class="glass-card" style="padding:var(--space-6);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4)">
+          <span style="font-family:var(--font-mono);font-size:var(--text-sm);color:#10b981;font-weight:700;">
+            <i class="fa-brands fa-python"></i> Python PyQt6 Launch
+          </span>
+          <span class="project-tag" style="background:rgba(16,185,129,0.15);color:#10b981">PyQt6 &amp; Pygame Audio</span>
+        </div>
+
+        <pre><code><span style="color:var(--text-muted)"># Clone the repository</span>
+git clone https://github.com/dev-hints/2048-Nexus.git
+cd 2048-Nexus
+
+<span style="color:var(--text-muted)"># Install desktop GUI & audio dependencies</span>
+pip install PyQt6 pygame
+
+<span style="color:var(--text-muted)"># Launch 2048 Nexus Desktop</span>
+python main.py --mode 4x4 --ai-enabled</code></pre>
+
+        <div style="display:flex;gap:var(--space-4);margin-top:var(--space-6);flex-wrap:wrap;">
+          <a href="https://github.com/dev-hints/2048-Nexus" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1">
+            <i class="fa-brands fa-github"></i> Star on GitHub
+          </a>
+          <a href="docs.html" class="btn btn-outline" style="flex:1">
+            <span><i class="fa-solid fa-book"></i> Read Documentation</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="../assets/images/logo.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">2048 Nexus — Re-engineering retro puzzle classics with modern AI and cyber optics.</p>
+        <div class="footer-social">
+          <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/strang3infinity" target="_blank" rel="noopener noreferrer" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://in.linkedin.com/in/ayush-kumar-maurya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Documentation</p>
+        <nav class="footer-links" aria-label="Documentation links">
+          <a href="docs.html#overview">Overview</a>
+          <a href="docs.html#mechanics">Mechanics &amp; Math</a>
+          <a href="docs.html#expectimax">Expectimax AI</a>
+          <a href="docs.html#shortcuts">Controls</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">StrangeInfinity Suite</p>
+        <nav class="footer-links" aria-label="Projects navigation">
+          <a href="../AirPointer/">AirPointer Virtual Mouse</a>
+          <a href="../Notes-App/">Cosmic Notes App</a>
+          <a href="../Infinity-Browser/">Infinity Browser</a>
+          <a href="../Infinity-Writer/">Infinity Writer</a>
+          <a href="../Snake-Game/">Neon Snake Game</a>
+          <a href="../Gemini-CLI/">Gemini CLI Chatbot</a>
+          <a href="../CalcCosmos/">CalcCosmos Calculator</a>
+          <a href="../To-Do/">ToDo Task Manager</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://strangeinfinity.github.io/">StrangeInfinity</a>. Open-source under MIT License.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- Scripts -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & BTT
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hamburger Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Simple Interactive 2048 Demo Grid Shuffle/Reset
+    const btnRestart = document.getElementById('btn-restart-game');
+    const scoreVal = document.getElementById('score-val');
+    if (btnRestart && scoreVal) {
+      btnRestart.addEventListener('click', () => {
+        scoreVal.innerText = '0';
+        const grid = document.getElementById('grid-2048');
+        if (grid) {
+          grid.innerHTML = `
+            <div class="tile tile-2">2</div>
+            <div class="tile"></div>
+            <div class="tile tile-2">2</div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+          `;
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
