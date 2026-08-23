@@ -100,9 +100,10 @@ const SI_CONFIG = {
         'Custom CSS & JS script injection',
       ],
       links: {
-        github: 'https://github.com/dev-hints/infinity-browser',
-        demo:   'https://strangeinfinity.github.io/Infinity-Browser/',
-        docs:   'https://strangeinfinity.github.io/Infinity-Browser/docs.html',
+        github:   'https://github.com/dev-hints/infinity-browser',
+        download: 'https://strangeinfinity.github.io/Infinity-Browser/#download',
+        demo:     'https://strangeinfinity.github.io/Infinity-Browser/',
+        docs:     'https://strangeinfinity.github.io/Infinity-Browser/docs.html',
       },
       tags: ['Python', 'PyQt6', 'QtWebEngine', 'Desktop'],
     },
@@ -146,9 +147,10 @@ const SI_CONFIG = {
         'Smooth tile merge animations',
       ],
       links: {
-        github: 'https://github.com/dev-hints/2048-Nexus',
-        demo:   'https://strangeinfinity.github.io/2048-Nexus/',
-        docs:   'https://strangeinfinity.github.io/2048-Nexus/docs.html',
+        github:   'https://github.com/dev-hints/2048-Nexus',
+        download: 'https://strangeinfinity.github.io/2048-Nexus/#download',
+        demo:     'https://strangeinfinity.github.io/2048-Nexus/',
+        docs:     'https://strangeinfinity.github.io/2048-Nexus/docs.html',
       },
       tags: ['Python', 'PyQt6', 'Desktop', 'Game'],
     },
@@ -269,14 +271,15 @@ const SI_CONFIG = {
       demo:   'https://strangeinfinity.github.io/AirPointer/',
     },
     {
-      id:     'infinity-browser',
-      title:  'Infinity Browser',
-      icon:   '<i class="fa-solid fa-globe" style="color:var(--color-purple)"></i>',
-      status: 'active',
-      desc:   'Fast, privacy-first desktop web browser built with Python and PyQt6 featuring ad blocking, password vault, and downloads.',
-      tags:   ['Python', 'PyQt6', 'Desktop', 'Privacy'],
-      github: 'https://github.com/dev-hints/infinity-browser',
-      demo:   'https://strangeinfinity.github.io/Infinity-Browser/',
+      id:       'infinity-browser',
+      title:    'Infinity Browser',
+      icon:     '<i class="fa-solid fa-globe" style="color:var(--color-purple)"></i>',
+      status:   'active',
+      desc:     'Fast, privacy-first desktop web browser built with Python and PyQt6 featuring ad blocking, password vault, and downloads.',
+      tags:     ['Python', 'PyQt6', 'Desktop', 'Privacy'],
+      github:   'https://github.com/dev-hints/infinity-browser',
+      download: 'https://strangeinfinity.github.io/Infinity-Browser/#download',
+      demo:     'https://strangeinfinity.github.io/Infinity-Browser/',
     },
     {
       id:     'notes-app',
@@ -289,14 +292,15 @@ const SI_CONFIG = {
       demo:   'https://strangeinfinity.github.io/Notes-App/',
     },
     {
-      id:     '2048-nexus',
-      title:  '2048 Nexus',
-      icon:   '<i class="fa-solid fa-gamepad" style="color:var(--color-emerald)"></i>',
-      status: 'active',
-      desc:   'Production-grade 2048 desktop game for Windows (.exe) & Linux (.deb, .rpm) featuring AI play, multiple grid sizes, and neon UI.',
-      tags:   ['Python', 'PyQt6', 'Desktop', 'Game'],
-      github: 'https://github.com/dev-hints/2048-Nexus',
-      demo:   'https://strangeinfinity.github.io/2048-Nexus/',
+      id:       '2048-nexus',
+      title:    '2048 Nexus',
+      icon:     '<i class="fa-solid fa-gamepad" style="color:var(--color-emerald)"></i>',
+      status:   'active',
+      desc:     'Production-grade 2048 desktop game for Windows (.exe) & Linux (.deb, .rpm) featuring AI play, multiple grid sizes, and neon UI.',
+      tags:     ['Python', 'PyQt6', 'Desktop', 'Game'],
+      github:   'https://github.com/dev-hints/2048-Nexus',
+      download: 'https://strangeinfinity.github.io/2048-Nexus/#download',
+      demo:     'https://strangeinfinity.github.io/2048-Nexus/',
     },
     {
       id:     'snake-game',
@@ -463,10 +467,13 @@ const ProjectRenderer = (() => {
           ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
                class="btn btn-ghost btn-sm" aria-label="View ${p.title} on GitHub">
                <i class="fa-brands fa-github"></i> GitHub</a>` : ''}
+          ${p.download ? `<a href="${p.download}" target="_blank" rel="noopener noreferrer"
+               class="btn btn-primary btn-sm" aria-label="Download ${p.title}">
+               <i class="fa-solid fa-download"></i> Download</a>` : ''}
           ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary btn-sm" aria-label="View ${p.title} live demo">
-               <i class="fa-solid fa-rocket"></i> Demo</a>` : ''}
-          ${!p.github && !p.demo ? `<span class="btn btn-ghost btn-sm" style="opacity:0.5;cursor:default;">Coming Soon</span>` : ''}
+               class="btn ${p.download ? 'btn-outline' : 'btn-primary'} btn-sm" aria-label="View ${p.title} live demo">
+               ${p.download ? '<span><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</span>' : '<i class="fa-solid fa-rocket"></i> Demo'}</a>` : ''}
+          ${!p.github && !p.demo && !p.download ? `<span class="btn btn-ghost btn-sm" style="opacity:0.5;cursor:default;">Coming Soon</span>` : ''}
         </div>
       </article>
     `).join('');
@@ -528,10 +535,13 @@ const ProjectRenderer = (() => {
           ${p.links.github ? `<a href="${p.links.github}" target="_blank" rel="noopener noreferrer"
                class="btn btn-outline" aria-label="View ${p.name} on GitHub">
                <span><i class="fa-brands fa-github"></i> GitHub</span></a>` : ''}
+          ${p.links.download ? `<a href="${p.links.download}" target="_blank" rel="noopener noreferrer"
+               class="btn btn-primary" aria-label="Download ${p.name}">
+               <i class="fa-solid fa-download"></i> Download</a>` : ''}
           ${p.links.demo ? `<a href="${p.links.demo}" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary" aria-label="${p.name} live demo">
-               <i class="fa-solid fa-rocket"></i> Demo</a>` : ''}
-          ${!p.links.github && !p.links.demo && !p.links.docs ? `<span class="btn btn-ghost" style="opacity:0.5;cursor:default">In Development</span>` : ''}
+               class="btn ${p.links.download ? 'btn-outline' : 'btn-primary'}" aria-label="${p.name} live demo">
+               ${p.links.download ? '<span><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</span>' : '<i class="fa-solid fa-rocket"></i> Demo'}</a>` : ''}
+          ${!p.links.github && !p.links.demo && !p.links.docs && !p.links.download ? `<span class="btn btn-ghost" style="opacity:0.5;cursor:default">In Development</span>` : ''}
         </div>
       </article>
     `).join('');
