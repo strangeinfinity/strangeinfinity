@@ -22,10 +22,10 @@
   <!-- Primary Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2048 Nexus Documentation — Game Mechanics, Expectimax AI &amp; PyQt6</title>
-  <meta name="title" content="2048 Nexus Documentation — Game Mechanics, Expectimax AI &amp; PyQt6" />
-  <meta name="description" content="Technical documentation for 2048 Nexus. Explore the Expectimax heuristic solver, tile probability matrix, and desktop PyQt6 architecture." />
-  <meta name="keywords" content="2048 Nexus docs, expectimax algorithm, heuristic scoring, PyQt6 game architecture, tile spawn matrix" />
+  <title>2048 Nexus Documentation — Installation, Pre-built Packages, Mechanics &amp; AI Solver</title>
+  <meta name="title" content="2048 Nexus Documentation — Installation, Pre-built Packages, Mechanics &amp; AI Solver" />
+  <meta name="description" content="Official technical documentation for 2048 Nexus. Installation guide for Windows (.exe), Debian/Ubuntu (.deb), and Fedora/RHEL (.rpm), Expectimax heuristic solver, tile probability matrix, and desktop PyQt6 architecture." />
+  <meta name="keywords" content="2048 Nexus docs, download 2048 nexus, 2048 rpm install, 2048 debian install, 2048 windows exe, expectimax algorithm, heuristic scoring, PyQt6 game architecture, tile spawn matrix" />
   <meta name="author" content="StrangeInfinity" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://strangeinfinity.github.io/2048-Nexus/docs.html" />
@@ -35,15 +35,15 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://strangeinfinity.github.io/2048-Nexus/docs.html" />
   <meta property="og:site_name" content="2048 Nexus Docs" />
-  <meta property="og:title" content="2048 Nexus Documentation — Mechanics &amp; AI Solver" />
-  <meta property="og:description" content="Complete architecture, Expectimax AI search depth formulas, and controls for 2048 Nexus." />
+  <meta property="og:title" content="2048 Nexus Documentation — Installation, Mechanics &amp; AI Solver" />
+  <meta property="og:description" content="Complete installation guide for Windows (.exe), Debian (.deb), Fedora/RHEL (.rpm), Expectimax AI search depth formulas, and PyQt6 controls for 2048 Nexus." />
   <meta property="og:image" content="https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@strang3infinity" />
-  <meta name="twitter:title" content="2048 Nexus Documentation — Mechanics &amp; AI Solver" />
-  <meta name="twitter:description" content="Complete architecture, Expectimax AI search depth formulas, and controls for 2048 Nexus." />
+  <meta name="twitter:title" content="2048 Nexus Documentation — Installation, Mechanics &amp; AI Solver" />
+  <meta name="twitter:description" content="Complete installation guide for Windows (.exe), Debian (.deb), Fedora/RHEL (.rpm), Expectimax AI search depth formulas, and PyQt6 controls for 2048 Nexus." />
   <meta name="twitter:image" content="https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png" />
 
   <!-- JSON-LD TechArticle Schema -->
@@ -51,10 +51,16 @@
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "2048 Nexus Documentation — Architecture & Expectimax AI Solver",
-    "description": "Complete documentation covering tile spawn probability formulas, Expectimax AI heuristic algorithm, and PyQt6 desktop packaging.",
+    "headline": "2048 Nexus Documentation — Installation, Architecture & Expectimax AI Solver",
+    "description": "Complete documentation covering pre-built binary installers (Windows .exe, Debian .deb, Fedora/RHEL .rpm), tile spawn probability formulas, Expectimax AI heuristic algorithm, and PyQt6 desktop packaging.",
     "url": "https://strangeinfinity.github.io/2048-Nexus/docs.html",
     "image": "https://strangeinfinity.github.io/2048-Nexus/icons/2048-nexus.png",
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "2048 Nexus",
+      "operatingSystem": "Windows 10, Windows 11, Linux (Debian, Ubuntu, Fedora, RHEL, CentOS)",
+      "downloadUrl": "https://github.com/dev-hints/2048-Nexus/releases/tag/1.0.0"
+    },
     "author": {
       "@type": "Organization",
       "name": "StrangeInfinity",
@@ -69,7 +75,7 @@
       }
     },
     "datePublished": "2026-08-21T00:00:00+00:00",
-    "dateModified": "2026-08-21T18:00:00+00:00"
+    "dateModified": "2026-08-23T14:00:00+00:00"
   }
   </script>
 
@@ -204,6 +210,38 @@
       padding: 2px 6px;
       border-radius: var(--radius-sm);
     }
+    /* Download Cards & Distro Badges */
+    .download-card {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-normal);
+      position: relative;
+    }
+    .download-card:hover {
+      border-color: rgba(16, 185, 129, 0.4);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card), 0 0 20px rgba(16, 185, 129, 0.12);
+    }
+    .distro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.2em 0.75em;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-debian { background: rgba(227, 79, 38, 0.15); color: #e34f26; border: 1px solid rgba(227, 79, 38, 0.3); }
+    .badge-rpm { background: rgba(6, 182, 212, 0.15); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-win { background: rgba(99, 102, 241, 0.15); color: var(--color-primary-light); border: 1px solid rgba(99, 102, 241, 0.3); }
   </style>
 </head>
 <body>
@@ -255,7 +293,7 @@
       <div class="docs-toc-title"><i class="fa-solid fa-list"></i> Table of Contents</div>
       <nav class="docs-toc-links" aria-label="Documentation sections">
         <a href="#overview" class="docs-toc-link active"><i class="fa-solid fa-circle-info"></i> Overview</a>
-        <a href="#installation" class="docs-toc-link"><i class="fa-solid fa-download"></i> Installation &amp; Launch</a>
+        <a href="#installation" class="docs-toc-link"><i class="fa-solid fa-download"></i> Installation &amp; Packages</a>
         <a href="#mechanics" class="docs-toc-link"><i class="fa-solid fa-calculator"></i> Tile Probability &amp; Math</a>
         <a href="#expectimax" class="docs-toc-link"><i class="fa-solid fa-brain"></i> Expectimax Heuristic AI</a>
         <a href="#architecture" class="docs-toc-link"><i class="fa-solid fa-sitemap"></i> PyQt6 Architecture</a>
@@ -271,39 +309,164 @@
         <h1 style="font-size:clamp(var(--text-2xl), 4vw, 2.5rem);font-weight:800;color:var(--text-primary);margin-bottom:var(--space-3);">
           2048 Nexus <span class="gradient-text">Documentation</span>
         </h1>
-        <p style="color:var(--text-secondary);margin:0;font-size:var(--text-sm);">Complete documentation covering tile spawn probability formulas, Expectimax AI heuristic algorithm, and PyQt6 desktop packaging.</p>
+        <p style="color:var(--text-secondary);margin:0;font-size:var(--text-sm);">Complete documentation covering pre-built binary installers (Windows .exe, Debian .deb, Fedora/RHEL .rpm), tile spawn probability formulas, Expectimax AI heuristic algorithm, and PyQt6 desktop packaging.</p>
       </div>
 
       <!-- 1. OVERVIEW -->
       <section id="overview" class="doc-section">
         <h2><i class="fa-solid fa-gamepad" style="color:#10b981"></i> 2048 Nexus Technical Overview</h2>
         <p>
-          <strong>2048 Nexus</strong> is an open-source, hardware-accelerated puzzle game implementation engineered in Python using PyQt6 and Qt Graphics View. It supports custom grid geometry from 3x3 to 8x8, unlimited move undo history, real-time expectimax AI calculation, and responsive web canvas compatibility.
+          <strong>2048 Nexus</strong> is an open-source, hardware-accelerated desktop puzzle game implementation engineered in Python using PyQt6 and Qt Graphics View. It supports custom grid geometry from 3x3 to 8x8, unlimited move undo history, real-time expectimax AI calculation, and standalone installer packaging.
         </p>
 
         <div class="doc-grid">
-          <div class="doc-tile"><b>GUI Framework</b><span>PyQt6 / QGraphicsView / CSS3 Web</span></div>
+          <div class="doc-tile"><b>GUI Framework</b><span>PyQt6 / QGraphicsView / Native Qt GUI</span></div>
           <div class="doc-tile"><b>AI Solver</b><span>Expectimax Search Tree (Depth 4-6)</span></div>
-          <div class="doc-tile"><b>Audio System</b><span>Pygame Sound Mixer / Web Audio API</span></div>
+          <div class="doc-tile"><b>Audio System</b><span>Pygame Sound Mixer Subsystem</span></div>
           <div class="doc-tile"><b>Leaderboard</b><span>Local SQLite / JSON encrypted high scores</span></div>
         </div>
       </section>
 
-      <!-- 2. INSTALLATION -->
+      <!-- 2. INSTALLATION & PACKAGES -->
       <section id="installation" class="doc-section">
-        <h2><i class="fa-solid fa-download" style="color:var(--color-primary-light)"></i> Installation &amp; Launch</h2>
+        <h2><i class="fa-solid fa-download" style="color:var(--color-primary-light)"></i> Installation &amp; Pre-built Packages</h2>
+        <p>
+          2048 Nexus is distributed both as standalone pre-built executable binaries for major operating systems and as an open-source Python application. Choose your preferred installation method below:
+        </p>
+
+        <!-- Pre-built Binary Packages Grid -->
+        <h3 style="font-size:var(--text-lg);color:var(--text-primary);margin-bottom:var(--space-4);display:flex;align-items:center;gap:var(--space-2);">
+          <i class="fa-solid fa-box-archive" style="color:#10b981;"></i> Pre-built Binary Installers (Recommended)
+        </h3>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:var(--space-4);margin-bottom:var(--space-6);">
+          <!-- Windows -->
+          <div class="download-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span class="distro-badge badge-win"><i class="fa-brands fa-windows"></i> Windows</span>
+              <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)">v1.0.0</span>
+            </div>
+            <b style="color:var(--text-primary);">Windows Setup (.exe)</b>
+            <span style="font-size:var(--text-xs);color:var(--text-secondary);line-height:1.5;">Standalone setup wizard for Windows 10 &amp; 11 (64-bit). No Python runtime required.</span>
+            <a href="https://github.com/dev-hints/2048-Nexus/releases/download/1.0.0/2048-Nexus-Setup-1.0.0.exe" download class="btn btn-primary btn-sm" style="background:linear-gradient(135deg, #10b981, #0891b2);margin-top:auto;">
+              <i class="fa-brands fa-windows"></i> Download .exe (x64)
+            </a>
+          </div>
+
+          <!-- Debian / Ubuntu -->
+          <div class="download-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span class="distro-badge badge-debian"><i class="fa-brands fa-ubuntu"></i> Debian / Ubuntu</span>
+              <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)">v1.0.0</span>
+            </div>
+            <b style="color:var(--text-primary);">Debian Package (.deb)</b>
+            <span style="font-size:var(--text-xs);color:var(--text-secondary);line-height:1.5;">Native package for Debian, Ubuntu, Linux Mint, Pop!_OS, Zorin OS, and Kali Linux.</span>
+            <a href="https://github.com/dev-hints/2048-Nexus/releases/download/1.0.0/2048-nexus.deb" download class="btn btn-outline btn-sm" style="margin-top:auto;">
+              <span><i class="fa-solid fa-box"></i> Download .deb</span>
+            </a>
+          </div>
+
+          <!-- Fedora / RHEL -->
+          <div class="download-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span class="distro-badge badge-rpm"><i class="fa-brands fa-fedora"></i> Fedora / RHEL</span>
+              <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)">v1.0.0</span>
+            </div>
+            <b style="color:var(--text-primary);">RPM Package (.rpm)</b>
+            <span style="font-size:var(--text-xs);color:var(--text-secondary);line-height:1.5;">Native package for Fedora 35+, RHEL 8+, CentOS Stream, Rocky Linux, and AlmaLinux.</span>
+            <a href="https://github.com/dev-hints/2048-Nexus/releases/download/1.0.0/2048-nexus-1.0.noarch.rpm" download class="btn btn-outline btn-sm" style="margin-top:auto;">
+              <span><i class="fa-solid fa-box"></i> Download .rpm</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Linux CLI Installation Commands -->
+        <h3 style="font-size:var(--text-lg);color:var(--text-primary);margin-top:var(--space-6);margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-2);">
+          <i class="fa-solid fa-terminal" style="color:var(--color-cyan);"></i> Package Manager Installation
+        </h3>
+        
+        <pre><code><span style="color:var(--text-muted)"># --- Debian / Ubuntu / Linux Mint (.deb) ---</span>
+<span style="color:var(--text-muted)"># 1. Download the package</span>
+wget https://github.com/dev-hints/2048-Nexus/releases/download/1.0.0/2048-nexus.deb
+
+<span style="color:var(--text-muted)"># 2. Install using dpkg</span>
+sudo dpkg -i 2048-nexus.deb
+
+<span style="color:var(--text-muted)"># 3. Resolve any missing dependencies (if required)</span>
+sudo apt-get install -f
+
+<span style="color:var(--text-muted)"># --- Fedora / RHEL / CentOS Stream (.rpm) ---</span>
+<span style="color:var(--text-muted)"># Install directly via DNF:</span>
+sudo dnf install https://github.com/dev-hints/2048-Nexus/releases/download/1.0.0/2048-nexus-1.0.noarch.rpm
+
+<span style="color:var(--text-muted)"># Or install downloaded RPM:</span>
+sudo rpm -ivh 2048-nexus-1.0.noarch.rpm</code></pre>
+
+        <!-- Python Source Installation -->
+        <h3 style="font-size:var(--text-lg);color:var(--text-primary);margin-top:var(--space-6);margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-2);">
+          <i class="fa-brands fa-python" style="color:#10b981;"></i> Build &amp; Run from Python Source
+        </h3>
+        <p>If you prefer running from source or developing custom AI heuristics, clone the repository and run with Python 3.10+:</p>
+        
         <pre><code><span style="color:var(--text-muted)"># Clone the repository</span>
 git clone https://github.com/dev-hints/2048-Nexus.git
 cd 2048-Nexus
 
-<span style="color:var(--text-muted)"># Install Python dependencies</span>
+<span style="color:var(--text-muted)"># Optional: Create and activate virtual environment</span>
+python3 -m venv venv
+source venv/bin/activate  <span style="color:var(--text-muted)"># On Windows: venv\Scripts\activate</span>
+
+<span style="color:var(--text-muted)"># Install dependencies</span>
 pip install PyQt6 pygame numpy
 
-<span style="color:var(--text-muted)"># Launch with default settings</span>
+<span style="color:var(--text-muted)"># Launch with default 4x4 grid</span>
 python main.py
 
 <span style="color:var(--text-muted)"># Launch 5x5 board with AI auto-solver enabled</span>
-python main.py --grid 5 --ai</code></pre>
+python main.py --mode 4x4 --ai-enabled</code></pre>
+
+        <!-- System Requirements Table -->
+        <h3 style="font-size:var(--text-lg);color:var(--text-primary);margin-top:var(--space-6);margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-2);">
+          <i class="fa-solid fa-microchip" style="color:var(--color-primary-light);"></i> System Compatibility &amp; Requirements
+        </h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Supported Versions</th>
+                <th>Installer Format</th>
+                <th>Architecture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Windows</strong></td>
+                <td>Windows 10, Windows 11</td>
+                <td><code>.exe</code> Installer / Standalone Binary</td>
+                <td>x86_64</td>
+              </tr>
+              <tr>
+                <td><strong>Debian / Ubuntu</strong></td>
+                <td>Ubuntu 20.04+, Debian 11+, Mint 20+, Pop!_OS</td>
+                <td><code>.deb</code> Package</td>
+                <td>x86_64 / noarch</td>
+              </tr>
+              <tr>
+                <td><strong>Fedora / RHEL</strong></td>
+                <td>Fedora 35+, RHEL 8+, CentOS Stream 9+, Rocky, Alma</td>
+                <td><code>.rpm</code> Package</td>
+                <td>x86_64 / noarch</td>
+              </tr>
+              <tr>
+                <td><strong>Source (Python)</strong></td>
+                <td>macOS 11+, FreeBSD, Any Linux distro</td>
+                <td><code>pip</code> / Git Source</td>
+                <td>Universal (Python 3.10+)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- 3. MECHANICS & MATH -->
@@ -363,7 +526,34 @@ python main.py --grid 5 --ai</code></pre>
 Total_Score = (3.5 * corner_score) + (2.2 * monotonicity) + (1.0 * smoothness) + (2.8 * empty_cells)</code></pre>
       </section>
 
-      <!-- 5. SHORTCUTS -->
+      <!-- 5. ARCHITECTURE -->
+      <section id="architecture" class="doc-section">
+        <h2><i class="fa-solid fa-sitemap" style="color:var(--color-secondary)"></i> PyQt6 Architecture &amp; Subsystems</h2>
+        <p>
+          2048 Nexus is engineered with a modular separation of concerns designed for maximum frame rendering performance and testable AI integration:
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6);">
+          <div class="doc-tile">
+            <b>1. Presentation Layer (PyQt6 &amp; QGraphicsView)</b>
+            <span>Implements smooth 60 FPS non-blocking hardware-accelerated tile transitions, particle explosions, and dynamic theme stylesheets.</span>
+          </div>
+          <div class="doc-tile">
+            <b>2. Core Board Model (NumPy Matrix Engine)</b>
+            <span>High-speed N-dimensional vector shift operations, cell merge collision resolution, and undo history tree restoration.</span>
+          </div>
+          <div class="doc-tile">
+            <b>3. AI Search Worker (Multi-threaded Expectimax)</b>
+            <span>Runs heuristic game tree calculations on a background <code>QThread</code> to maintain seamless GUI responsiveness during deep searches.</span>
+          </div>
+          <div class="doc-tile">
+            <b>4. Audio &amp; FX Mixer (Pygame Sound Engine)</b>
+            <span>Low-latency sound effect mixer triggering synthwave retro audio cues on tile combinations, combos, and game milestones.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SHORTCUTS -->
       <section id="shortcuts" class="doc-section">
         <h2><i class="fa-solid fa-keyboard" style="color:#f59e0b"></i> Keyboard Controls Reference</h2>
         <div class="table-container">

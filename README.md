@@ -89,10 +89,11 @@ The StrangeInfinity portal highlights several flagship software products and ope
   <tr>
     <td width="50%" valign="top">
       <h3>🎮 2048 Nexus</h3>
-      <p>Cyberpunk arcade puzzle game built with Python & PyQt6 featuring multiple grid sizes (3x3 to 8x8), undo move stack, and Expectimax AI auto-solver.</p>
+      <p>Cyberpunk arcade puzzle game built with Python & PyQt6 featuring multiple grid sizes (3x3 to 8x8), undo move stack, and Expectimax AI auto-solver. Installers available for Windows (.exe), Debian (.deb), and Fedora/RHEL (.rpm).</p>
       <p>
         <a href="https://strangeinfinity.github.io/2048-Nexus/"><strong>Portal »</strong></a> • 
         <a href="https://strangeinfinity.github.io/2048-Nexus/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/2048-Nexus/releases"><strong>Releases »</strong></a> • 
         <a href="https://github.com/dev-hints/2048-Nexus">GitHub</a>
       </p>
     </td>
@@ -147,7 +148,7 @@ The StrangeInfinity portal highlights several flagship software products and ope
 
 The StrangeInfinity hub categorizes and tracks various tools across different technology domains:
 
-* **Desktop Applications**: Native multi-platform software crafted with Python & PyQt6 (including *Infinity Browser* and *2048 Nexus*).
+* **Desktop Applications**: Native multi-platform software crafted with Python & PyQt6 (including *Infinity Browser* and *2048 Nexus* with native Windows `.exe`, Debian `.deb`, and Fedora/RHEL `.rpm` releases).
 * **AI & Computer Vision**: Interactive vision systems and terminal interfaces (such as *AirPointer* and *Gemini CLI*).
 * **Web Utilities & Productivity**: Modern, accessible browser tools designed for fast everyday workflows (*Infinity Writer*, *Notes App*, *To-Do Manager*).
 * **Interactive & Scientific Tools**: Math engines, logic challenges, and games (*CalcCosmos*, *2048 Nexus*, *Neon Snake*).
