@@ -332,10 +332,20 @@
 
     <!-- Cross-Platform -->
     <section id="platforms" class="doc-section reveal">
-      <h2><i class="fa-solid fa-desktop" style="color:var(--color-cyan)"></i> Cross-Platform Builds</h2>
+      <h2><i class="fa-solid fa-desktop" style="color:var(--color-cyan)"></i> Cross-Platform Builds &amp; Installation</h2>
       <p>
-        Pre-built installers are available for Windows (.exe), Debian/Ubuntu (.deb), and Fedora/RHEL (.rpm). Source code can also be cloned and run on any Linux environment with Python 3.10+.
+        Pre-built installers are available for Windows (.exe), Debian/Ubuntu (.deb), and Fedora/RHEL (.rpm). You can also build and run Infinity Browser directly from Python source:
       </p>
+
+      <pre><code><span style="color:var(--text-muted)"># Clone the repository</span>
+git clone https://github.com/dev-hints/infinity-browser.git
+cd infinity-browser
+
+<span style="color:var(--text-muted)"># Install dependencies</span>
+pip install -r requirements.txt
+
+<span style="color:var(--text-muted)"># Run Infinity Browser</span>
+python main.py</code></pre>
     </section>
 
     <!-- YouTube Downloader -->

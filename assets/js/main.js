@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ThemeManager.init();
   ParticleEngine.init();
   ProjectRenderer.init();
+  if (typeof CopyCodeManager !== 'undefined') {
+    CopyCodeManager.init();
+  }
 
 
 

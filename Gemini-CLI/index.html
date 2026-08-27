@@ -246,8 +246,13 @@
           </div>
 
           <div class="terminal-body">
-            <div>
-              <span class="term-prompt">ayush@strangeinfinity:~$</span> <span style="color:#fff">cat server.log | gemini "summarize errors"</span>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+              <div>
+                <span class="term-prompt">ayush@strangeinfinity:~$</span> <span style="color:#fff">cat server.log | gemini "summarize errors"</span>
+              </div>
+              <button class="inline-cmd-copy" data-copy-text='cat server.log | gemini "summarize errors"' title="Copy command" aria-label="Copy terminal command">
+                <i class="fa-regular fa-copy" aria-hidden="true"></i> Copy
+              </button>
             </div>
 
             <div class="term-ai-response">

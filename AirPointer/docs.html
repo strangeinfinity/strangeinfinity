@@ -337,9 +337,7 @@ python airpointer.py</code></pre>
         <h2><i class="fa-solid fa-sitemap" style="color:var(--color-secondary)"></i> System Architecture</h2>
         <p>The internal pipeline processes frames in four synchronized stages without blocking the main event loop:</p>
 
-        <div class="mock-screenshot">
-          <pre>
-[ Webcam Frame (60 FPS) ]
+        <pre data-lang="ARCHITECTURE"><code>[ Webcam Frame (60 FPS) ]
           │
           ▼
 [ Frame Preprocessing ] ───> Normalization &amp; Contrast Enhancement
@@ -357,9 +355,7 @@ python airpointer.py</code></pre>
 [ Gesture State Machine ] ──> Left/Right Click, Double Click, Drag, Scroll
           │
           ▼
-[ OS Input Dispatcher ] ───> PyAutoGUI / pynput Kernel Event Injection
-          </pre>
-        </div>
+[ OS Input Dispatcher ] ───> PyAutoGUI / pynput Kernel Event Injection</code></pre>
       </section>
 
       <!-- 4. HAND LANDMARKS -->
